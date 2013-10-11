@@ -1,6 +1,8 @@
 #Jekyll
 name: www.RyanHornberger.com
 pygments: true
+source: src
+destination: dist
 exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md','*.iml']
 
 #IXT Asset Compilations
