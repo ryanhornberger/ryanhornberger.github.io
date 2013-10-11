@@ -1,6 +1,10 @@
+#Jekyll
 name: www.RyanHornberger.com
-safe: true
-lsi: false
 pygments: true
-include: ['_res']
 exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md','*.iml']
+
+#IXT Asset Compilations
+assets:
+  js_compressor: yui
+  css_compressor: sass
+  cachebust: soft
