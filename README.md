@@ -1,9 +1,13 @@
-Run in Dev:
------------
-    cd $SRC
-    rake app:rerun  (bundle exec jekyll serve --watch)
+RyanHornberger.com
+==================
 
-Run in Production:
------------
-    cd $SRC
-    rake app:start  (bundle exec jekyll serve)
+This site is powered by Jekyll using ruby and the rake gem.
+
+## Development
+	rake app:serve     # compile and serve static site
+	rake app:watch     # compile and serve static site (watch for changes)
+
+## Deployment
+	rake app:generate  # Generate blog files
+	rake app:publish   # Generate and publish blog GitHub
+	
