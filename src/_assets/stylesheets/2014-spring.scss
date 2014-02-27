@@ -1,0 +1,84 @@
+@import "compass/css3/box-sizing";
+@import "compass/layout/sticky-footer";
+@import "3rd-party/font-awesome/font-awesome.scss"; 
+
+// -- COLORS -- //
+	$trueRed: 	#FF0000; 
+	$trueWhite: #FFFFFF;
+	$darkGray: 	#222222;
+	
+	.darkGray {
+		color: $darkGray;
+	}
+
+// -- DEFAULTS -- //
+	* {
+		//all objects sizing as border-box will guarantee objects stay the size I expect
+		@include box-sizing(border-box);
+		
+		//default font layout
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+		font-weight: 300;
+		font-size: 14px;
+
+		//no margins or padding on anything unless asking for it
+		margin: 0px;
+		padding: 0px; 
+	}
+
+	h1, .h1 { font-size: 26px; margin-bottom: 10px; }
+	h2, .h2 { font-size: 18px; margin-bottom: 10px; }
+	h3, .h3 { font-size: 18px; margin-bottom: 10px; }
+	h4, .h4 { font-size: 18px; margin-bottom: 10px; }
+
+	p { margin-bottom: 15px; }
+	a { text-decoration: none; }
+	a:hover { text-decoration: underline; }
+	a.hidden:hover { text-decoration: none; }
+	a.white { color: $trueWhite; }
+
+// -- HEADER -- //
+	#header {
+		background-color: $trueRed;
+		display: table;
+		height: 35px;
+		width: 100%;
+		color: $trueWhite;
+		padding: 0px 20px; 
+		
+		#header-title {
+			display: table-cell; 
+		  	vertical-align: middle;
+		}
+	}
+
+// -- FOOTER -- //
+	@include sticky-footer(360px, "#content-box", "#content-box-footer-push", "#footer");
+	#footer {
+		background-color: $darkGray;
+		color: $trueWhite;
+		padding: 20px;
+
+		#footer-box {
+			.footer-section {
+				padding: 10px 0px;
+				border-bottom: 1px solid $trueWhite;
+			}
+
+			#footer-about-me {
+				p {
+					max-width: 400px;
+				}
+			}
+
+			#footer-nav {
+				ul {
+					list-style-type: none;
+
+					li {
+						margin-top: 10px;
+					}
+				}
+			}	
+		}	
+	}	
