@@ -1,7 +1,7 @@
 ---
 layout: 2014-spring-footed
-title: Consultation Services by Ryan Hornberger
-description: Web Design Consulting, System Infrastructure Consulting, VoIP Consulting
+title: Portfolio of Ryan Hornberger
+description: Products I've worked on
 ---
 
 {% include header-basic.md %}
