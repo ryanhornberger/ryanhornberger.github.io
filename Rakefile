@@ -1,20 +1,30 @@
-namespace :app do
-  require 'rubygems'
-  require 'rake'
-  require 'rdoc'
-  require 'date'
-  require 'yaml'
-  require 'tmpdir'
-  require 'jekyll'
+require 'rubygems'
+require 'rake'
+require 'rdoc'
+require 'date'
+require 'yaml'
+require 'tmpdir'
+require 'jekyll'
 
+desc 'list available commands'
+task :help do
+  system 'rake -T'
+end
+
+namespace :app do
   desc 'compile and serve static site'
   task :serve do
-    sh 'bundle exec jekyll serve'
+    system 'bundle exec jekyll serve'
   end
 
   desc 'compile and serve static site (watch for changes)'
   task :watch do
-    sh 'bundle exec jekyll serve --watch'
+    system 'bundle exec jekyll serve --watch'
+  end
+
+  desc 'compile and serve static site with drafts (watch for changes)'
+  task :drafts do
+    system 'bundle exec jekyll serve --drafts --watch'
   end
 
   desc 'Generate blog files'
@@ -37,5 +47,19 @@ namespace :app do
       system "echo 'Deployed to GitHub'"
     end
   end
+end
 
+namespace :posts do
+  desc 'create a new draft'
+  task :draft , :title do |t, args|
+    if args.title
+      title = args.title
+    else
+      print "Enter a title for your post: "
+      title = STDIN.gets.chomp
+    end
+
+    filename = "./src/_drafts/#{Time.now.strftime('%Y-%m-%d')}-#{title}.md"
+    system "touch #{filename}"
+  end
 end
