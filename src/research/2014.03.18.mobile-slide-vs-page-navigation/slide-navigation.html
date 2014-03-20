@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="utf-8">
+  <title>Mobile Slide vs Page Navigation - Research by Ryan Hornberger</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+  <meta name="description" content="{{ page.description }}" />
+
+  <link href="./bootstrap2/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="./bootstrap2/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+
+  <script type="text/javascript" src="./ember/jquery-1.10.2.js"></script>
+  <script type="text/javascript" src="./ember/jquery.inputmask.min.js"></script>
+  <script type="text/javascript" src="./ember/handlebars-1.1.2.js"></script>
+  <script type="text/javascript" src="./ember/ember-1.4.0.js"></script>
+  <script type="text/javascript" src="./ember/ember-fastclick.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0px;
+      padding: 0px;
+      font-size: 14px;
+      font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+    }
+
+    body {
+      background-color: rgb(238, 240, 242);
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .heading {
+      width: 100%;
+      font-size: 14px;
+      text-align: center;
+      background-color: #d81e27;
+      color: #ffffff;
+      padding: 10px;
+
+    }
+
+    .splash {
+      background-color: #2f3c3f;
+      color: #ffffff;
+    }
+
+    .splash .splash-content, .form .form-content {
+      margin: 0px auto;
+      padding: 20px;
+      text-align: center;
+      max-width: 560px;
+    }
+
+    .splash .splash-content img {
+      width: 108px;
+      height: 108px;
+      margin: 0px 0px 20px;
+      border-radius: 6px;
+    }
+
+    .form .form-content .finput {
+      height: 41px;
+      padding: 4px 6px;
+      border: 1px solid rgb(169, 185, 198);
+      border-radius: 6px;
+      font-size: 14px;
+    }
+
+    .form .form-content input[type=number]::-webkit-inner-spin-button,
+    .form .form-content input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+
+    .form .form-content input:focus:invalid { 
+      border-color: rgb(169, 185, 198);
+      color: rgb(51, 51, 51);
+      box-shadow: none;
+    }
+
+    .form .form-content .finput-block {
+      margin-bottom: 20px;
+    }
+
+    .form .form-content .finput-block .finput {
+      margin-bottom: 0px;
+    }
+
+    .finput-row {
+      position: relative;
+      display-block;
+    }
+
+    .finput-row:after {
+      content: ".";
+      visibility: hidden;
+      display: block;
+      height: 0;
+      clear: both;
+    }
+
+    .finput-row .finput-1-2 {
+      width: 50%;
+      float: left;
+    }
+
+    .finput-secondary {
+      display: none;
+    }
+
+    .form .form-content .finput.flat-bottom {
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    .form .form-content .finput.flat-top {
+      border-top-left-radius: 0px;
+      border-top-right-radius: 0px;
+      border-top: 0px;
+    }
+
+    .form .form-content .finput.flat-bottom-right {
+      border-bottom-right-radius: 0px;
+    }
+
+    .form .form-content .finput.flat-bottom-left {
+      border-bottom-left-radius: 0px;
+      border-left: 0px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="heading">
+      Slide Navigation
+  </div>
+
+  <div class="splash">
+    <div class="splash-content">
+      <img src="https://scan.me/rev-ff6d0cd/bundles/scanlayout/images/scan-avatar.png"/>
+      <p>
+        Attempt to enter data in any of the fields below. If the field requires
+        more data from you it will expand automatically.
+      </p>
+    </div>
+  </div>
+
+  <script type="text/x-handlebars" data-template-name="main">
+    <form method="post" action="/foo" novalidate="novalidate">
+      <div class="form">
+        <div class="form-content">
+
+          <div class="finput-block">
+              {{input id="email" class="finput input-block-level" type="text" placeholder="Email" value=email}}
+              <div id="email-secondary" class="finput-secondary">
+                <button class="finput btn btn-block btn-primary flat-top" type="button">Sign in to use stored payment information</button>
+              </div>
+          </div>
+
+          <div class="finput-block">
+              {{input-cardnumber id="card-number" class="finput input-block-level" placeholder="Card number" value=cardNumber}}
+              <div id="card-number-secondary" class="finput-secondary">
+                <div class="finput-row">
+                    {{input-cardexpiration id="card-mmyy" class="finput finput-1-2 input-block-level flat-top flat-bottom-right" placeholder="MM / YY" value=cardMmyy}}
+                    {{input-cardcvv id="card-cvv" class="finput finput-1-2 input-block-level flat-top flat-bottom-left" placeholder="Cvv" value=cardCvv}}
+                </div>
+              </div>
+          </div>
+
+          <div class="finput-block">
+              {{input id="ship-street1" class="finput input-block-level" type="text" placeholder="Street address" value=shipStreet1}}
+              <div id="ship-street1-secondary" class="finput-secondary">
+                {{input id="ship-postal" class="finput input-block-level flat-top" type="text" placeholder="Postal code" value=shipPostal}}
+              </div>
+              <div id="ship-postal-secondary" class="finput-secondary">
+                <div class="finput-row">
+                    {{input class="finput finput-1-2 input-block-level flat-top flat-bottom-right" type="text" placeholder="City" value=shipCity}}
+                    {{input class="finput finput-1-2 input-block-level flat-top flat-bottom-left" type="text" placeholder="State" value=shipState}}
+                </div>
+              </div>
+          </div>
+        </form>
+        <div class="finput-block">
+          {{input class="finput input-block-level" type="text" placeholder="Customer memo" value=memo}}
+        </div>
+        <button class="finput btn btn-block btn-primary" type="button">Pay $20.00</button>
+      </div>
+    </div>
+  </script>
+
+  <script type="text/javascript">
+    $(function() {
+
+      /* Card Masking */
+      //targus = function(cardNumberInput, cardExpirationInput, cardCvvInput) {
+      //  cardNumberInput.on('input', function(event) {
+      //    console.log('---cardNumberInput---');
+      //    var inputValue = event.target.value.replace(' ', '');
+//
+      //    console.log('i: ' + inputValue);
+//
+      //    var mask = null;
+      //    if (inputValue.length < 2) {
+      //      mask = "9999999999999999";
+      //    } else if (inputValue.substring(0,2) == 37 ) {
+      //      mask = "9999 999999 99999";
+      //    } else {
+      //      mask = "9999 9999 9999 9999";
+      //    }
+//
+      //    console.log('m: ' + mask);
+//
+      //    var output = '';
+      //    var maskSize = mask.length;
+      //    var iMask = 0;
+      //    for (var i = 0; i < inputValue.length; i++) {
+      //      for (var i2 = iMask; i2 < maskSize; i2++) {
+      //        var mChar = mask[i2];
+      //        switch(mChar) {
+      //          case 9:
+      //            execute code block 1
+      //            break;
+      //          case 'a':
+      //            execute code block 2
+      //            break;
+      //          default:
+      //            
+      //        }  
+      //      } 
+//
+      //      iMask++;
+      //    }
+      //    //event.target.value = 'xxx';
+      //  });
+//
+      //  cardExpirationInput.on('input', function() {
+      //    console.log('---cardExpirationInput---');
+      //  });
+//
+      //  cardCvvInput.on('input', function() {
+      //    console.log('---cardCvvInput---');
+      //  });
+//
+      //  return {
+      //    cardNumber: cardNumberInput,
+      //    cardExpiration: cardExpirationInput,
+      //    cardCvv: cardCvvInput
+      //  }
+      //}
+      /* END - Card Masking */
+
+      Ember.CardNumberInput = Ember.TextField.extend({
+        type: 'tel',  //number type gets a better keyboard but does not allow spaces or other pieces of data that we need
+
+        addMask: function () {
+          this.$().inputmask('9999 9999 9999 9999', {placeholder: " "});
+        }.on('didInsertElement')
+      });
+      Ember.Handlebars.helper('input-cardnumber', Ember.CardNumberInput);
+
+      Ember.CardExpirationInput = Ember.TextField.extend({
+        type: 'tel',  //number type gets a better keyboard but does not allow spaces or other pieces of data that we need
+
+        addMask: function () {
+          this.$().inputmask('99 / 99', {placeholder: "MM / YY"});
+        }.on('didInsertElement')
+      });
+      Ember.Handlebars.helper('input-cardexpiration', Ember.CardExpirationInput);
+
+      Ember.CardCvvInput = Ember.TextField.extend({
+        type: 'tel',  //number type gets a better keyboard but does not allow spaces or other pieces of data that we need
+
+        addMask: function () {
+          this.$().inputmask('999[9]', {placeholder: " "});
+        }.on('didInsertElement')
+      });
+      Ember.Handlebars.helper('input-cardcvv', Ember.CardCvvInput);
+
+      App = Ember.Application.create();
+
+      App.Router.map(function() {
+        this.resource('main', { path: '/' });
+      });
+
+      App.MainController = Ember.ObjectController.extend({
+        email: '',
+        cardNumber: '',
+        cardMmyy: '',
+        cardCvv: '',
+        shipStreet1: '',
+        shipPostal: '',
+        shipCity: 'Provo',
+        shipState: 'Utah',
+        memo: '',
+
+        emailEntered: function() {
+          if(this.get('email').match(/.+@.+\..+/i)) {
+            $('#email').addClass("flat-bottom");
+            $('#email-secondary')[0].style.display = "block";
+          } else {
+            $('#email-secondary')[0].style.display = "none";
+            $('#email').removeClass("flat-bottom");
+          }
+        }.observes('email'),
+
+        cardNumberEntered: function() {
+          var cardNumber = this.get('cardNumber');
+
+          if(cardNumber.length > 0) {
+            $('#card-number').addClass("flat-bottom");
+            $('#card-number-secondary')[0].style.display = "block";
+          } else {
+            $('#card-number-secondary')[0].style.display = "none";
+            $('#card-number').removeClass("flat-bottom");
+          }
+        }.observes('cardNumber'),
+
+        shipStreet1Entered: function() {
+          if(this.get('shipStreet1').length > 0) {
+            $('#ship-street1').addClass("flat-bottom");
+            $('#ship-street1-secondary')[0].style.display = "block";
+          } else {
+            $('#ship-street1-secondary')[0].style.display = "none";
+            $('#ship-street1').removeClass("flat-bottom");
+          }
+        }.observes('shipStreet1'),
+
+        shipPostalEntered: function() {
+          if(this.get('shipPostal').length > 4) {
+            $('#ship-postal').addClass("flat-bottom");
+            $('#ship-postal-secondary')[0].style.display = "block";
+          } else {
+            $('#ship-postal-secondary')[0].style.display = "none";
+            $('#ship-postal').removeClass("flat-bottom");
+          }
+        }.observes('shipPostal')
+
+      });
+
+      console.log('ember app activated');
+    });
+  </script>
+</body>
+</html>
