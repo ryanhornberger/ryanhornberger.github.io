@@ -183,13 +183,19 @@
       
       {{!-- Card Picker --}}
       <div id="card-group" class="finput-group">
-        {{#if selectedCardData}}
-          <button id='sel-pmm' class="finput" type="button">&#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; {{selectedCardData.lastFour}}</button>
-        {{else}}
-          {{input class="finput" type="text" placeholder="Card number" value=inCardNumber}}  
-          {{input id="card-mmyy" class="finput hide" type="text" placeholder="MM / YY" value=inCardMmYy}}  
-          {{input id="card-cvv" class="finput hide" type="text" placeholder="CVV" value=inCardCvv}}  
+        {{#if hasCardData}}
+          {{view Ember.Select
+             content=storedCards
+             class="finput spaced"
+             optionValuePath="content.id"
+             optionLabelPath="content.displayText"
+             selection=selectedCard
+           }}
         {{/if}}
+        
+        {{input id="card-number" class="finput hide" type="text" placeholder="Card number" value=inCardNumber}}  
+        {{input id="card-mmyy" class="finput hide" type="text" placeholder="MM / YY" value=inCardMmYy}}  
+        {{input id="card-cvv" class="finput hide" type="text" placeholder="CVV" value=inCardCvv}}  
       </div>
 
       {{!-- Address Picker --}}
@@ -306,10 +312,10 @@ scannable = {
 };
 
 storedCards = [
-  {network: 'visa', lastFour: 4043},
-  {network: 'amex', lastFour: 3234},
-  {network: 'discover', lastFour: 9875},
-  {network: 'master', lastFour: 2345},            
+  {id: 1, network: 'Visa', lastFour: 4043},
+  {id: 2, network: 'Amex', lastFour: 3234},
+  {id: 3, network: 'Discover', lastFour: 9875},
+  {id: 4, network: 'Master', lastFour: 2345},            
 ];
 
 $(function() {
@@ -318,7 +324,7 @@ var App = Ember.Application.extend().create({
   ready: function() {
     var UserController = Ember.ObjectController.extend({
       setModel: function() {
-          this.set('model', null);//scanUser
+          this.set('model', scanUser);
       }.on('init'),
 
       isLoggedIn: function() {
@@ -340,7 +346,15 @@ App.ApplicationRoute = Ember.Route.extend({
 
 App.IndexRoute = Ember.Route.extend({
   model: function() {
-    return {storedCards: storedCards};
+    for(i=0; i < storedCards.length; ++i) {
+      var currentCard = storedCards[i];
+      currentCard.displayText = new Handlebars.SafeString(currentCard.network + ' &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; ' + currentCard.lastFour);
+    }
+
+    //give the user the ability to add a new card
+    storedCards.push({id: 'new', displayText: 'New card'});
+
+    return {storedCards: storedCards, cardOptions: storedCards};
   },
 
   setupController: function(controller, model) {
@@ -426,30 +440,48 @@ App.IndexController = Ember.ObjectController.extend({
   }.observes('inEmail'),
 
   //card picker
-  selectedCardIndex: 0,
-  selectedCardData: function() {
-    var cardData = null;
-
+  selectedCard: null,
+  hasCardData: function() {
     if(this.get('user.isLoggedIn')) {
       var storedCards = this.get('storedCards');
 
       if(storedCards.length > 0) {
-        var selectedCardIndex = this.get('selectedCardIndex');
-
-        if(selectedCardIndex < storedCards.length) {
-          cardData = storedCards[selectedCardIndex];
-        }
+        return true
       }
     }
 
-    return cardData;
-  }.property('user.isLoggedIn', 'storedCards', 'selectedCardIndex'),
-  
+    return false;
+  }.property('user.isLoggedIn', 'storedCards'),
+
   inCardNumber: '',
   inCardMmYy: '',
   inCardCvv: '',
   expandCardGroup: function() {
-    if(this.get('inCardNumber').length > 0) {
+
+    var isAddingNewCard = false;
+    var shouldExpand = false;
+
+    if(this.get('hasCardData')) {
+      var selectedCard = this.get('selectedCard');
+      if(selectedCard && selectedCard.id == 'new') { 
+        isAddingNewCard = true;
+        shouldExpand = true;
+      }
+    } else {
+      isAddingNewCard = true;
+    }
+
+    if(isAddingNewCard) {
+      $('#card-group').addClass("pushed");
+    } else {
+      $('#card-group').addClass("pushed");
+    }
+
+    if( this.get('inCardNumber').length > 0 ) {
+      shouldExpand = true;
+    }
+
+    if(shouldExpand) {
       $('#card-group').addClass("pushed");
       $('#card-mmyy')[0].style.display = "block";
       $('#card-cvv')[0].style.display = "block";
@@ -459,7 +491,7 @@ App.IndexController = Ember.ObjectController.extend({
       $('#card-group').removeClass("pushed");
     }
 
-  }.observes('inCardNumber'),
+  }.observes('hasCardData', 'selectedCard', 'inCardNumber'),
 
   
   //address picker
