@@ -171,84 +171,96 @@
 <form class="form" method="post" action="/foo" novalidate="novalidate">
   <div class="form-content">
 
-      {{!--  Login Picker --}}
-      <div id="sign-in-group" class="finput-group">
-        {{#if user.isLoggedIn}}
-          <button id='sel-email' class="finput" type="button">{{user.email}}</button>
-        {{else}}
-          {{input class="finput" type="text" placeholder="Email" value=inEmail}}
-          <button id="sign-in-button" class="finput primary hide" type="button">Sign In</button>
-        {{/if}}
+      <!-- Sign-In Picker -->
+      <div id="sign-in-group" {{bind-attr class=":finput-group signInExpanded:pushed"}}>
+        
+        <!-- Signed In -->
+        <button id='si-email' {{bind-attr class=":finput user.isLoggedIn::hide"}} type="button">{{user.email}}</button>
+        
+        <!-- Signed Out -->
+        {{input id='so-email' classNameBindings=":finput user.isLoggedIn:hide" type="text" placeholder="Email" value=inEmail}}
+        <button id="so-email-action" {{bind-attr class=":finput :primary signInExpanded::hide"}} type="button">Sign In</button>
+
       </div>
       
-      {{!-- Card Picker --}}
-      <div id="card-group" class="finput-group">
-        {{#if hasCardData}}
-          {{view Ember.Select
-             content=storedCards
-             class="finput spaced"
-             optionValuePath="content.id"
-             optionLabelPath="content.displayText"
-             selection=selectedCard
-           }}
-        {{/if}}
+
+      <!-- Card Picker -->
+      <div id="card-group" {{bind-attr class=":finput-group cardExpanded:pushed"}}>
         
-        {{input id="card-number" class="finput hide" type="text" placeholder="Card number" value=inCardNumber}}  
-        {{input id="card-mmyy" class="finput hide" type="text" placeholder="MM / YY" value=inCardMmYy}}  
-        {{input id="card-cvv" class="finput hide" type="text" placeholder="CVV" value=inCardCvv}}  
+        <!-- Has Card Data -->
+        {{view Ember.Select
+          id='sel-card'
+          content=cardOptions
+          classNameBindings=":finput hasCardData::hide"
+          optionValuePath="content.id"
+          optionLabelPath="content.displayText"
+          selection=selectedCard
+        }}
+        
+        <!-- Is Entering New Card Data -->
+        {{input id="card-number" classNameBindings=":finput isAddingNewCard::hide" type="text" placeholder="Card number" value=inCardNumber}}  
+        {{input id="card-mmyy" classNameBindings=":finput cardExpanded::hide" type="text" placeholder="MM / YY" value=inCardMmYy}}  
+        {{input id="card-cvv" classNameBindings=":finput cardExpanded::hide" type="text" placeholder="CVV" value=inCardCvv}}
+
       </div>
 
-      {{!-- Address Picker --}}
+
+      <!-- Address Picker -->
       <div id="address-group" class="finput-group">
-        {{#if dconfig.shouldTrackShipping}}
-          {{#if selectedAddressData}}
-            <button id='sel-addr' class="finput" type="button">{{selectedAddressData}}</button>
-          {{else}}
-            {{input class="finput" type="text" placeholder="Address" value=inStreet1}}  
-            {{input id="address-pc" class="finput hide" type="text" placeholder="Postal code" value=inPostalCode}}  
-            {{input id="address-city" class="finput hide" type="text" placeholder="City" value=inCity}}  
-            {{input id="address-subdivision" class="finput hide" type="text" placeholder="State" value=inSubdivision}}  
-          {{/if}}        
-        {{/if}}
+        
+        <!-- Should Track Shipping -->
+          <!-- Has Stored Address Data -->
+          <button id='sel-address' class="finput hide" type="button">{{selectedAddressData}}</button>
+          
+          <!-- Is Entereing New Address Data -->
+          {{input id="address-street" class="finput hide" type="text" placeholder="Address" value=inStreet1}}  
+          {{input id="address-pc" class="finput hide" type="text" placeholder="Postal code" value=inPostalCode}}  
+          {{input id="address-city" class="finput hide" type="text" placeholder="City" value=inCity}}  
+          {{input id="address-subdivision" class="finput hide" type="text" placeholder="State" value=inSubdivision}}
+        <!-- /Should Track Shipping -->
+
       </div>
 
-      {{!-- User Memo Picker --}}
-      <div id="memo-group" class="finput-group">
-        {{#if dconfig.shouldShowUserMemoField}}
-          {{input class="finput spaced" type="text" placeholder=dconfig.userMemoPlaceholder value=inMemo}}    
-        {{/if}}
+
+      <!-- User Memo Picker -->
+      <div id="user-memo-group" class="finput-group">
+        <!-- Should Track Shipping -->
+        {{input id="user-memo" class="finput hide" type="text" placeholder=dconfig.userMemoPlaceholder value=inMemo}}      
       </div>
 
-      {{!-- Quantity Picker --}}
-      {{#if dconfig.shouldShowQuantityPicker}}
+
+      <!-- Quantity Picker -->
       <div id="quantity-group" class="finput-group">
+
+        <!-- Should Show Quantity Picker -->
         <div class="float-box">
-          {{input id="quantity-field" class="finput" type="text" value=inQuantity}}  
+          {{input id="quantity-field" class="finput hide" type="text" value=inQuantity}}  
           <div id="quantity-memo">Quantity:</div>
         </div>
-      </div>
-      {{/if}}
 
-      {{!-- Price and Subscription Pickers --}}
+      </div>
+
+
+      <!-- Price and Subscription Pickers -->
       <div id="price-group" class="finput-group">
-        {{#if dconfig.shouldShowPricePicker}}
-          <div class="float-box">
-            {{input id="price-alone-field" class="finput spaced" type="text" value=inPrice}}  
-            <div id="price-alone-memo">Amount: $</div>
-          </div>
-        {{/if}}
 
-        {{#if dconfig.shouldShowSubscriptionPicker}}
-          <select class="finput spaced">
-            <option>One-Time</option>
-            <option>Monthly</option>
-            <option>Annually</option>
-          </select>    
-        {{/if}}
+        <!-- Should Show Price Picker -->
+        <div class="float-box">
+          {{input id="price-field" class="finput hide" type="text" value=inPrice}}  
+          <div id="price-memo">Amount: $</div>
+        </div>
+
+        <!-- Should Show Subscription Picker -->
+        <select id="sel-subscription" class="finput hide">
+          <option>One-Time</option>
+          <option>Monthly</option>
+          <option>Annually</option>
+        </select>    
+
       </div>
 
-      {{!-- Pay Button --}}
-      <div class="finput-group spaced">
+      <!-- Pay Button -->
+      <div class="finput-group pushed">
         <button class="finput primary" type="button">Pay $20.00</button>
       </div>
 
@@ -262,8 +274,6 @@
   {{/each}} 
 </div>
 </script>
-
-
 
 
 <script type="text/javascript">
@@ -312,13 +322,78 @@ scannable = {
 };
 
 storedCards = [
-  {id: 1, network: 'Visa', lastFour: 4043},
-  {id: 2, network: 'Amex', lastFour: 3234},
-  {id: 3, network: 'Discover', lastFour: 9875},
-  {id: 4, network: 'Master', lastFour: 2345},            
+  {id: 1, network: 'Visa', lastFour: 4043, displayText: 'Visa &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; 4043'},
+  {id: 2, network: 'Amex', lastFour: 3234, displayText: 'Amex &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; 3234'},
+  {id: 3, network: 'Discover', lastFour: 9875, displayText: 'Discover &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; 9875'},
+  {id: 4, network: 'Master', lastFour: 2345, displayText: 'Master &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; 2345'},
 ];
 
+initOptions = {
+  trackShipping: false,
+  showQuantityPicker: false,
+  showPricePicker: false,
+  showSubscriptionPicker: false,
+  showUserMemoField: false,
+  requireUserMemo: false,
+  userMemoPlaceholder: 'Optional Message'
+}
+
 $(function() {
+
+uiElements = {
+  hide: function(name) {
+    uiElements.items[name].addClass('hide');
+  },
+
+  show: function(name) {
+    uiElements.items[name].removeClass('hide');
+  },
+  
+  explode: function(name) {
+    uiElements.items[name].addClass('pushed');
+  },
+ 
+  collapse: function(name) {
+    uiElements.items[name].removeClass('pushed');
+  },
+  
+  items:  {
+    //Login Picker
+    'sign-in-group': $('#sign-in-group'),
+    'si-email': $('#si-email'),
+    'so-email': $('#so-email'),
+    'so-email-action': $('#so-email-action'),
+
+    //Card Picker
+    'card-group': $('#card-group'),
+    'sel-card': $('#sel-card'),
+    'card-number': $('#card-number'),
+    'card-mmyy': $('#card-mmyy'),
+    'card-cvv': $('#card-cvv'),
+
+    //Address Picker
+    'address-group': $('#address-group'),
+    'sel-address': $('#sel-address'),
+    'address-street': $('#address-street'),
+    'address-pc': $('#address-pc'),
+    'address-city': $('#address-city'),
+    'address-subdivision': $('#address-subdivision'),
+
+    //User Memo Picker
+    'user-memo-group': $('#user-memo-group'),
+    'user-memo': $('#user-memo'),
+
+    //Quantity Picker
+    'quantity-group': $('#quantity-group'),
+    'quantity-field': $('#quantity-field'),
+
+    //Price and Subscription Picker
+    'price-group': $('#price-group'),
+    'price-field': $('#price-field'),
+    'sel-subscription': $('#sel-subscription')
+  }
+};
+
 var App = Ember.Application.extend().create({
   rootElement: '#pay-app',
   ready: function() {
@@ -346,75 +421,33 @@ App.ApplicationRoute = Ember.Route.extend({
 
 App.IndexRoute = Ember.Route.extend({
   model: function() {
-    for(i=0; i < storedCards.length; ++i) {
-      var currentCard = storedCards[i];
-      currentCard.displayText = new Handlebars.SafeString(currentCard.network + ' &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; ' + currentCard.lastFour);
+    for(i=0; i<storedCards.length; i++) {
+      var currentItem = storedCards[i];
+      currentItem.displayText = new Handlebars.SafeString(currentItem.displayText);
     }
 
-    //give the user the ability to add a new card
-    storedCards.push({id: 'new', displayText: 'New card'});
+    storedCards.push({id:'new', displayText:'New card'});
 
-    return {storedCards: storedCards, cardOptions: storedCards};
-  },
+    return {cardOptions: storedCards, initOptions: initOptions};
+  }
+});
 
-  setupController: function(controller, model) {
-    this._super(controller, model);
+App.IndexView = Ember.View.extend({
 
-    //decide how the payment form should look
-    var controllerConfig = {
-//TODO go back to falses      
-      shouldTrackShipping: false,
-      shouldShowQuantityPicker: false,
-      shouldShowPriceAndSubscriptionPicker: false,
-      shouldShowPricePicker: false,
-      shouldShowSubscriptionPicker: false,
-      shouldShowUserMemoField: false,
-      userMemoRequired: false,
-      userMemoPlaceholder: controller.get('scannable.resource.data.user_note_placeholder')
-    };
-
-    if(controller.get('scannable.resource.data.should_track_shipping') == 'true') {
-      controllerConfig.shouldTrackShipping = true;
-      
-      if(controller.get('scannable.resource.data.max_order_size') > 1) {
-        controllerConfig.shouldShowQuantityPicker = true;
-      }  
-    } else {
-      if(controller.get('scannable.resource.data.unit_of_measure') == 'user_set_price') {
-        controllerConfig.shouldShowPricePicker = true;
-      }
-      
-      if(controller.get('scannable.resource.data.subscriptions_allowed') == 'true') {
-        controllerConfig.shouldShowSubscriptionPicker = true;
-      }
-    }
-    
-    var userMemoOption = this.get('scannable.resource.data.user_note_option');
-    if(userMemoOption != 'false') {
-      controllerConfig.shouldShowUserMemoField = true;
-      
-      if(userMemoOption == 'required') {
-        controllerConfig.userMemoRequired = true;
-      }
-    }
-       
-    //deliver these decisions to the controller
-    controller.set('dconfig', controllerConfig);
-  },
 });
 
 App.IndexController = Ember.ObjectController.extend({
   /* For benefit of this demo*/
   configtext: function() {
-    var dconfig = this.get('dconfig');
+    var initOptions = this.get('initOptions');
     var result = []
     
-    for(key in dconfig) {
-      result.push({key: key, value: dconfig[key]});
+    for(key in initOptions) {
+      result.push({key: key, value: initOptions[key]});
     }
 
     return result;
-  }.property('dconfig'),
+  }.property('initOptions'),
 
   actions: {
     logOut: function() {
@@ -424,88 +457,105 @@ App.IndexController = Ember.ObjectController.extend({
   /* end of demo only stuff*/
 
   needs: ['application'],
-  scannable: Ember.computed.alias('controllers.application'),
-
+  
   //email picker
   inEmail: '',
-  expandEmailGroup: function() {
-    if(this.get('inEmail').match(/.+@.+\..+/i)) {
-      $('#sign-in-group').addClass("pushed");
-      $('#sign-in-button')[0].style.display = "block";
-    } else {
-      $('#sign-in-button')[0].style.display = "none";
-      $('#sign-in-group').removeClass("pushed");
+  signInExpanded: function() {
+    if(!this.get('user.isLoggedIn') && this.get('inEmail').match(/.+@.+\..+/i)) {
+      return true;
     }
 
-  }.observes('inEmail'),
+    return false;
+  }.property('user.isLoggedIn', 'inEmail'),
 
   //card picker
   selectedCard: null,
   hasCardData: function() {
     if(this.get('user.isLoggedIn')) {
-      var storedCards = this.get('storedCards');
+      var cardOptions = this.get('cardOptions');
 
-      if(storedCards.length > 0) {
+      if(cardOptions.length > 0) {
         return true
       }
     }
 
     return false;
-  }.property('user.isLoggedIn', 'storedCards'),
+  }.property('user.isLoggedIn', 'cardOptions'),
 
   inCardNumber: '',
   inCardMmYy: '',
   inCardCvv: '',
-  expandCardGroup: function() {
-
-    var isAddingNewCard = false;
-    var shouldExpand = false;
-
+  isAddingNewCard: function() {
     if(this.get('hasCardData')) {
       var selectedCard = this.get('selectedCard');
-      if(selectedCard && selectedCard.id == 'new') { 
-        isAddingNewCard = true;
-        shouldExpand = true;
+      if(selectedCard && selectedCard.id == 'new') {
+        return true;
       }
     } else {
-      isAddingNewCard = true;
+      return true;
     }
 
-    if(isAddingNewCard) {
-      $('#card-group').addClass("pushed");
-    } else {
-      $('#card-group').addClass("pushed");
+    return false;
+  }.property('hasCardData', 'selectedCard'),
+
+  cardExpanded: function() {
+    if(this.get('isAddingNewCard') && this.get('inCardNumber').length > 0) {
+      return true;
     }
 
-    if( this.get('inCardNumber').length > 0 ) {
-      shouldExpand = true;
-    }
+    return false;
+  }.property('isAddingNewCard', 'inCardNumber'),
 
-    if(shouldExpand) {
-      $('#card-group').addClass("pushed");
-      $('#card-mmyy')[0].style.display = "block";
-      $('#card-cvv')[0].style.display = "block";
-    } else {
-      $('#card-cvv')[0].style.display = "none";
-      $('#card-mmyy')[0].style.display = "none";
-      $('#card-group').removeClass("pushed");
-    }
-
-  }.observes('hasCardData', 'selectedCard', 'inCardNumber'),
+//  expandCardGroup: function() {
+//
+//    var isAddingNewCard = false;
+//    var shouldExpand = false;
+//
+//    if(this.get('hasCardData')) {
+//      var selectedCard = this.get('selectedCard');
+//      if(selectedCard && selectedCard.id == 'new') { 
+//        isAddingNewCard = true;
+//        shouldExpand = true;
+//      }
+//    } else {
+//      isAddingNewCard = true;
+//    }
+//
+//    if(isAddingNewCard) {
+//      $('#card-group').addClass("pushed");
+//    } else {
+//      $('#card-group').addClass("pushed");
+//    }
+//
+//    if( this.get('inCardNumber').length > 0 ) {
+//      shouldExpand = true;
+//    }
+//
+//    if(shouldExpand) {
+//      $('#card-group').addClass("pushed");
+//      $('#card-mmyy')[0].style.display = "block";
+//      $('#card-cvv')[0].style.display = "block";
+//    } else {
+//      $('#card-cvv')[0].style.display = "none";
+//      $('#card-mmyy')[0].style.display = "none";
+//      $('#card-group').removeClass("pushed");
+//    }
+//
+//  }.observes('hasCardData', 'selectedCard', 'inCardNumber'),
 
   
   //address picker
   //TODO address data from real user 
   //this.get('user.address.address_line')
-  selectedAddressData: function() {
-    var addressOneLiner = null;
-
-    if(this.get('user.isLoggedIn')) {
-      addressOneLiner = '49302 Main Street, Provo Utah, 84606 USA';
-    }
-
-    return addressOneLiner;
-  }.property('user.isLoggedIn'),
+//  selectedAddressData: function() {
+//    var addressOneLiner = null;
+//
+//    if(this.get('user.isLoggedIn')) {
+//      addressOneLiner = '49302 Main Street, Provo Utah, 84606 USA';
+//    }
+//
+//    return addressOneLiner;
+//  }.property('user.isLoggedIn'),
   
   inStreet1: '',
   inPostalCode: '',
@@ -513,27 +563,27 @@ App.IndexController = Ember.ObjectController.extend({
   inSubdivision: 'Utah',
   inCountry: 'USA',
 
-  expandAddressGroup1: function() {
-    if(this.get('inStreet1').length > 0) {
-      $('#address-group').addClass("pushed");
-      $('#address-pc')[0].style.display = "block";
-    } else {
-      $('#address-pc')[0].style.display = "none";
-      $('#address-group').removeClass("pushed");
-    }
+//  expandAddressGroup1: function() {
+//    if(this.get('inStreet1').length > 0) {
+//      $('#address-group').addClass("pushed");
+//      $('#address-pc')[0].style.display = "block";
+//    } else {
+//      $('#address-pc')[0].style.display = "none";
+//      $('#address-group').removeClass("pushed");
+//    }
+//
+//  }.observes('inStreet1'),
 
-  }.observes('inStreet1'),
-
-  expandAddressGroup2: function() {
-    if(this.get('inStreet1').length > 0 && this.get('inPostalCode').length > 4) {
-      $('#address-city')[0].style.display = "block";
-      $('#address-subdivision')[0].style.display = "block";
-    } else {
-      $('#address-subdivision')[0].style.display = "none";
-      $('#address-city')[0].style.display = "none";
-    }
-
-  }.observes('inStreet1', 'inPostalCode'),
+//  expandAddressGroup2: function() {
+//    if(this.get('inStreet1').length > 0 && this.get('inPostalCode').length > 4) {
+//      $('#address-city')[0].style.display = "block";
+//      $('#address-subdivision')[0].style.display = "block";
+//    } else {
+//      $('#address-subdivision')[0].style.display = "none";
+//      $('#address-city')[0].style.display = "none";
+//    }
+//
+//  }.observes('inStreet1', 'inPostalCode'),
 
   //quantity picker
   inQuantity: 1,
