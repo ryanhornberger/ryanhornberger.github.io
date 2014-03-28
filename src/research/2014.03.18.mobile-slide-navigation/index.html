@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+  <meta charset="utf-8">
+  <title>New Mobile Scan to Buy Experience - Research by Ryan Hornberger</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no, minimal-ui" />
+  <meta name="description" content="{{ page.description }}" />
+
+  <link href="./bootstrap2/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="./bootstrap2/css/bootstrap-responsive.min.css" rel="stylesheet"/>
+
+  <script type="text/javascript" src="./ember/jquery-1.10.2.js"></script>
+  <script type="text/javascript" src="./ember/handlebars-1.1.2.js"></script>
+  <script type="text/javascript" src="./ember/ember-1.4.0.js"></script>
+  <script type="text/javascript" src="./ember/ember-fastclick.js"></script>
+
+  <style>
+    * {
+      box-sizing: border-box !important;
+      margin: 0px;
+      padding: 0px;
+      font-size: 14px;
+      font-family: Helvetica, Arial, "Lucida Grande", sans-serif;
+    }
+
+    body {
+      background-color: rgb(238, 240, 242);
+      margin: 0px;
+      padding: 0px;
+    }
+
+    .heading {
+      width: 100%;
+      font-size: 14px;
+      text-align: center;
+      background-color: #d81e27;
+      color: #ffffff;
+      padding: 10px;
+
+    }
+
+    .splash {
+      background-color: #2f3c3f;
+      color: #ffffff;
+    }
+
+    .splash .splash-content, .form .form-content {
+      margin: 0px auto;
+      padding: 15px;
+      text-align: center;
+      max-width: 460px;
+    }
+
+    .splash .splash-content img {
+      width: 90px;
+      height: 90px;
+      margin: 0px 0px 20px;
+      border-radius: 6px;
+    }
+
+    .form .form-content .finput {
+      display: block;
+      position: relative;
+      width: 100%;
+      height: 41px;
+      padding: 4px 6px;
+      margin-top: -1px;
+      margin-bottom: 0px;
+      border: 1px solid rgb(169, 185, 198);
+      border-radius: 0px;
+      background-color: #ffffff;
+      background-image: none;
+      text-align: left;
+      vertical-align: middle;
+      color: rgb(51, 51, 51);
+      font-size: 14px;
+      line-height: 20px;
+      cursor: pointer;
+      -webkit-appearance:none;
+      -moz-appearance:none;
+      appearance:none;
+    }
+
+    .form .form-content input[type=number]::-webkit-inner-spin-button,
+    .form .form-content input[type=number]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+    }
+
+    .form .form-content input:focus:invalid { 
+      border-color: rgb(169, 185, 198);
+      color: rgb(51, 51, 51);
+      box-shadow: none;
+    }
+
+    .form .form-content .finput.primary {
+      background-color: #0000ff;
+      color: #ffffff;
+      text-align: center;
+    }
+
+    .form .form-content .finput-group.spaced {
+      margin-top: 15px;
+    }
+    
+    .form .form-content .finput-group.pushed {
+      margin-top: 15px;
+      margin-bottom: 15px;
+    }
+
+    .form .form-content .float-box {
+      position: relative;
+    }
+
+    .form .form-content .float-box #quantity-field {
+      padding-left: 70px;
+    }
+
+    .form .form-content .float-box #quantity-memo {
+      position: absolute;
+      top: 11px;
+      left: 6px;
+    }
+
+    .form .form-content .float-box #price-alone-field {
+      padding-left: 70px;
+    }
+
+    .form .form-content .float-box #price-alone-memo {
+      position: absolute;
+      top: 11px;
+      left: 6px;
+    }
+
+    .form .form-content .float-box #price-field {
+      padding-left: 70px;
+    }
+
+    .form .form-content .float-box #price-memo {
+      position: absolute;
+      top: 11px;
+      left: 6px;
+    }
+
+    .form .form-content .finput.hide {
+      display: none;
+    }
+
+  </style>
+</head>
+
+<body>
+  <div id="pay-app"></div>
+</body>
+
+<script type="text/x-handlebars" data-template-name="index">
+<div class="heading">
+    Slide Navigation
+</div>
+
+<div class="splash">
+  <div class="splash-content">
+    <img src="https://scan.me/rev-ff6d0cd/bundles/scanlayout/images/scan-avatar.png"/>
+    <p>
+      Attempt to enter data in any of the fields below. If the field requires
+      more data from you it will expand automatically.
+    </p>
+  </div>
+</div>
+
+<form class="form" method="post" action="/foo" novalidate="novalidate">
+  <div class="form-content">
+
+      {{!--  Login Picker --}}
+      <div id="sign-in-group" class="finput-group">
+        {{#if user.isLoggedIn}}
+          <button id='sel-email' class="finput" type="button">{{user.email}}</button>
+        {{else}}
+          {{input class="finput" type="text" placeholder="Email" value=inEmail}}
+          <button id="sign-in-button" class="finput primary hide" type="button">Sign In</button>
+        {{/if}}
+      </div>
+      
+      {{!-- Card Picker --}}
+      <div id="card-group" class="finput-group">
+        {{#if selectedCardData}}
+          <button id='sel-pmm' class="finput" type="button">&#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; {{selectedCardData.lastFour}}</button>
+        {{else}}
+          {{input class="finput" type="text" placeholder="Card number" value=inCardNumber}}  
+          {{input id="card-mmyy" class="finput hide" type="text" placeholder="MM / YY" value=inCardMmYy}}  
+          {{input id="card-cvv" class="finput hide" type="text" placeholder="CVV" value=inCardCvv}}  
+        {{/if}}
+      </div>
+
+      {{!-- Address Picker --}}
+      <div id="address-group" class="finput-group">
+        {{#if dconfig.shouldTrackShipping}}
+          {{#if selectedAddressData}}
+            <button id='sel-addr' class="finput" type="button">{{selectedAddressData}}</button>
+          {{else}}
+            {{input class="finput" type="text" placeholder="Address" value=inStreet1}}  
+            {{input id="address-pc" class="finput hide" type="text" placeholder="Postal code" value=inPostalCode}}  
+            {{input id="address-city" class="finput hide" type="text" placeholder="City" value=inCity}}  
+            {{input id="address-subdivision" class="finput hide" type="text" placeholder="State" value=inSubdivision}}  
+          {{/if}}        
+        {{/if}}
+      </div>
+
+      {{!-- User Memo Picker --}}
+      <div id="memo-group" class="finput-group">
+        {{#if dconfig.shouldShowUserMemoField}}
+          {{input class="finput spaced" type="text" placeholder=dconfig.userMemoPlaceholder value=inMemo}}    
+        {{/if}}
+      </div>
+
+      {{!-- Quantity Picker --}}
+      {{#if dconfig.shouldShowQuantityPicker}}
+      <div id="quantity-group" class="finput-group">
+        <div class="float-box">
+          {{input id="quantity-field" class="finput" type="text" value=inQuantity}}  
+          <div id="quantity-memo">Quantity:</div>
+        </div>
+      </div>
+      {{/if}}
+
+      {{!-- Price and Subscription Pickers --}}
+      <div id="price-group" class="finput-group">
+        {{#if dconfig.shouldShowPricePicker}}
+          <div class="float-box">
+            {{input id="price-alone-field" class="finput spaced" type="text" value=inPrice}}  
+            <div id="price-alone-memo">Amount: $</div>
+          </div>
+        {{/if}}
+
+        {{#if dconfig.shouldShowSubscriptionPicker}}
+          <select class="finput spaced">
+            <option>One-Time</option>
+            <option>Monthly</option>
+            <option>Annually</option>
+          </select>    
+        {{/if}}
+      </div>
+
+      {{!-- Pay Button --}}
+      <div class="finput-group spaced">
+        <button class="finput primary" type="button">Pay $20.00</button>
+      </div>
+
+  </div>        
+</form>
+
+<div id="data">
+  User Logged In: {{user.isLoggedIn}} (<a {{action 'logOut'}}>Log out</a>)
+  {{#each configtext}}
+    {{key}}: {{value}}
+  {{/each}} 
+</div>
+</script>
+
+
+
+
+<script type="text/javascript">
+scanUser = {
+  "uuid":"usr-00000000-0000-0000-0000-000000000000",
+  "email":"garrett@scan.me",
+  "postal_code":null,
+  "address":{"address_line":null},
+  "created_at":1394591120,
+  "handle":"ryan+buyer@scan.me",
+};
+
+scannable = {
+  "uuid":"scn-232e9484-85c6-4e58-a441-b1790978fdca",
+  "owner_uuid":"usr-5e6db7f0-8511-45ee-90aa-5a6a3b72232a",
+  "disabled":false,
+  "resource":{
+    "uuid":"res-056973fc-564a-4ff7-8aa4-8bca9fc0aedd",
+    "owner_uuid":"usr-5e6db7f0-8511-45ee-90aa-5a6a3b72232a",
+    "type":"payment",
+    "data":{
+      "product_name":"Wireless Thermometer",
+      "titlebar_background_color":"#db0909",
+      "titlebar_theme":"light",
+      "product_description":"Give me money!",
+      "product_website":"http://scan.me",
+      "product_image":"",
+      "background_option":"gray",
+      "custom_background_image":"",
+      "custom_background_image_uuid":"",
+      "custom_background_image_blurred":"",
+      "custom_background_image_blurred_uuid":null,
+      "custom_background_style":"blurred",
+      "custom_background_gradient":false,
+      "splash_theme":"light",
+      "should_track_shipping":"true",
+      "max_order_size":"10",
+      "subscriptions_allowed":"true",
+      "unit_of_measure":"user_set_price",
+      "price":"50.00",
+      "currency":"usd",
+      "user_note_option":"required",
+      "user_note_placeholder":"Optional Message"
+    },
+  }
+};
+
+storedCards = [
+  {network: 'visa', lastFour: 4043},
+  {network: 'amex', lastFour: 3234},
+  {network: 'discover', lastFour: 9875},
+  {network: 'master', lastFour: 2345},            
+];
+
+$(function() {
+var App = Ember.Application.extend().create({
+  rootElement: '#pay-app',
+  ready: function() {
+    var UserController = Ember.ObjectController.extend({
+      setModel: function() {
+          this.set('model', null);//scanUser
+      }.on('init'),
+
+      isLoggedIn: function() {
+        return this.get('email') != null
+      }.property('email')
+    });
+
+    this.register('user:current', UserController, {singleton: true});
+    this.inject('route', 'user', 'user:current');
+    this.inject('controller', 'user', 'user:current');
+  }
+});
+
+App.ApplicationRoute = Ember.Route.extend({
+  model: function() {
+    return scannable;
+  }
+});
+
+App.IndexRoute = Ember.Route.extend({
+  model: function() {
+    return {storedCards: storedCards};
+  },
+
+  setupController: function(controller, model) {
+    this._super(controller, model);
+
+    //decide how the payment form should look
+    var controllerConfig = {
+//TODO go back to falses      
+      shouldTrackShipping: false,
+      shouldShowQuantityPicker: false,
+      shouldShowPriceAndSubscriptionPicker: false,
+      shouldShowPricePicker: false,
+      shouldShowSubscriptionPicker: false,
+      shouldShowUserMemoField: false,
+      userMemoRequired: false,
+      userMemoPlaceholder: controller.get('scannable.resource.data.user_note_placeholder')
+    };
+
+    if(controller.get('scannable.resource.data.should_track_shipping') == 'true') {
+      controllerConfig.shouldTrackShipping = true;
+      
+      if(controller.get('scannable.resource.data.max_order_size') > 1) {
+        controllerConfig.shouldShowQuantityPicker = true;
+      }  
+    } else {
+      if(controller.get('scannable.resource.data.unit_of_measure') == 'user_set_price') {
+        controllerConfig.shouldShowPricePicker = true;
+      }
+      
+      if(controller.get('scannable.resource.data.subscriptions_allowed') == 'true') {
+        controllerConfig.shouldShowSubscriptionPicker = true;
+      }
+    }
+    
+    var userMemoOption = this.get('scannable.resource.data.user_note_option');
+    if(userMemoOption != 'false') {
+      controllerConfig.shouldShowUserMemoField = true;
+      
+      if(userMemoOption == 'required') {
+        controllerConfig.userMemoRequired = true;
+      }
+    }
+       
+    //deliver these decisions to the controller
+    controller.set('dconfig', controllerConfig);
+  },
+});
+
+App.IndexController = Ember.ObjectController.extend({
+  /* For benefit of this demo*/
+  configtext: function() {
+    var dconfig = this.get('dconfig');
+    var result = []
+    
+    for(key in dconfig) {
+      result.push({key: key, value: dconfig[key]});
+    }
+
+    return result;
+  }.property('dconfig'),
+
+  actions: {
+    logOut: function() {
+      this.set('user.email', null);
+    }
+  },
+  /* end of demo only stuff*/
+
+  needs: ['application'],
+  scannable: Ember.computed.alias('controllers.application'),
+
+  //email picker
+  inEmail: '',
+  expandEmailGroup: function() {
+    if(this.get('inEmail').match(/.+@.+\..+/i)) {
+      $('#sign-in-group').addClass("pushed");
+      $('#sign-in-button')[0].style.display = "block";
+    } else {
+      $('#sign-in-button')[0].style.display = "none";
+      $('#sign-in-group').removeClass("pushed");
+    }
+
+  }.observes('inEmail'),
+
+  //card picker
+  selectedCardIndex: 0,
+  selectedCardData: function() {
+    var cardData = null;
+
+    if(this.get('user.isLoggedIn')) {
+      var storedCards = this.get('storedCards');
+
+      if(storedCards.length > 0) {
+        var selectedCardIndex = this.get('selectedCardIndex');
+
+        if(selectedCardIndex < storedCards.length) {
+          cardData = storedCards[selectedCardIndex];
+        }
+      }
+    }
+
+    return cardData;
+  }.property('user.isLoggedIn', 'storedCards', 'selectedCardIndex'),
+  
+  inCardNumber: '',
+  inCardMmYy: '',
+  inCardCvv: '',
+  expandCardGroup: function() {
+    if(this.get('inCardNumber').length > 0) {
+      $('#card-group').addClass("pushed");
+      $('#card-mmyy')[0].style.display = "block";
+      $('#card-cvv')[0].style.display = "block";
+    } else {
+      $('#card-cvv')[0].style.display = "none";
+      $('#card-mmyy')[0].style.display = "none";
+      $('#card-group').removeClass("pushed");
+    }
+
+  }.observes('inCardNumber'),
+
+  
+  //address picker
+  //TODO address data from real user 
+  //this.get('user.address.address_line')
+  selectedAddressData: function() {
+    var addressOneLiner = null;
+
+    if(this.get('user.isLoggedIn')) {
+      addressOneLiner = '49302 Main Street, Provo Utah, 84606 USA';
+    }
+
+    return addressOneLiner;
+  }.property('user.isLoggedIn'),
+  
+  inStreet1: '',
+  inPostalCode: '',
+  inCity: 'Provo',
+  inSubdivision: 'Utah',
+  inCountry: 'USA',
+
+  expandAddressGroup1: function() {
+    if(this.get('inStreet1').length > 0) {
+      $('#address-group').addClass("pushed");
+      $('#address-pc')[0].style.display = "block";
+    } else {
+      $('#address-pc')[0].style.display = "none";
+      $('#address-group').removeClass("pushed");
+    }
+
+  }.observes('inStreet1'),
+
+  expandAddressGroup2: function() {
+    if(this.get('inStreet1').length > 0 && this.get('inPostalCode').length > 4) {
+      $('#address-city')[0].style.display = "block";
+      $('#address-subdivision')[0].style.display = "block";
+    } else {
+      $('#address-subdivision')[0].style.display = "none";
+      $('#address-city')[0].style.display = "none";
+    }
+
+  }.observes('inStreet1', 'inPostalCode'),
+
+  //quantity picker
+  inQuantity: 1,
+  
+  //price and subscription picker
+  inPrice: 25,
+
+});
+
+});
+</script>
+
+</html>
