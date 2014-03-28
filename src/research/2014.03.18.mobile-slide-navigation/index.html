@@ -77,6 +77,7 @@
       font-size: 14px;
       line-height: 20px;
       cursor: pointer;
+      white-space:nowrap;
       -webkit-appearance:none;
       -moz-appearance:none;
       appearance:none;
@@ -210,7 +211,7 @@
         <div id="address-group" {{bind-attr class=":finput-group addressExpanded:pushed"}}>
           
           <!-- Has Stored Address Data -->
-          <button id='sel-address' {{bind-attr class=":finput shouldShowAddressButton::hide"}} type="button" {{action forceAddressEntry}}>{{selectedAddressData}}</button>
+          <button id='sel-address' {{bind-attr class=":finput shouldShowAddressButton::hide"}} type="button" {{action "forceAddressEntry"}}>{{selectedAddressData}}</button>
           
           <!-- Is Entereing New Address Data -->
           {{input id="address-street" classNameBindings=":finput shouldShowStreets::hide" type="text" placeholder="Address" value=inStreet1}}  
@@ -262,15 +263,21 @@
         <button class="finput primary" type="button">Pay $20.00</button>
       </div>
 
+      <!-- Demo Only Stuff -->
+      <div class="finput-group pushed">
+        <h5>Demo Options</h5>
+        <a href="#" {{action "demoToggleAddress"}}>Address Tracking ({{initOptions.trackShipping}})</a><br/>
+        <a href="#" {{action "demoToggleMemo"}}>Toggle Memo Field ({{initOptions.showUserMemoField}})</a><br/>
+        {{#if initOptions.trackShipping}}
+          <a href="#" {{action "demoToggleQuantity"}}>Quantity Picker ({{initOptions.showQuantityPicker}})</a><br/>
+        {{else}}
+          <a href="#" {{action "demoTogglePrice"}}>Toggle Price Picker ({{initOptions.showPricePicker}})</a><br/>
+          <a href="#" {{action "demoToggleSubscription"}}>Toggle Subscription Picker ({{initOptions.showSubscriptionPicker}})</a><br/>
+        {{/if}}
+      </div>
+
   </div>        
 </form>
-
-<div id="data">
-  User Logged In: {{user.isLoggedIn}} (<a {{action 'logOut'}}>Log out</a>)
-  {{#each configtext}}
-    {{key}}: {{value}}
-  {{/each}} 
-</div>
 </script>
 
 
@@ -381,19 +388,52 @@ App.IndexView = Ember.View.extend({
 });
 
 App.IndexController = Ember.ObjectController.extend({
-  /* For benefit of this demo*/
-  configtext: function() {
-    var initOptions = this.get('initOptions');
-    var result = []
-    
-    for(key in initOptions) {
-      result.push({key: key, value: initOptions[key]});
-    }
-
-    return result;
-  }.property('initOptions'),
-
+  needs: ['application'],
+  
   actions: {
+    demoToggleAddress: function() {
+      if(this.get('initOptions.trackShipping')) {
+        this.set('initOptions.trackShipping', false);
+        this.set('initOptions.showQuantityPicker', false);
+      } else {
+        this.set('initOptions.trackShipping', true);  
+        this.set('initOptions.showPricePicker', false);
+        this.set('initOptions.showSubscriptionPicker', false);
+      }      
+    },
+
+    demoToggleQuantity: function() {
+      if(this.get('initOptions.showQuantityPicker')) {
+        this.set('initOptions.showQuantityPicker', false);
+      } else {
+        this.set('initOptions.showQuantityPicker', true);  
+      }  
+    },
+
+    demoTogglePrice: function() {
+      if(this.get('initOptions.showPricePicker')) {
+        this.set('initOptions.showPricePicker', false);
+      } else {
+        this.set('initOptions.showPricePicker', true);  
+      }
+    },
+
+    demoToggleSubscription: function() {
+      if(this.get('initOptions.showSubscriptionPicker')) {
+        this.set('initOptions.showSubscriptionPicker', false);
+      } else {
+        this.set('initOptions.showSubscriptionPicker', true);  
+      }
+    },
+
+    demoToggleMemo: function() {
+      if(this.get('initOptions.showUserMemoField')) {
+        this.set('initOptions.showUserMemoField', false);
+      } else {
+        this.set('initOptions.showUserMemoField', true);  
+      }
+    },
+
     logOut: function() {
       this.set('user.email', null);
       this.set('inStreet1', '');
@@ -404,11 +444,7 @@ App.IndexController = Ember.ObjectController.extend({
       this.set('forceAddressFields', true);
     }
   },
-  /* end of demo only stuff*/
-
-  needs: ['application'],
   
-
   //email picker
   inEmail: '',
   signInExpanded: function() {
