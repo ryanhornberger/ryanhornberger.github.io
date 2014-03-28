@@ -206,57 +206,55 @@
 
 
       <!-- Address Picker -->
-      <div id="address-group" class="finput-group">
-        
-        <!-- Should Track Shipping -->
+      {{#if initOptions.trackShipping}}
+        <div id="address-group" {{bind-attr class=":finput-group addressExpanded:pushed"}}>
+          
           <!-- Has Stored Address Data -->
-          <button id='sel-address' class="finput hide" type="button">{{selectedAddressData}}</button>
+          <button id='sel-address' {{bind-attr class=":finput shouldShowAddressButton::hide"}} type="button" {{action forceAddressEntry}}>{{selectedAddressData}}</button>
           
           <!-- Is Entereing New Address Data -->
-          {{input id="address-street" class="finput hide" type="text" placeholder="Address" value=inStreet1}}  
-          {{input id="address-pc" class="finput hide" type="text" placeholder="Postal code" value=inPostalCode}}  
-          {{input id="address-city" class="finput hide" type="text" placeholder="City" value=inCity}}  
-          {{input id="address-subdivision" class="finput hide" type="text" placeholder="State" value=inSubdivision}}
-        <!-- /Should Track Shipping -->
-
-      </div>
+          {{input id="address-street" classNameBindings=":finput shouldShowStreets::hide" type="text" placeholder="Address" value=inStreet1}}  
+          {{input id="address-pc" classNameBindings=":finput shouldShowPostalCode::hide" type="text" placeholder="Postal code" value=inPostalCode}}  
+          {{input id="address-city" classNameBindings=":finput shouldShowCityState::hide" type="text" placeholder="City" value=inCity}}  
+          {{input id="address-subdivision" classNameBindings=":finput shouldShowCityState::hide" type="text" placeholder="State" value=inSubdivision}}
+          
+        </div>
+      {{/if}}
 
 
       <!-- User Memo Picker -->
-      <div id="user-memo-group" class="finput-group">
-        <!-- Should Track Shipping -->
-        {{input id="user-memo" class="finput hide" type="text" placeholder=dconfig.userMemoPlaceholder value=inMemo}}      
-      </div>
+      {{#if initOptions.showUserMemoField}}
+        <div id="user-memo-group" class="finput-group">
+          {{input id="user-memo" class="finput" type="text" placeholder=initOptions.userMemoPlaceholder value=inMemo}}      
+        </div>
+      {{/if}}
 
-
+      
+      <div class="finput-group">
       <!-- Quantity Picker -->
-      <div id="quantity-group" class="finput-group">
+        {{#if initOptions.showQuantityPicker}}
+          <div class="float-box">
+            {{input id="quantity-field" class="finput" type="text" value=inQuantity}}  
+            <div id="quantity-memo">Quantity:</div>
+          </div>
+        {{/if}}
 
-        <!-- Should Show Quantity Picker -->
-        <div class="float-box">
-          {{input id="quantity-field" class="finput hide" type="text" value=inQuantity}}  
-          <div id="quantity-memo">Quantity:</div>
-        </div>
-
-      </div>
-
-
-      <!-- Price and Subscription Pickers -->
-      <div id="price-group" class="finput-group">
-
-        <!-- Should Show Price Picker -->
-        <div class="float-box">
-          {{input id="price-field" class="finput hide" type="text" value=inPrice}}  
-          <div id="price-memo">Amount: $</div>
-        </div>
-
-        <!-- Should Show Subscription Picker -->
-        <select id="sel-subscription" class="finput hide">
-          <option>One-Time</option>
-          <option>Monthly</option>
-          <option>Annually</option>
-        </select>    
-
+      <!-- Price Picker -->
+        {{#if initOptions.showPricePicker}}
+          <div class="float-box">
+            {{input id="price-field" class="finput" type="text" value=inPrice}}  
+            <div id="price-memo">Amount: $</div>
+          </div>
+        {{/if}}  
+        
+      <!-- Subscription Picker -->
+        {{#if initOptions.showSubscriptionPicker}}
+          <select id="sel-subscription" class="finput">
+            <option>One-Time</option>
+            <option>Monthly</option>
+            <option>Annually</option>
+          </select>    
+        {{/if}} 
       </div>
 
       <!-- Pay Button -->
@@ -329,70 +327,16 @@ storedCards = [
 ];
 
 initOptions = {
-  trackShipping: false,
-  showQuantityPicker: false,
+  trackShipping: true,
+  showQuantityPicker: true,
   showPricePicker: false,
   showSubscriptionPicker: false,
-  showUserMemoField: false,
+  showUserMemoField: true,
   requireUserMemo: false,
   userMemoPlaceholder: 'Optional Message'
 }
 
 $(function() {
-
-uiElements = {
-  hide: function(name) {
-    uiElements.items[name].addClass('hide');
-  },
-
-  show: function(name) {
-    uiElements.items[name].removeClass('hide');
-  },
-  
-  explode: function(name) {
-    uiElements.items[name].addClass('pushed');
-  },
- 
-  collapse: function(name) {
-    uiElements.items[name].removeClass('pushed');
-  },
-  
-  items:  {
-    //Login Picker
-    'sign-in-group': $('#sign-in-group'),
-    'si-email': $('#si-email'),
-    'so-email': $('#so-email'),
-    'so-email-action': $('#so-email-action'),
-
-    //Card Picker
-    'card-group': $('#card-group'),
-    'sel-card': $('#sel-card'),
-    'card-number': $('#card-number'),
-    'card-mmyy': $('#card-mmyy'),
-    'card-cvv': $('#card-cvv'),
-
-    //Address Picker
-    'address-group': $('#address-group'),
-    'sel-address': $('#sel-address'),
-    'address-street': $('#address-street'),
-    'address-pc': $('#address-pc'),
-    'address-city': $('#address-city'),
-    'address-subdivision': $('#address-subdivision'),
-
-    //User Memo Picker
-    'user-memo-group': $('#user-memo-group'),
-    'user-memo': $('#user-memo'),
-
-    //Quantity Picker
-    'quantity-group': $('#quantity-group'),
-    'quantity-field': $('#quantity-field'),
-
-    //Price and Subscription Picker
-    'price-group': $('#price-group'),
-    'price-field': $('#price-field'),
-    'sel-subscription': $('#sel-subscription')
-  }
-};
 
 var App = Ember.Application.extend().create({
   rootElement: '#pay-app',
@@ -452,12 +396,19 @@ App.IndexController = Ember.ObjectController.extend({
   actions: {
     logOut: function() {
       this.set('user.email', null);
+      this.set('inStreet1', '');
+      this.set('inPostalCode', '');
+    },
+
+    forceAddressEntry: function() {
+      this.set('forceAddressFields', true);
     }
   },
   /* end of demo only stuff*/
 
   needs: ['application'],
   
+
   //email picker
   inEmail: '',
   signInExpanded: function() {
@@ -468,8 +419,12 @@ App.IndexController = Ember.ObjectController.extend({
     return false;
   }.property('user.isLoggedIn', 'inEmail'),
 
+
   //card picker
   selectedCard: null,
+  inCardNumber: '',
+  inCardMmYy: '',
+  inCardCvv: '',
   hasCardData: function() {
     if(this.get('user.isLoggedIn')) {
       var cardOptions = this.get('cardOptions');
@@ -482,9 +437,6 @@ App.IndexController = Ember.ObjectController.extend({
     return false;
   }.property('user.isLoggedIn', 'cardOptions'),
 
-  inCardNumber: '',
-  inCardMmYy: '',
-  inCardCvv: '',
   isAddingNewCard: function() {
     if(this.get('hasCardData')) {
       var selectedCard = this.get('selectedCard');
@@ -499,91 +451,88 @@ App.IndexController = Ember.ObjectController.extend({
   }.property('hasCardData', 'selectedCard'),
 
   cardExpanded: function() {
-    if(this.get('isAddingNewCard') && this.get('inCardNumber').length > 0) {
+    var hasCardData = this.get('hasCardData');
+    var isAddingCard = this.get('isAddingNewCard');
+    var hasEnteredCardNumber = this.get('inCardNumber').length > 0;
+    if( (hasCardData && isAddingCard) || (isAddingCard && hasEnteredCardNumber) ) {
       return true;
     }
 
     return false;
-  }.property('isAddingNewCard', 'inCardNumber'),
+  }.property('hasCardData', 'isAddingNewCard', 'inCardNumber'),
 
-//  expandCardGroup: function() {
-//
-//    var isAddingNewCard = false;
-//    var shouldExpand = false;
-//
-//    if(this.get('hasCardData')) {
-//      var selectedCard = this.get('selectedCard');
-//      if(selectedCard && selectedCard.id == 'new') { 
-//        isAddingNewCard = true;
-//        shouldExpand = true;
-//      }
-//    } else {
-//      isAddingNewCard = true;
-//    }
-//
-//    if(isAddingNewCard) {
-//      $('#card-group').addClass("pushed");
-//    } else {
-//      $('#card-group').addClass("pushed");
-//    }
-//
-//    if( this.get('inCardNumber').length > 0 ) {
-//      shouldExpand = true;
-//    }
-//
-//    if(shouldExpand) {
-//      $('#card-group').addClass("pushed");
-//      $('#card-mmyy')[0].style.display = "block";
-//      $('#card-cvv')[0].style.display = "block";
-//    } else {
-//      $('#card-cvv')[0].style.display = "none";
-//      $('#card-mmyy')[0].style.display = "none";
-//      $('#card-group').removeClass("pushed");
-//    }
-//
-//  }.observes('hasCardData', 'selectedCard', 'inCardNumber'),
 
-  
   //address picker
-  //TODO address data from real user 
-  //this.get('user.address.address_line')
-//  selectedAddressData: function() {
-//    var addressOneLiner = null;
-//
-//    if(this.get('user.isLoggedIn')) {
-//      addressOneLiner = '49302 Main Street, Provo Utah, 84606 USA';
-//    }
-//
-//    return addressOneLiner;
-//  }.property('user.isLoggedIn'),
-  
-  inStreet1: '',
-  inPostalCode: '',
+  forceAddressFields: false,
+  inStreet1: '123 West Main Street',
+  inPostalCode: '84606',
   inCity: 'Provo',
   inSubdivision: 'Utah',
   inCountry: 'USA',
+  hasAddressData: function() {
+    if(this.get('user.isLoggedIn')) {
+    //TODO address data from real user 
+    //this.get('user.address.address_line')
+      return true
+    }
 
-//  expandAddressGroup1: function() {
-//    if(this.get('inStreet1').length > 0) {
-//      $('#address-group').addClass("pushed");
-//      $('#address-pc')[0].style.display = "block";
-//    } else {
-//      $('#address-pc')[0].style.display = "none";
-//      $('#address-group').removeClass("pushed");
-//    }
-//
-//  }.observes('inStreet1'),
+    return false;
+  }.property('user.isLoggedIn'),
 
-//  expandAddressGroup2: function() {
-//    if(this.get('inStreet1').length > 0 && this.get('inPostalCode').length > 4) {
-//      $('#address-city')[0].style.display = "block";
-//      $('#address-subdivision')[0].style.display = "block";
-//    } else {
-//      $('#address-subdivision')[0].style.display = "none";
-//      $('#address-city')[0].style.display = "none";
-//    }
-//
-//  }.observes('inStreet1', 'inPostalCode'),
+  shouldShowAddressButton: function() {
+    if(this.get('hasAddressData') && !this.get('forceAddressFields')) {
+      return true;
+    }
+
+    return false;
+  }.property('hasAddressData', 'forceAddressFields'),
+
+  selectedAddressData: function() {
+    return this.get('inStreet1') + ', ' + this.get('inCity') + ' ' + this.get('inSubdivision') + ', ' + this.get('inPostalCode') + ', ' + this.get('inCountry');
+  }.property('inStreet1', 'inPostalCode', 'inCity', 'inSubdivision', 'inCountry'),
+
+  shouldShowStreets: function() {
+    if(this.get('hasAddressData')) {
+      if(this.get('forceAddressFields')) {
+        return true;        
+      }
+    } else {
+      return true;
+    }
+
+    return false;
+  }.property('hasAddressData', 'forceAddressFields'),
+
+  addressExpanded: function() {
+    var hasAddressData = this.get('hasAddressData');
+    var isAddingAddress = this.get('shouldShowStreets');
+    var hasEnteredStreet1 = this.get('inStreet1').length > 0;
+    if( (hasAddressData && isAddingAddress) || (isAddingAddress && hasEnteredStreet1) ) {
+      return true;
+    }
+
+    return false;
+  }.property('hasAddressData', 'shouldShowStreets', 'inStreet1'),
+
+  shouldShowPostalCode: function() {
+    if(this.get('shouldShowStreets') && this.get('inStreet1').length > 0) {
+      return true;        
+    }
+
+    return false;
+  }.property('shouldShowStreets', 'inStreet1'),
+
+  shouldShowCityState: function() {
+    //TODO Search for the postal code city and state remotely.
+    if(this.get('shouldShowPostalCode') && this.get('inPostalCode').length > 4) {
+      return true;        
+    }
+
+    return false;
+  }.property('shouldShowPostalCode', 'inPostalCode'),
+
+  //memo field
+  inMemo: '',
 
   //quantity picker
   inQuantity: 1,
