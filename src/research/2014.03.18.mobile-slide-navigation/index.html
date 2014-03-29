@@ -14,6 +14,7 @@
   <script type="text/javascript" src="./ember/handlebars-1.1.2.js"></script>
   <script type="text/javascript" src="./ember/ember-1.4.0.js"></script>
   <script type="text/javascript" src="./ember/ember-fastclick.js"></script>
+  <script type="text/javascript" src="./bootstrap2/js/bootstrap.min.js"></script>
 
   <style>
     * {
@@ -100,6 +101,10 @@
       text-align: center;
     }
 
+    .form .form-content .finput.fbtn {
+      text-align: center;
+    }
+
     .form .form-content .finput-group.spaced {
       margin-top: 15px;
     }
@@ -147,6 +152,11 @@
       display: none;
     }
 
+    .form .form-content .modal {
+      max-width: 460px;
+      margin-left: -230px;
+    }
+
   </style>
 </head>
 
@@ -176,7 +186,7 @@
       <div id="sign-in-group" {{bind-attr class=":finput-group signInExpanded:pushed"}}>
         
         <!-- Signed In -->
-        <button id='si-email' {{bind-attr class=":finput user.isLoggedIn::hide"}} type="button">{{user.email}}</button>
+        <button id='si-email' {{bind-attr class=":finput user.isLoggedIn::hide"}} type="button" {{action "showSignOutModal"}}>{{user.email}}</button>
         
         <!-- Signed Out -->
         {{input id='so-email' classNameBindings=":finput user.isLoggedIn:hide" type="text" placeholder="Email" value=inEmail}}
@@ -263,6 +273,15 @@
         <button class="finput primary" type="button">Pay $20.00</button>
       </div>
 
+      <!-- Sign Out Modal -->
+      <div id="signOutModal" class="modal hide fade">
+        <div class="finput-group">
+          <button class="finput primary" type="button" {{action "signOut"}}>Change User</button>
+          <button class="finput fbtn" type="button" {{action "signOut"}}>Sign Out</button>
+          <button class="finput fbtn" type="button" {{action "hideSignOutModal"}}>Cancel</button>
+        </div>
+      </div>            
+
       <!-- Demo Only Stuff -->
       <div class="finput-group pushed">
         <h5>Demo Options</h5>
@@ -275,8 +294,7 @@
           <a href="#" {{action "demoToggleSubscription"}}>Toggle Subscription Picker ({{initOptions.showSubscriptionPicker}})</a><br/>
         {{/if}}
       </div>
-
-  </div>        
+  </div>  
 </form>
 </script>
 
@@ -434,10 +452,19 @@ App.IndexController = Ember.ObjectController.extend({
       }
     },
 
-    logOut: function() {
+    showSignOutModal: function() {
+      $('#signOutModal').modal();
+    },
+
+    hideSignOutModal: function() {
+      $('#signOutModal').modal('hide');
+    },
+
+    signOut: function() {
       this.set('user.email', null);
       this.set('inStreet1', '');
-      this.set('inPostalCode', '');
+      this.set('inPostalCode', '');      
+      $('#signOutModal').modal('hide');
     },
 
     forceAddressEntry: function() {
