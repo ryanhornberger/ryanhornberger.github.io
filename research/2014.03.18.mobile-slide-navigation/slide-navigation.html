@@ -11,7 +11,6 @@
   <link href="./bootstrap2/css/bootstrap-responsive.min.css" rel="stylesheet"/>
 
   <script type="text/javascript" src="./ember/jquery-1.10.2.js"></script>
-  <script type="text/javascript" src="./ember/jquery.inputmask.min.js"></script>
   <script type="text/javascript" src="./ember/handlebars-1.1.2.js"></script>
   <script type="text/javascript" src="./ember/ember-1.4.0.js"></script>
   <script type="text/javascript" src="./ember/ember-fastclick.js"></script>
@@ -48,14 +47,14 @@
 
     .splash .splash-content, .form .form-content {
       margin: 0px auto;
-      padding: 20px;
+      padding: 15px;
       text-align: center;
-      max-width: 560px;
+      max-width: 460px;
     }
 
     .splash .splash-content img {
-      width: 108px;
-      height: 108px;
+      width: 90px;
+      height: 90px;
       margin: 0px 0px 20px;
       border-radius: 6px;
     }
@@ -80,11 +79,18 @@
     }
 
     .form .form-content .finput-block {
-      margin-bottom: 20px;
+      margin-bottom: 15px;
     }
 
     .form .form-content .finput-block .finput {
       margin-bottom: 0px;
+    }
+
+    .form .form-content .finput-block .finput.btn-finput {
+      background-color: #ffffff;
+      background-image: none;
+      text-align: left;
+      color: rgb(51, 51, 51);
     }
 
     .finput-row {
@@ -112,12 +118,25 @@
     .form .form-content .finput.flat-bottom {
       border-bottom-left-radius: 0px;
       border-bottom-right-radius: 0px;
+      margin-bottom: 0px;
     }
 
     .form .form-content .finput.flat-top {
       border-top-left-radius: 0px;
       border-top-right-radius: 0px;
       border-top: 0px;
+      margin-top: 0px;
+    }
+
+    .form .form-content .finput.flat-right {
+      border-top-right-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+
+    .form .form-content .finput.flat-left {
+      border-top-left-radius: 0px;
+      border-bottom-left-radius: 0px;
+      border-left: 0px;
     }
 
     .form .form-content .finput.flat-bottom-right {
@@ -151,42 +170,82 @@
       <div class="form">
         <div class="form-content">
 
+          {{#if isSignedIn}}
+            <div class="finput-block">
+              <button class="finput btn btn-block btn-finput flat-bottom" type="button"> <span>{{storedUserData.email}}</span> <a href="#">Sign out</a> </button>
+              <button class="finput btn btn-block btn-finput flat-top flat-bottom" type="button">&#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; 4546</button>
+              <button class="finput btn btn-block btn-finput flat-top" type="button"><span>{{storedUserData.address.street1}}, {{storedUserData.address.city}}, {{storedUserData.address.subdivision}}, {{storedUserData.address.postalCode}}, {{storedUserData.address.country}}</span></button>
+            </div>
+          {{/if}}
+
           <div class="finput-block">
-              {{input id="email" class="finput input-block-level" type="text" placeholder="Email" value=email}}
-              <div id="email-secondary" class="finput-secondary">
-                <button class="finput btn btn-block btn-primary flat-top" type="button">Sign in to use stored payment information</button>
-              </div>
+            {{input class="finput input-block-level" type="text" placeholder="Invoice number / Reason" value=memo}}
           </div>
 
           <div class="finput-block">
-              {{input-cardnumber id="card-number" class="finput input-block-level" placeholder="Card number" value=cardNumber}}
-              <div id="card-number-secondary" class="finput-secondary">
-                <div class="finput-row">
-                    {{input-cardexpiration id="card-mmyy" class="finput finput-1-2 input-block-level flat-top flat-bottom-right" placeholder="MM / YY" value=cardMmyy}}
-                    {{input-cardcvv id="card-cvv" class="finput finput-1-2 input-block-level flat-top flat-bottom-left" placeholder="Cvv" value=cardCvv}}
-                </div>
-              </div>
+            <div class="finput-row">
+              {{input id="price-fixed-1-2" class="finput finput-1-2 input-block-level flat-right" value=defaultPrice}}
+              {{input id="quantity-1-2" class="finput finput-1-2 input-block-level flat-left" value=defaultQuantity}}
+            </div>
+          </div>
+          
+          <div class="finput-block">
+            <button class="finput btn btn-block btn-primary" type="button">Pay $20.00</button>
+          </div>
+
+          <hr>
+
+          <div class="finput-block">
+            {{input id="email" class="finput input-block-level" type="text" placeholder="Email" value=email}}
+            <div id="email-secondary" class="finput-secondary">
+              <button class="finput btn btn-block btn-primary flat-top" type="button">Sign in to use stored payment information</button>
+            </div>
           </div>
 
           <div class="finput-block">
-              {{input id="ship-street1" class="finput input-block-level" type="text" placeholder="Street address" value=shipStreet1}}
-              <div id="ship-street1-secondary" class="finput-secondary">
-                {{input id="ship-postal" class="finput input-block-level flat-top" type="text" placeholder="Postal code" value=shipPostal}}
+            {{input-cardnumber id="card-number" class="finput input-block-level" placeholder="Card number" value=cardNumber}}
+            <div id="card-number-secondary" class="finput-secondary">
+              <div class="finput-row">
+                {{input-cardexpiration id="card-mmyy" class="finput finput-1-2 input-block-level flat-top flat-bottom-right" placeholder="MM / YY" value=cardMmyy}}
+                {{input-cardcvv id="card-cvv" class="finput finput-1-2 input-block-level flat-top flat-bottom-left" placeholder="Cvv" value=cardCvv}}
               </div>
-              <div id="ship-postal-secondary" class="finput-secondary">
-                <div class="finput-row">
-                    {{input class="finput finput-1-2 input-block-level flat-top flat-bottom-right" type="text" placeholder="City" value=shipCity}}
-                    {{input class="finput finput-1-2 input-block-level flat-top flat-bottom-left" type="text" placeholder="State" value=shipState}}
-                </div>
-              </div>
+            </div>
           </div>
-        </form>
-        <div class="finput-block">
-          {{input class="finput input-block-level" type="text" placeholder="Customer memo" value=memo}}
-        </div>
-        <button class="finput btn btn-block btn-primary" type="button">Pay $20.00</button>
+
+          <div class="finput-block">
+            {{input id="ship-street1" class="finput input-block-level" type="text" placeholder="Street address" value=shipStreet1}}
+            
+            <div id="ship-street1-secondary" class="finput-secondary">
+              {{input id="ship-postal" class="finput input-block-level flat-top" type="text" placeholder="Postal code" value=shipPostal}}
+            </div>
+
+            <div id="ship-postal-secondary" class="finput-secondary">
+              <div class="finput-row">
+                {{input class="finput finput-1-2 input-block-level flat-top flat-bottom-right" type="text" placeholder="City" value=shipCity}}
+                {{input class="finput finput-1-2 input-block-level flat-top flat-bottom-left" type="text" placeholder="State" value=shipState}}
+              </div>
+            </div>
+          </div>
+
+          <div class="finput-block">
+            {{input class="finput input-block-level" type="text" placeholder="Customer memo" value=memo}}
+          </div>
+          
+          <div class="finput-block">
+            <button class="finput btn btn-block btn-primary" type="button">Pay $20.00</button>
+          </div>
+
+          <div class="finput-block">
+            <button class="finput btn btn-block btn-finput flat-bottom" type="button">&#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; 4546</button>
+            <button class="finput btn btn-block btn-finput flat-top flat-bottom" type="button">&#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; 3232</button>
+            <button class="finput btn btn-block btn-finput flat-top flat-bottom" type="button">&#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; 1231</button>
+            <button class="finput btn btn-block btn-finput flat-top flat-bottom" type="button">&#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; &#9679;&#9679;&#9679;&#9679; 8656</button>
+            <button class="finput btn btn-block btn-finput flat-top" type="button">Add a new card <i class="icon-plus"></i></button>
+          </div>
+
+        </div>        
       </div>
-    </div>
+    </form>
   </script>
 
   <script type="text/javascript">
@@ -284,6 +343,30 @@
       });
 
       App.MainController = Ember.ObjectController.extend({
+        
+        storedUserData: {
+          email: 'garrett@scan.me',
+          cards: [
+            {network: 'visa', last_four: 4043},
+            {network: 'amex', last_four: 3234},
+            {network: 'discover', last_four: 9875},
+            {network: 'master', last_four: 2345},            
+          ],
+          address: {
+            street1: '123 Main Street',
+            country: 'USA',
+            postalCode: '84606',
+            subdivision: 'Utah',
+            city: 'Provo'
+          }
+        },
+
+        isSignedIn: function() {
+          return this.get('storedUserData') != null;
+        }.property('storeduserData'),
+
+        defaultPrice: '$58.99',
+        defaultQuantity: 1,
         email: '',
         cardNumber: '',
         cardMmyy: '',
