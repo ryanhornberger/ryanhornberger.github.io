@@ -194,7 +194,7 @@
         <!-- Is Entering New Card Data -->
         {{input id="card-number" classNameBindings=":finput isAddingNewCard::hide" type="tel" placeholder="Card number" value=inCardNumber}}  
         {{input id="card-mmyy" classNameBindings=":finput cardExpanded::hide" type="tel" placeholder="MM / YY" value=inCardMmYy}}  
-        {{input id="card-cvv" classNameBindings=":finput cardExpanded::hide" type="tel" placeholder="CVV" value=inCardCvv}}
+        {{input id="card-cvv" classNameBindings=":finput cardExpanded::hide" type="tel" maxlength="4" placeholder="CVV" value=inCardCvv}}
 
       </div>
 
@@ -502,7 +502,6 @@ App.IndexController = Ember.ObjectController.extend({
   }.property('hasCardData', 'selectedCard'),
 
   cardExpanded: function() {
-    console.log('checking to expand card number');
     var hasCardData = this.get('hasCardData');
     var isAddingCard = this.get('isAddingNewCard');
     var hasEnteredCardNumber = this.get('inCardNumber').length > 0;
@@ -513,14 +512,61 @@ App.IndexController = Ember.ObjectController.extend({
     return false;
   }.property('hasCardData', 'isAddingNewCard', 'inCardNumber'),
 
+  lastCardNumber: '',
   cardNumberMasking: function() {
-    console.log('masking Card Number');
     var cardNumber = this.get('inCardNumber');
-
-    if(cardNumber.length == 4) {
+    var lastCardNumber = this.get('lastCardNumber');
+    var firstTwo = cardNumber.substring(0,2);
+      
+    if(cardNumber.length == 4 && lastCardNumber.length < 4) {
       this.set('inCardNumber', cardNumber + ' ');
+    } else if(cardNumber.length == 9 && lastCardNumber.length < 9) {
+      if(firstTwo != '34' && firstTwo != '37') {
+        this.set('inCardNumber', cardNumber + ' ');
+      }
+    } else if(cardNumber.length == 11 && lastCardNumber.length < 11) {
+      if(firstTwo == '34' || firstTwo == '37') {
+        this.set('inCardNumber', cardNumber + ' ');
+      }
+    } else if(cardNumber.length == 14 && lastCardNumber.length < 14) {
+      if(firstTwo != '34' && firstTwo != '37') {
+        this.set('inCardNumber', cardNumber + ' ');
+      }
+    } else if(cardNumber.length == 17) {  
+        if(firstTwo == '34' || firstTwo == '37') {
+          $('#card-mmyy').focus();
+        }
+    } else if(cardNumber.length == 18) {
+      if(firstTwo == '34' || firstTwo == '37') {
+        this.set('inCardNumber', cardNumber.substring(0,17));
+      }
+    } else if(cardNumber.length == 19) {  
+        $('#card-mmyy').focus();
+    } else if(cardNumber.length == 20) {
+      if(firstTwo != '34' && firstTwo != '37') {
+        this.set('inCardNumber', cardNumber.substring(0,19));
+        $('#card-mmyy').focus();
+      }
     }
-  }.property('inCardNumber'),
+
+    this.set('lastCardNumber', cardNumber);
+  }.observes('inCardNumber'),
+
+  lastCardMmYy: '',
+  cardMmYyMasking: function() {
+    var cardMmYy = this.get('inCardMmYy');
+    var lastCardMmYy = this.get('lastCardMmYy');
+    
+    if(cardMmYy.length == 2 && lastCardMmYy.length < 2) {
+      this.set('inCardMmYy', cardMmYy + ' / ');
+    } else if(cardMmYy.length == 7) {
+      $('#card-cvv').focus();
+    } else if(cardMmYy.length == 8) {
+      this.set('inCardMmYy', cardMmYy.substring(0,7));
+    }
+
+    this.set('lastCardMmYy', cardMmYy);
+  }.observes('inCardMmYy'),
 
   //address picker
   forceAddressFields: false,
@@ -602,8 +648,6 @@ App.IndexController = Ember.ObjectController.extend({
 
   //pay button
   displayAggregatePrice: function() {
-    console.log('calculating aggregate price');
-
     if(this.get('initOptions.showPricePicker')) {
       var inPrice = this.get('inPrice');
       if(inPrice.length > 0) {
