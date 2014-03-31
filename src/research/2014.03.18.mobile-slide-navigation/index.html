@@ -117,16 +117,6 @@
       position: relative;
     }
 
-    .form .form-content .float-box #quantity-field {
-      padding-left: 70px;
-    }
-
-    .form .form-content .float-box #quantity-memo {
-      position: absolute;
-      top: 11px;
-      left: 6px;
-    }
-
     .form .form-content .float-box #price-alone-field {
       padding-left: 70px;
     }
@@ -138,7 +128,7 @@
     }
 
     .form .form-content .float-box #price-field {
-      padding-left: 70px;
+      padding-left: 16px;
     }
 
     .form .form-content .float-box #price-memo {
@@ -150,12 +140,6 @@
     .form .form-content .finput.hide {
       display: none;
     }
-
-    .form .form-content .modal {
-      max-width: 460px;
-      margin-left: -230px;
-    }
-
   </style>
 </head>
 
@@ -208,9 +192,9 @@
         }}
         
         <!-- Is Entering New Card Data -->
-        {{input id="card-number" classNameBindings=":finput isAddingNewCard::hide" type="text" placeholder="Card number" value=inCardNumber}}  
-        {{input id="card-mmyy" classNameBindings=":finput cardExpanded::hide" type="text" placeholder="MM / YY" value=inCardMmYy}}  
-        {{input id="card-cvv" classNameBindings=":finput cardExpanded::hide" type="text" placeholder="CVV" value=inCardCvv}}
+        {{input id="card-number" classNameBindings=":finput isAddingNewCard::hide" type="tel" placeholder="Card number" value=inCardNumber}}  
+        {{input id="card-mmyy" classNameBindings=":finput cardExpanded::hide" type="tel" placeholder="MM / YY" value=inCardMmYy}}  
+        {{input id="card-cvv" classNameBindings=":finput cardExpanded::hide" type="tel" placeholder="CVV" value=inCardCvv}}
 
       </div>
 
@@ -224,7 +208,7 @@
           
           <!-- Is Entereing New Address Data -->
           {{input id="address-street" classNameBindings=":finput shouldShowStreets::hide" type="text" placeholder="Address" value=inStreet1}}  
-          {{input id="address-pc" classNameBindings=":finput shouldShowPostalCode::hide" type="text" placeholder="Postal code" value=inPostalCode}}  
+          {{input id="address-pc" classNameBindings=":finput shouldShowPostalCode::hide" type="tel" placeholder="Postal code" value=inPostalCode}}  
           {{input id="address-city" classNameBindings=":finput shouldShowCityState::hide" type="text" placeholder="City" value=inCity}}  
           {{input id="address-subdivision" classNameBindings=":finput shouldShowCityState::hide" type="text" placeholder="State" value=inSubdivision}}
           
@@ -243,17 +227,14 @@
       <div class="finput-group">
       <!-- Quantity Picker -->
         {{#if initOptions.showQuantityPicker}}
-          <div class="float-box">
-            {{input id="quantity-field" class="finput" type="text" value=inQuantity}}  
-            <div id="quantity-memo">Quantity:</div>
-          </div>
+          {{input id="quantity-field" class="finput" type="tel" placeholder="Quantity: 1" value=inQuantity}}  
         {{/if}}
 
       <!-- Price Picker -->
         {{#if initOptions.showPricePicker}}
           <div class="float-box">
-            {{input id="price-field" class="finput" type="text" value=inPrice}}  
-            <div id="price-memo">Amount: $</div>
+            {{input id="price-field" class="finput" type="number" placeholder=controllers.application.resource.data.price value=inPrice}}  
+            <div id="price-memo">$</div>
           </div>
         {{/if}}  
         
@@ -269,7 +250,7 @@
 
       <!-- Pay Button -->
       <div class="finput-group pushed">
-        <button class="finput primary" type="button">Pay $20.00</button>
+        <button class="finput primary" type="button">Pay ${{displayAggregatePrice}}</button>
       </div>
 
       <!-- Sign Out Modal -->
@@ -468,6 +449,9 @@ App.IndexController = Ember.ObjectController.extend({
 
     forceAddressEntry: function() {
       this.set('forceAddressFields', true);
+      setTimeout(function(){
+        $('#address-street').focus();
+      }, 0);
     }
   },
   
@@ -503,6 +487,11 @@ App.IndexController = Ember.ObjectController.extend({
     if(this.get('hasCardData')) {
       var selectedCard = this.get('selectedCard');
       if(selectedCard && selectedCard.id == 'new') {
+        //the browser needs to auto select the first input field
+        setTimeout(function(){
+          $('#card-number').focus();
+        }, 1);
+
         return true;
       }
     } else {
@@ -597,11 +586,30 @@ App.IndexController = Ember.ObjectController.extend({
   inMemo: '',
 
   //quantity picker
-  inQuantity: 1,
+  inQuantity: '',
   
   //price and subscription picker
-  inPrice: 25,
+  inPrice: '',
 
+  //pay button
+  displayAggregatePrice: function() {
+    console.log('calculating aggregate price');
+
+    if(this.get('initOptions.showPricePicker')) {
+      var inPrice = this.get('inPrice');
+      if(inPrice.length > 0) {
+        return inPrice;
+      }
+    } else if(this.get('initOptions.showQuantityPicker')) {
+      var inQuantity = this.get('inQuantity');
+      if(inQuantity.length > 0) {
+        return inQuantity * this.get('controllers.application.resource.data.price');
+      }
+    }
+
+    return this.get('controllers.application.resource.data.price');
+
+  }.on('init').property('initOptions.showPricePicker', 'initOptions.showQuantityPicker', 'inPrice', 'inQuantity', 'controllers.application.resource.data.price')
 });
 
 });
