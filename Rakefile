@@ -27,11 +27,6 @@ namespace :app do
     system 'bundle exec jekyll serve --drafts --watch'
   end
 
-  desc 'Generate blog files'
-  task :generate do
-    Jekyll::Site.new(Jekyll.configuration({})).process
-  end
-
   desc 'Generate and publish blog GitHub'
   task :publish => [:generate] do
     Dir.mktmpdir do |tmp|

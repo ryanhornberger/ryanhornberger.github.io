@@ -1,0 +1,156 @@
+---
+---
+@import "modules/bourbon_scss/bourbon";
+@import "modules/xerio_scss/sticky-footer";
+@import "modules/drublic.modal/modal";
+
+// -- FONTS -- //
+	@import "modules/font-awesome/font-awesome";
+	@import "modules/font-clearsans/clearsans";
+	@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
+
+// -- COLORS -- //
+	$trueRed: 	#FF0000;
+	$trueWhite: #FFFFFF;
+	$darkGray: 	#222222;
+	$fadedBlue: #2e9df7;
+
+	.darkGray {
+		color: $darkGray;
+	}
+
+// -- DEFAULTS -- //
+	body {
+		//default font layout
+		font-family: "Clear Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-weight: 300;
+		font-size: 14px;
+	}
+
+	* {
+		//all objects sizing as border-box will guarantee objects stay the size I expect
+		@include box-sizing(border-box);
+
+		//no margins or padding on anything unless asking for it
+		margin: 0px;
+		padding: 0px;
+	}
+
+	h1, .h1 { font-size: 26px; margin-bottom: 10px; }
+	h2, .h2 { font-size: 18px; margin-bottom: 10px; }
+	h3, .h3 { font-size: 18px; margin-bottom: 10px; }
+	h4, .h4 { font-size: 18px; margin-bottom: 10px; }
+
+	p { margin-bottom: 15px; }
+	ul { list-style-position:inside; }
+	a { text-decoration: none; color: $trueWhite; }
+	a:hover { text-decoration: none; }
+	a.underline { text-decoration: underline; }
+
+// -- HEADER -- //
+	#header {
+		background-color: $trueRed;
+		display: table;
+		height: 35px;
+		width: 100%;
+		color: $trueWhite;
+		padding: 0px 20px;
+
+		#header-title {
+			display: table-cell;
+		  	vertical-align: middle;
+		}
+	}
+
+// -- FOOTER -- //
+	@include sticky-footer(390px, "#content-box", "#content-box-footer-push", "#footer");
+	#footer {
+		background-color: $darkGray;
+		color: $trueWhite;
+		padding: 20px;
+
+		#footer-box {
+			.footer-section {
+				padding: 10px 0px;
+				border-bottom: 1px solid $trueWhite;
+			}
+
+			#footer-about-me {
+				#profile-pic {
+					width: 100px;
+					height: 100px;
+				}
+
+				p {
+					max-width: 400px;
+				}
+			}
+
+			#footer-nav {
+				ul {
+					list-style-type: none;
+
+					li {
+						margin-top: 10px;
+					}
+				}
+			}
+		}
+	}
+
+// -- BODY -- //
+	.spaced {
+		margin-top: 10px;
+		margin-bottom: 10px;
+	}
+
+	.pad {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
+
+	.page-max {
+		max-width: 1280px;
+		margin: 0px auto;
+	}
+
+// -- BUTTONS -- //
+	.butn {
+		display: block;
+		padding: 5px;
+		width: auto;
+		height: 35px;
+		cursor: pointer;
+		text-align: center;
+		background-color: $fadedBlue;
+	}
+
+	.butn.tall {
+		height: 150px;
+		vertical-align: middle;
+	}
+
+	.butn.custom {
+		padding: 0px;
+		color: $darkGray;
+		background-color: transparent;
+		vertical-align: top;
+	}
+
+	.butn-group, .table {
+		display: table;
+		width: 100%;
+	}
+
+	.butn-group .butn-row, .table .table-row {
+		display: table-row;
+	}
+
+	.butn-group .butn, .table .table-cell {
+		display: table-cell;
+	}
+
+// -- MODALS -- //
+	.modal {
+		@extend %modal;
+	}

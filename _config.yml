@@ -1,10 +1,11 @@
 #Jekyll
 name: www.RyanHornberger.com
-pygments: true
 source: src
 destination: dist
 permalink: /articles/:title
 exclude: ['Gemfile', 'Gemfile.lock', 'Rakefile', 'README.md','*.iml']
+
+#pygments: true
 
 markdown: kramdown
 kramdown:
@@ -23,8 +24,5 @@ kramdown:
     coderay_bold_every: 10
     coderay_css: style
 
-#IXT Asset Compilations
-assets:
-  js_compressor: yui
-  css_compressor: sass
-  cachebust: soft
+sass:
+    sass_dir: -assets
