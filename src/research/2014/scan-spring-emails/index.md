@@ -40,7 +40,13 @@ title: New Scan Inc. Spring Email Designs - Research by Ryan Hornberger
 
 <hr/>
 <div class="pad spaced">
-	<br/><br/>
+	<br/>
+	<p>
+		Designed by: Garrett Gee
+		<br/>
+		Built by: Ryan Hornberger
+	</p>
+
 	<p>
 		I am using <a href="http://zurb.com/ink/" target="_blank">Zurb-Ink</a> to build this email. Don't forget to use their "<a href="http://zurb.com/ink/inliner.php" target="_blank">inliner</a>" to convert the css to inline styles when you are done. (Also, remove the link to their css file)
 	</p>
