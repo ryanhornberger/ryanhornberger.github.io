@@ -33,23 +33,36 @@
 		}
 
 		h1 {
-			font-size: 22px;
+			font-size: 23px;
 			color: #3f3f3f;
 		}
 
 		h2 {
-			font-size: 20px;
+			font-size: 19px;
 			color: #3f3f3f;
 		}
 
 		p, .p {
 			font-size: 17px;
 			color: #565e63;
+			line-height: 24px;
+		}
+
+		.text-pad-20 {
+			padding-left: 20px;
+			padding-right: 20px;
 		}
 
 		.smaller {
 			font-size: 14px;
 		}
+
+		@media only screen and (max-width: 600px) {
+			table[class="body"] .container {
+				width: 100% !important;
+			}
+		}
+		
     </style>
   </head>
   <body>
@@ -70,10 +83,8 @@
 											<td class="four sub-columns">
 											</td>
 											<td class="four sub-columns center">
-													<br/>
 													<br/> 
 													<img class="center" width="90" height="30" src="./scan-logo.png">
-													<br/>
 													<br/> 
 											</td>
 											<td class="four sub-columns last">
@@ -97,20 +108,35 @@
 													
 													<br/>
 													<br/>
-													<h1 class="center"> Introducing brand new Scan Pages! </h1>
+													<h1 class="center text-pad-20"> Introducing brand new Scan Pages! </h1>
 													
 													<br/>
 													<br/>
-													<p>
+													<p class="text-pad-20">
 														Scan Pages are like digital busienss cards. The perfect way to share information about you
 														or your business. They are mobile friendly, easy to customize, and FREE!
 													</p>
-													<br/>
-													<br/>
-													<br/>
-													<img width="710" height="320" src="./create-your-scan-page.png">
-
 												</center>
+											</td>
+											<td class="expander"></td>
+										</tr>
+									</table>
+								</td>
+
+							</tr>
+						</table>
+
+						<br/>
+						<br/>
+
+						<table class="row">
+							<tr>
+								
+								<td class="wrapper last">
+									<table class="twelve columns">
+										<tr>
+											<td>
+												<img width="710" height="320" src="./create-your-scan-page.jpg">
 											</td>
 											<td class="expander"></td>
 										</tr>
