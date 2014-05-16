@@ -8,7 +8,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="{{ page.description }}" />
     
-    <link rel="stylesheet" href="/-assets/2014-spring.css">
+    <link rel="stylesheet" href="/a/2014-spring.css">
+    {% bundle %} 
+        - /a/modules/jquery/jquery-2.1.1.js
+        - /a/modules/jquery_fancybox/jquery.fancybox.js 
+    {% endbundle %}
     <script async="" src="//www.google-analytics.com/analytics.js"></script>
 </head>
 
@@ -16,7 +20,7 @@
 
 {{content}}
 
-<!-- Tracking Scripts -->
+<!-- Loaded Script -->
 <script type="text/javascript">
     (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
         (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
@@ -25,6 +29,19 @@
 
     ga('create', 'UA-41934213-1', 'ryanhornberger.com');
     ga('send', 'pageview');
+
+    $(function() {
+
+        $(".fancybox").attr('rel', 'gallery').fancybox({
+            openEffect  : 'none',
+            closeEffect : 'none',
+            nextEffect  : 'none',
+            prevEffect  : 'none',
+            padding     : 0,
+            margin      : 50
+        });
+
+    });
 </script>
 </body>
 
