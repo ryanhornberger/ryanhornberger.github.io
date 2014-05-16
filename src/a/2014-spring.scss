@@ -2,7 +2,7 @@
 ---
 @import "modules/bourbon_scss/bourbon";
 @import "modules/xerio_scss/sticky-footer";
-@import "modules/drublic.modal/modal";
+@import "modules/jquery_fancybox/jquery.fancybox.css";
 
 // -- FONTS -- //
 	@import "modules/font-awesome/font-awesome";
@@ -12,11 +12,16 @@
 // -- COLORS -- //
 	$trueRed: 	#FF0000;
 	$trueWhite: #FFFFFF;
+	$trueBlack: #000000;
 	$darkGray: 	#222222;
 	$fadedBlue: #2e9df7;
 
 	.darkGray {
 		color: $darkGray;
+	}
+
+	.bg-black {
+		background-color: $trueBlack;
 	}
 
 // -- DEFAULTS -- //
@@ -43,9 +48,10 @@
 
 	p { margin-bottom: 15px; }
 	ul { list-style-position:inside; }
-	a { text-decoration: none; color: $trueWhite; }
+	a { text-decoration: none; color: $fadedBlue }
 	a:hover { text-decoration: none; }
 	a.underline { text-decoration: underline; }
+	a.hover:hover { text-decoration: underline; }
 
 // -- HEADER -- //
 	#header {
@@ -60,14 +66,22 @@
 			display: table-cell;
 		  	vertical-align: middle;
 		}
+
+		a {
+			color: $trueWhite; 
+		}
 	}
 
 // -- FOOTER -- //
-	@include sticky-footer(390px, "#content-box", "#content-box-footer-push", "#footer");
+	@include sticky-footer(340px, "#content-box", "#content-box-footer-push", "#footer");
 	#footer {
 		background-color: $darkGray;
 		color: $trueWhite;
 		padding: 20px;
+
+		a {
+			color: $trueWhite; 
+		}
 
 		#footer-box {
 			.footer-section {
@@ -122,6 +136,7 @@
 		height: 35px;
 		cursor: pointer;
 		text-align: center;
+		color: $trueWhite; 
 		background-color: $fadedBlue;
 	}
 
@@ -151,6 +166,3 @@
 	}
 
 // -- MODALS -- //
-	.modal {
-		@extend %modal;
-	}
