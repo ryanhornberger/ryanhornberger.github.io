@@ -4,15 +4,17 @@ title: Research by Ryan Hornberger
 ---
 {% include header-basic.md %}
 
+{::options parse_block_html="true" /}
+<div class="page-max pad">
+
 Research
 ===========================
 
 Research Projects
 
-{::options parse_block_html="true" /}
-<div class="fresh">
-
-  * [2014 - Mobile Slide Navigation](./2014.03.18.mobile-slide-navigation/)
-
+  * [2014 - Fonts](./2014/fonts/)
+  * [2014 - Scan Inc. Mobile Slide Navigation](./2014/scan-mobile-slide-navigation/)
+  * [2014 - Scan Inc. Spring Emails](./2014/scan-spring-emails/)
+  
 </div>
 {::options parse_block_html="false" /}
