@@ -7,7 +7,7 @@ category: portfolio
 	.hero-cw {
 		width: auto; 
 		height: auto; 
-		background: url('/a/images/2014-05-18-charity-water-splash.jpg') no-repeat left center;
+		background: url('/a/images/2014-05-18-josh-water.jpg') no-repeat left center;
 		background-size: cover;
 		margin-bottom: 4px;
 	}
@@ -15,7 +15,7 @@ category: portfolio
 	.hero-cw-message {
 		color: #ffffff;
 		text-align: center;
-		padding: 240px 0px 20px;
+		padding: 200px 0px 20px;
 		max-width: 360px;
 		margin: 0px auto;
 	}
@@ -39,7 +39,7 @@ category: portfolio
 			text-align: center;
 			padding: 140px 0px 120px;
 			max-width: 360px;
-			margin: 0px 20px 0px auto;
+			margin: 0px 120px 0px auto;
 		}
 
 		.content-max {
