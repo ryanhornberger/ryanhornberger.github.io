@@ -1518,13 +1518,3 @@ html, body {
   color: #222222;
   background-color: transparent;
   vertical-align: top; }
-
-.butn-group, .table {
-  display: table;
-  width: 100%; }
-
-.butn-group .butn-row, .table .table-row {
-  display: table-row; }
-
-.butn-group .butn, .table .table-cell {
-  display: table-cell; }
