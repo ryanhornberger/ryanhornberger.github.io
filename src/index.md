@@ -1,7 +1,7 @@
 ---
 layout: 2014-spring-footed
-title: Ryan Hornberger
-description: Entreprenuer, Creator, Husband, Father.
+title: Our son is giving his birthday to Charity:Water
+description: Our son is giving his birthday to Charity:Water.
 ---
 
 {% assign post = site.posts.first %}

@@ -1,9 +1,14 @@
 ---
 layout: 2014-spring-footed
-title: We're giving our birthdays to Charity:Water
+title: Our son is giving his birthday to Charity:Water
 category: portfolio
 ---
 <style>
+
+	#facebook-pic {
+		display:none;
+	}
+
 	.hero-cw {
 		width: auto; 
 		height: auto; 
@@ -67,6 +72,10 @@ category: portfolio
 	}
 
 </style>
+
+<!-- Facebook Image -->
+<img id="facebook-pic" src="/a/images/2014-05-18-josh-water-fb.jpg" alt="Ryan Hornberger"/>    
+
 <section class="hero-cw page-max pad">
 	<div class="hero-cw-message">
 		<h1>Our son Josh is giving up his 6th birthday</h1>
