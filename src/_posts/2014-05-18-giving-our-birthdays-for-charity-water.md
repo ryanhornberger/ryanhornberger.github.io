@@ -73,9 +73,6 @@ category: portfolio
 
 </style>
 
-<!-- Facebook Image -->
-<img id="facebook-pic" src="/a/images/2014-05-18-josh-water-fb.jpg" alt="Ryan Hornberger"/>    
-
 <section class="hero-cw page-max pad">
 	<div class="hero-cw-message">
 		<h1>Our son Josh is giving up his 6th birthday</h1>
