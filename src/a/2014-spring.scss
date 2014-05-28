@@ -24,6 +24,9 @@
 		background-color: $trueBlack;
 	}
 
+// -- VARIABLES -- //
+	$pageMax: 1280px;
+
 // -- DEFAULTS -- //
 	body {
 		//default font layout
@@ -56,19 +59,24 @@
 // -- HEADER -- //
 	#header {
 		background-color: $trueRed;
-		display: table;
-		height: 35px;
-		width: 100%;
 		color: $trueWhite;
 		padding: 0px 20px;
 
-		#header-title {
-			display: table-cell;
-		  	vertical-align: middle;
-		}
+		#header-box {
+			display: table;
+			width: $pageMax;
+			height: 35px;
+			margin: 0px auto;
+			padding: 0px;
 
-		a {
-			color: $trueWhite; 
+			#header-title {
+				display: table-cell;
+			  	vertical-align: middle;
+			}
+
+			a {
+				color: $trueWhite; 
+			}
 		}
 	}
 
@@ -124,7 +132,7 @@
 	}
 
 	.page-max {
-		max-width: 1280px;
+		max-width: $pageMax;
 		margin: 0px auto;
 	}
 
@@ -152,4 +160,21 @@
 		vertical-align: top;
 	}
 
-// -- MODALS -- //
+// -- BLOG POSTS -- //
+
+	.post-hero {
+		width: auto; 
+		height: auto; 
+		background-size: cover;
+		color: $trueWhite;
+		text-align: center;
+		padding: 350px 20px 70px;
+		background-repeat: no-repeat;
+		background-position: left center;
+	}
+
+	@media (max-width: 700px) {
+		.post-hero {
+			padding: 150px 20px 20px;
+		}
+	}
