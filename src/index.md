@@ -113,7 +113,7 @@ title: Our son is giving his birthday to Charity:Water
 		This past fall our five year old son Josh informed us that he wanted to give up his sixth birthday to help less fortunate children receive clean water. There are over a billion people on our planet that don't have access to this most basic human need and nearly every 19 seconds a mother looses her child to a water related illness. The saddest part of this story is that clean water is often readily available if only these people had the tools to access it. Help us bring this birthday wish to life and the gift of clean water to those who need it.
 	</p>
 	<p>
-		100% of public donations to this campaign will go to the field thanks to private donors who are covering administrative costs inclucing credit card processing fees! All donations are tax deductable and Charity:Water will give us a report of where each dollar goes. We'll share those results here as Josh's water project makes progress. If you want to learn more check out the links above, otherwise, please donate today!
+		100% of public donations to this campaign will go to the field thanks to private donors who are covering administrative costs inclucing credit card processing fees! All donations are tax deductable and Charity:Water will give us a report of where each dollar goes. We'll share those results here as Josh's water project makes progress. If you want to learn more check out the links above, otherwise, please donate today! You can also <a href="articles/2014/why-our-son-gave-his-birthday-to-charity-water/">read why Josh gave his birthday here.</a>
 	</p>
 		
 </div>
@@ -127,9 +127,9 @@ title: Our son is giving his birthday to Charity:Water
 	</div>
 </div>
 
-<div class="page-max pad">	
-	<p style="font-size: 22px;">
-		Our goal is to raise $10,000 to fund an entire machne-dug well project. If you can't decide how much to donate, <a  href="https://my.charitywater.org/joshs-birthday-water-campaign" target="_blank">see how much others have donated</a>.
+<div class="page-max pad" style="font-size: 22px;">	
+	<p>
+		Our goal is to raise $10,000 to fund an entire machine-dug well project. If you can't decide how much to donate, <a  href="https://my.charitywater.org/joshs-birthday-water-campaign" target="_blank">see how much others have donated</a>.
 	</p>
 </div>
 

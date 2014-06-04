@@ -1,6 +1,6 @@
 ---
 layout: 2014-spring-post
-title: Why our son is giving his birthday to Charity:Water
+title: '"Dad, I want to give up my birthday so other kids can have clean water"'
 category: articles
 head_img: /a/images/2014-05-30-josh-sister-rain.jpg
 head_text: '"Dad, I want to give up my birthday so other kids can have clean water"' 
@@ -45,4 +45,4 @@ Join us
 
 Today we're not asking anyone to give up their birthday with Josh. We are simply asking that you help us make a difference in the life of someone who needs it. Diseases that seem so small to us like diarrhea or simple dehydration are life threating issues for someone who does not have access to clean water. When the water you drink is the same thing that's making you sick, it surely can't help you get better. Nearly a billion people on our planet are living without access to clean water. Lets change the world together:
 
-[Donate Today](https://my.charitywater.org/joshs-birthday-water-campaign)
+<a class="butn spaced" href="https://my.charitywater.org/joshs-birthday-water-campaign" target="_blank">Give Today</a>
