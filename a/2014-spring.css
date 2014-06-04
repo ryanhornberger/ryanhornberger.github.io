@@ -1440,16 +1440,19 @@ a.hover:hover {
 
 #header {
   background-color: red;
-  display: table;
-  height: 35px;
-  width: 100%;
   color: white;
   padding: 0px 20px; }
-  #header #header-title {
-    display: table-cell;
-    vertical-align: middle; }
-  #header a {
-    color: white; }
+  #header #header-box {
+    display: table;
+    width: 1280px;
+    height: 35px;
+    margin: 0px auto;
+    padding: 0px; }
+    #header #header-box #header-title {
+      display: table-cell;
+      vertical-align: middle; }
+    #header #header-box a {
+      color: white; }
 
 html, body {
   height: 100%; }
@@ -1518,3 +1521,17 @@ html, body {
   color: #222222;
   background-color: transparent;
   vertical-align: top; }
+
+.post-hero {
+  width: auto;
+  height: auto;
+  background-size: cover;
+  color: white;
+  text-align: center;
+  padding: 350px 20px 70px;
+  background-repeat: no-repeat;
+  background-position: left center; }
+
+@media (max-width: 700px) {
+  .post-hero {
+    padding: 150px 20px 20px; } }
