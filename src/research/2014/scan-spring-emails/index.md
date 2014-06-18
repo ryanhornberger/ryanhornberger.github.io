@@ -17,7 +17,7 @@ title: New Scan Inc. Spring Email Designs - Research by Ryan Hornberger
 <!-- SUBJECT HERE -->	
 	
 	<br/><br/>
-	<a href="./email.html">Raw View</a>
+	<a href="./email.html">Raw View</a> | <a href="./email-compiled.html">Compiled Message</a>
 </div>
 
 <hr/>
