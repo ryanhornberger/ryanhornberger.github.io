@@ -1462,14 +1462,14 @@ html, body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin-bottom: -340px; }
+  margin-bottom: -390px; }
   #content-box #content-box-footer-push {
-    height: 340px; }
+    height: 390px; }
 
 #footer {
   clear: both;
   position: relative;
-  height: 340px; }
+  height: 390px; }
 
 #footer {
   background-color: #222222;
@@ -1485,9 +1485,9 @@ html, body {
     height: 100px; }
   #footer #footer-box #footer-about-me p {
     max-width: 400px; }
-  #footer #footer-box #footer-nav ul {
+  #footer #footer-box ul {
     list-style-type: none; }
-    #footer #footer-box #footer-nav ul li {
+    #footer #footer-box ul li {
       margin-top: 10px; }
 
 .spaced {
