@@ -82,7 +82,7 @@ title: Our son is giving his birthday to Charity:Water
 		</p>
 		<a class="butn spaced" href="https://my.charitywater.org/p/donate?campaign_id=53805&payment_amt=50" target="_blank">Donate Today</a>
 		<p>
-			Campaign ends June 21, 2014
+			Campaign extended to August 2, 2014
 		</p>
 	</div>
 </section>
