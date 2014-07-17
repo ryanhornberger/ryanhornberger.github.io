@@ -16,12 +16,12 @@ From the very beginning Charity:Water has kept two bank accounts: one for operat
 100% of public donations all go to water projects
 -----------------------------------------
 
-Public donations go into the second account and 100% of every dollar that goes in that account is tracked and managed to ensure it's used directly in a water project. Charity:Water even gives every donor a report of where their money went. These reports also include GPS and photo data of the project site. [Learn More...](http://www.charitywater.org/100percent/)
+Public donations go into the second account and 100% of every dollar that goes in that account is tracked and managed to ensure it's used directly in a water project. Charity:Water even gives every donor a report of where their money went. These reports also include GPS and photo data of the project site. [Take a look at the projects they've already completed...](http://www.charitywater.org/projects/completed-projects/)
 
 Financial statements are public and audited
 -------------------------------------------
 
-When that's not enough you can always browse to the company website and review their yearly reports of cash flow including all of their operational costs. Want more? KPMG recently audited their financial statements and found that indeed, 100% of public donations did in fact go right where they were meant to.
+When that's not enough you can always browse to the company website and review their yearly reports of cash flow including all of their operational costs. Want more? KPMG recently audited their financial statements and found that indeed, it is their opinion that 100% of public donations did in fact go right where they were meant to.
 
 * [Financial Report](http://www.charitywater.org/annual-report/12/#financials)
 * [KPMG Audit Opinion](http://www.charitywater.org/about/charitywater_auditopinion_2013b.pdf)
