@@ -44,6 +44,10 @@ Charity:Water knows they are not capable of managing every project they build on
 
 When local organizations don't exist or have the resources Charity:Water needs, Charity:Water invests in making local organizations to do the work. Recently Charity:Water held a drive which resulted in placing two new Drilling Rigs in Ethiopia. The people that run those rigs will be locals and they are trained to get the job done right. [Learn More...](http://www.charitywater.org/projects/partners/)
 
+<iframe src="//player.vimeo.com/video/89373358" width="960" height="539" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+
+<br/>
+
 Their heart is in the right place
 ---------------------------------
 
