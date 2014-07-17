@@ -3,6 +3,7 @@ layout: 2014-spring-footed
 title: Font Research
 description: Web Design Consulting, System Infrastructure Consulting, VoIP Consulting
 font-families: [
+	"Noto Sans",
 	"Source Sans Pro",
 	"Open Sans",
 	"Clear Sans",
