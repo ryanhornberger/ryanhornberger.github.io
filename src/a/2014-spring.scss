@@ -5,9 +5,7 @@
 @import "modules/jquery_fancybox/jquery.fancybox.css";
 
 // -- FONTS -- //
-	@import "modules/font-awesome/font-awesome";
-	@import "modules/font-clearsans/clearsans";
-	@import url(http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,400,300,600,700);
+	@import url(http://fonts.googleapis.com/css?family=Noto+Sans:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);
 
 // -- COLORS -- //
 	$trueRed: 	#FF0000;
@@ -30,7 +28,7 @@
 // -- DEFAULTS -- //
 	body {
 		//default font layout
-		font-family: "Clear Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-family: "Noto Sans", "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 		font-weight: 300;
 		font-size: 14px;
 	}
