@@ -4,6 +4,7 @@ title: '"Dad, I want to give up my birthday so other kids can have clean water" 
 heading: '"Dad, I want to give up my birthday so other kids can have clean water"'
 category: articles
 bgimg: /a/images/2014-05-30-josh-sister-rain.jpg
+permalink: /articles/2014/why-our-son-gave-his-birthday-to-charity-water
 excerpt: "This past November our family was in the car when our son Josh called to me from the back seat. Never knowing what to expect when my kids want my attention I braced myself for..."
 ---
 

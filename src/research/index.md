@@ -1,8 +1,15 @@
 ---
-layout: 2014-glass-post
+layout: 2014-glass
 title: Research - Ryan Hornberger
 heading: Research
 ---
+
+<div class="glass">
+  <h1 class="title"> {{ page.heading }} </h1>
+  {% if page.subtitle %}
+    <p class="subtitle" style="padding-top: 0px;"> {{ page.subtitle }} </p>
+  {% endif %}
+</div>
 
 <div id="research">
 <div class="glass row" style="padding:20px;" markdown="1">
