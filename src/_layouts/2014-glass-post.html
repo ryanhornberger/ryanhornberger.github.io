@@ -13,4 +13,16 @@ layout: 2014-glass
 	<div>
 		{{content}}
 	</div>
+
+	<div class="glass row">
+		<p> 
+			{% if page.date %}
+				Date: {{ page.date | date: "%d %b %Y" }}
+				<br/>
+			{% endif %}
+			Author: Ryan Hornberger
+			<br/>
+			Permalink: <a href="{{ page.permalink }}">{{ page.permalink }}</a>
+		</p>
+	</div>
 </section>
