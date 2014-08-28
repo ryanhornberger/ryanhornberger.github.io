@@ -1,11 +1,13 @@
 ---
-layout: 2014-spring-post
-title: 'Why we chose Charity:Water'
+layout: 2014-glass-post
+title: 'Why we chose Charity:Water - Ryan Hornberger'
+heading: 'Why we chose Charity:Water'
 category: articles
-head_img: /a/images/2014-06-11-charity-water-splash.jpg
-head_text: 'Why we chose Charity:Water' 
+bgimg: /a/images/2014-06-11-charity-water-splash.jpg
+excerpt: "The number one reason why people say they won't donate when we talk to them about our campaign is that they can't trust that their money will be used in a trustworthy manner. That very concern is one of the reasons we love Charity:Water so much."
 ---
 
+<div class="glass row" markdown="1">
 The number one reason why people say they won't donate when we talk to them about our campaign is that they can't trust that their money will be used in a trustworthy manner. That very concern is one of the reasons we love Charity:Water so much. 100% of donations from people like you and me go straight to water projects and none of it is used to fund operational costs. We love Charity:Water because not only do they make that promise, but they also go out of their way to prove it. The work they do is changing the world, read on:
 
 Operation costs are privately funded
@@ -26,8 +28,6 @@ When that's not enough you can always browse to the company website and review t
 * <a href="http://www.charitywater.org/annual-report/12/#financials" target="_blank">Financial Report</a>
 * <a href="http://www.charitywater.org/about/charitywater_auditopinion_2013b.pdf" target="_blank">KPMG Audit Opinion</a>
 
-<br/>
-
 They "teach a man to fish"
 --------------------------
 
@@ -43,18 +43,24 @@ They use local experts
 Charity:Water knows they are not capable of managing every project they build on their own. They don't presume to know the best solutions for every location. That's why they use local organizations to perform the work. Local organizations know the land, the people, the potential water sources, the potential problems, and the best solutions. So partnering with them is extremely beneficial. 
 
 When local organizations don't exist or have the resources Charity:Water needs, Charity:Water invests in making local organizations to do the work. Recently Charity:Water held a drive which resulted in placing two new Drilling Rigs in Ethiopia. The people that run those rigs will be locals and they are trained to get the job done right. <a href="http://www.charitywater.org/projects/partners/" target="_blank">Learn More...</a>
+</div>
 
-<iframe src="//player.vimeo.com/video/89373358" width="960" height="539" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<div class="glass row" markdown="1">
+<iframe src="//player.vimeo.com/video/89373358" width="100%" height="545" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
 
-<br/>
-
+<div class="glass row" markdown="1">
 Their heart is in the right place
 ---------------------------------
 
 Everything I've just shared explains why I find Charity:Water to be one of the most trusted charities on my very short list of favorites. However, what first drew me in was listening to their founder Scott Harris talk about why he started the company in the first place. His story is inspring and touching, you should check it out.
+</div>
 
-<iframe src="//player.vimeo.com/video/39301294" width="960" height="539" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<div class="glass row" markdown="1">
+<iframe src="//player.vimeo.com/video/39301294" width="100%" height="545" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
 
+<div class="glass row" markdown="1">
 The work they do really matters
 -------------------------------
 
@@ -67,3 +73,5 @@ Join us
 Our son Josh is giving up his birthday to raise funds for Charity:Water. He believes that he can make a difference and we believe that together we can make a huge difference. Be a part of our campaign.  
  
 <a class="butn spaced" href="https://my.charitywater.org/joshs-birthday-water-campaign" target="_blank">Give Today</a>
+<br/><br/>
+</div>

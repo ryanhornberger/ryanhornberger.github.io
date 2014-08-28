@@ -1,11 +1,13 @@
 ---
-layout: 2014-spring-post
-title: '"Dad, I want to give up my birthday so other kids can have clean water"'
+layout: 2014-glass-post
+title: '"Dad, I want to give up my birthday so other kids can have clean water" - Ryan Hornberger'
+heading: '"Dad, I want to give up my birthday so other kids can have clean water"'
 category: articles
-head_img: /a/images/2014-05-30-josh-sister-rain.jpg
-head_text: '"Dad, I want to give up my birthday so other kids can have clean water"' 
+bgimg: /a/images/2014-05-30-josh-sister-rain.jpg
+excerpt: "This past November our family was in the car when our son Josh called to me from the back seat. Never knowing what to expect when my kids want my attention I braced myself for..."
 ---
 
+<div class="glass row" markdown="1">
 This past November our family was in the car when our son Josh called to me from the back seat. Never knowing what to expect when my kids want my attention I braced myself for the upcoming "I'm hungry", or "are we there yet" complaint. What I got was completely unexpected and it left my wife and I in tears:
 
 > "Dad, I want to give up my birthday so other kids can have clean water"
@@ -18,9 +20,13 @@ We've been teaching him about world issues from a young age
 Young children, blessed by their youth, often times don't understand why they can't have everything they ever wanted. Sometimes they want something else for dinner, or perhaps they'd rather have juice when all we have is water, or maybe they complain about cleaning up their toys, or they complain about helping do dishes. Rather than give our children the usual "kids in Africa are dying to have food like that, so eat it" speech; we take them to the computer.
 
 Thanks to the wonders of the world wide web we've been able to show our kids videos like this one:
+</div>
 
-<iframe src="//player.vimeo.com/video/81056976" width="960" height="539" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<div class="glass row" markdown="1">
+<iframe src="//player.vimeo.com/video/81056976" width="100%" height="545" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+</div>
 
+<div class="glass row" markdown="1">
 Josh started asking questions
 -----------------------------
 
@@ -46,3 +52,5 @@ Join us
 Today we're not asking anyone to give up their birthday with Josh. We are simply asking that you help us make a difference in the life of someone who needs it. Diseases that seem so small to us like diarrhea or simple dehydration are life threating issues for someone who does not have access to clean water. When the water you drink is the same thing that's making you sick, it surely can't help you get better. Nearly a billion people on our planet are living without access to clean water. Lets change the world together:
 
 <a class="butn spaced" href="https://my.charitywater.org/joshs-birthday-water-campaign" target="_blank">Give Today</a>
+<br/><br/>
+</div>
