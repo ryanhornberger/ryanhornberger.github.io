@@ -3,9 +3,9 @@ layout: 2014-glass-post
 title: We raised $1895 for Charity:Water! - Ryan Hornberger
 heading: We raised $1895 for Charity:Water!
 subtitle: Thanks for making Josh's 6th birthday wish come true
-bgimg: /a/images/2014-08-19-charity-water-bg.jpg
-category: articles
+bgimg: /a/images/2014-08-19-rwanda2.jpg
 permalink: /articles/2014/we-raised-1895-for-charity-water
+category: articles
 excerpt: This year our son Josh inspired our entire family to give up our birthdays for Charity:Water. We asked for your help and you delivered in such a big way. We raised $1895!
 ---
 
