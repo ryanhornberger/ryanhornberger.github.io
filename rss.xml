@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0"
+  xmlns:content="http://purl.org/rss/1.0/modules/content/"
+  xmlns:dc="http://purl.org/dc/elements/1.1/"
+  xmlns:itunes="http://www.itunes.com/dtds/podcast-1.0.dtd"
+  xmlns:trackback="http://madskills.com/public/xml/rss/module/trackback/">
+  <channel>
+    <title>www.RyanHornberger.com</title>
+    <link>http://www.ryanhornberger.com</link>
+    <description>RSS feed for www.RyanHornberger.com</description>
+    <copyright>RyanHornberger.com 2014</copyright>
+    <pubDate>Tue, 19 Aug 2014 00:00:00 -0600</pubDate>
+    <item>
+      <title>We raised $1895 for Charity:Water! - Ryan Hornberger</title>
+      <link>http://www.ryanhornberger.com/articles/2014/we-raised-1895-for-charity-water</link>
+      <description>This year our son Josh inspired our entire family to give up our birthdays for Charity:Water. We asked for your help and you delivered in such a big way. We raised $1895!</description>
+      <pubDate>Tue, 19 Aug 2014 00:00:00 -0600</pubDate>
+      <guid>http://www.ryanhornberger.com/articles/2014/we-raised-1895-for-charity-water</guid>
+      <dc:date>2014-08-19T00:00:00-06:00</dc:date>
+    </item>
+    <item>
+      <title>Why we chose Charity:Water - Ryan Hornberger</title>
+      <link>http://www.ryanhornberger.com/articles/2014/why-we-chose-charity-water</link>
+      <description>The number one reason why people say they won't donate when we talk to them about our campaign is that they can't trust that their money will be used in a trustworthy manner. That very concern is one of the reasons we love Charity:Water so much.</description>
+      <pubDate>Wed, 16 Jul 2014 00:00:00 -0600</pubDate>
+      <guid>http://www.ryanhornberger.com/articles/2014/why-we-chose-charity-water</guid>
+      <dc:date>2014-07-16T00:00:00-06:00</dc:date>
+    </item>
+    <item>
+      <title>&quot;Dad, I want to give up my birthday so other kids can have clean water&quot; - Ryan Hornberger</title>
+      <link>http://www.ryanhornberger.com/articles/2014/why-our-son-gave-his-birthday-to-charity-water</link>
+      <description>This past November our family was in the car when our son Josh called to me from the back seat. Never knowing what to expect when my kids want my attention I braced myself for...</description>
+      <pubDate>Tue, 03 Jun 2014 00:00:00 -0600</pubDate>
+      <guid>http://www.ryanhornberger.com/articles/2014/why-our-son-gave-his-birthday-to-charity-water</guid>
+      <dc:date>2014-06-03T00:00:00-06:00</dc:date>
+    </item>
+    <dc:date>2014-08-19T00:00:00-06:00</dc:date>
+  </channel>
+</rss>
