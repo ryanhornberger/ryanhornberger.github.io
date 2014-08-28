@@ -1,0 +1,16 @@
+---
+layout: 2014-glass
+---
+
+<section class="post">
+	<div class="glass">
+		<h1 class="title"> {{ page.heading }} </h1>
+		{% if page.subtitle %}
+			<p class="subtitle" style="padding-top: 0px;"> {{ page.subtitle }} </p>
+		{% endif %}
+	</div>
+
+	<div>
+		{{content}}
+	</div>
+</section>

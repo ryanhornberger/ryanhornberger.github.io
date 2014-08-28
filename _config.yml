@@ -1,5 +1,7 @@
 #Jekyll
 name: www.RyanHornberger.com
+url: http://www.ryanhornberger.com
+copyright: RyanHornberger.com 2014
 source: src
 destination: dist
 permalink: /:categories/:year/:title/
@@ -25,3 +27,9 @@ kramdown:
 
 sass:
   sass_dir: a
+
+sitemap:
+    filename: "/sitemap.xml"
+    exclude:
+      - "/research"
+      - "/a"

@@ -1,9 +1,9 @@
 ---
 ---
-@import "modules/bourbon_scss/bourbon";
-@import "modules/xerio_scss/sticky-footer";
-@import "modules/jquery_fancybox/jquery.fancybox.css";
-@import "modules/font-awesome/font-awesome";
+@import "modules/bourbon/dist/bourbon";
+@import "modules/x_ryanhornberger/sticky-footer";
+@import "modules/font-awesome/scss/font-awesome";
+@import "modules/x_jquery_fancybox/jquery.fancybox.css";
 
 // -- FONTS -- //
 	@import url(http://fonts.googleapis.com/css?family=Noto+Sans:200,300,400,600,700,900,200italic,300italic,400italic,600italic,700italic,900italic);

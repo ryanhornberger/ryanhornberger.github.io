@@ -1,0 +1,159 @@
+---
+---
+@import "modules/bourbon/dist/bourbon";
+@import "modules/x_ryanhornberger/sticky-footer";
+
+// -- FONT AWESOME -- //
+	$fa-font-path: "/a/modules/font-awesome/fonts";
+	@import "modules/font-awesome/scss/font-awesome";
+
+// -- NEAT -- //
+	$border-box-sizing: true;
+	$max-width: em(970);
+	$visual-grid: false;
+
+	@import "modules/neat/app/assets/stylesheets/neat";
+	
+// -- COLORS -- //
+	$white: rgb(255, 255, 255);
+	$lightGray: rgb(222, 222, 222);
+	$darkGray: rgb(34, 32, 32);
+	$glass: rgba(255, 255, 255, 0.8);
+	$shadow: rgba(0, 0, 0, .5);
+
+// -- VARIABLES -- //
+	$push: 44px;
+
+// -- RESET -- //
+	* { margin: 0px; padding: 0px; }	
+
+// -- DEFAULTS -- //
+	body {
+		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+		font-size: 16px;
+		
+		background-color: $lightGray;
+	}
+
+	.page-max {
+		@include outer-container;
+	}
+
+	.gutters {
+		padding-left: 10px;
+		padding-right: 10px;
+	}
+
+	.row {
+		@include row();
+		margin-top: $push;
+	}
+
+	.glass {
+		background-color: $glass;
+		box-shadow: 0 2px 5px $shadow;
+	}
+
+	h1 {
+		font-size: 1.7em;
+		font-weight: normal;
+		padding: 10px;
+	}
+
+	h2 {
+		font-size: 1.5em;
+		font-weight: normal;
+		padding: 15px 10px 0px;
+	}
+
+	ul { 
+		list-style-position: inside;
+		padding: 10px 20px; 
+	}
+
+	p { padding: 10px; }
+	a { text-decoration: none; color: $darkGray; }
+	a:hover { text-decoration: none; }
+	a.underline { text-decoration: underline; }
+	a.hover:hover { text-decoration: underline; }
+
+// -- CONTENT -- //
+
+	header {
+		p {
+			color: $lightGray;
+			font-size: 1.5em;
+			background-color: $darkGray;
+		}
+	}
+
+	@include sticky-footer(550px, "#foot-wrap", "#foot-push", "#footer");
+	#foot-wrap {
+		padding: 1px 0px 44px;
+	}
+	footer {
+		color: $lightGray;
+		background-color: $darkGray;
+		padding-top: $push;
+		padding-bottom: $push;
+
+		h2 {
+			font-size: 1.3em;
+			padding: 0px;
+		}
+
+		ul {
+			list-style-type: none;
+
+			li {
+				margin-top: 10px;
+			}
+		}
+
+		.divided {
+			border-top: 1px solid $lightGray;
+			padding-top: 10px;
+			margin-top: 20px;
+		}
+
+		.darkGray {
+			color: $darkGray;
+		}
+
+		a { text-decoration: none; color: $lightGray; }
+	}
+
+	a.butn {
+		color: $white;
+		background-color: rgb(11, 194, 189);
+		border-radius: 5px;
+		padding: 10px;
+		box-shadow: 0px;
+	}
+
+	.block-3-9 {
+		@include row();
+
+		@include media(max-width 480px) {
+			margin-top: 0px;
+		}
+		margin-top: $push;
+
+		.b3 {
+			@include media(max-width 700px) {
+				@include span-columns(12);
+				margin-top: $push;
+			}
+
+			@include span-columns(3);
+		}
+
+		.b9 {
+			@include media(max-width 700px) {
+				@include span-columns(12);
+				margin-top: $push;
+			}
+
+			@include span-columns(9);
+		}
+	}
