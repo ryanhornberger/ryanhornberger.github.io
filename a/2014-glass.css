@@ -1742,14 +1742,14 @@ html, body {
   min-height: 100%;
   height: auto !important;
   height: 100%;
-  margin-bottom: -550px; }
+  margin-bottom: -600px; }
   #foot-wrap #foot-push {
-    height: 550px; }
+    height: 600px; }
 
 #footer {
   clear: both;
   position: relative;
-  height: 550px; }
+  height: 600px; }
 
 #foot-wrap {
   padding: 1px 0px 44px; }
