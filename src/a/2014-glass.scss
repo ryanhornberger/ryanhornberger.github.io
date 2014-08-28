@@ -87,7 +87,7 @@
 		}
 	}
 
-	@include sticky-footer(550px, "#foot-wrap", "#foot-push", "#footer");
+	@include sticky-footer(600px, "#foot-wrap", "#foot-push", "#footer");
 	#foot-wrap {
 		padding: 1px 0px 44px;
 	}
