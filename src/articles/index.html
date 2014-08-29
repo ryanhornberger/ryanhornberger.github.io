@@ -17,9 +17,12 @@ heading: Articles
 <div id="articles">
   {% for post in site.posts %}
     <a href="{{ post.url }}">
-    	<div class="text_block" style="padding:20px;">
+    	<div class="article_block">
     		<h2>{{ post.heading }}</h2>
     		{{ post.date | date: "%d %b %Y" }}
+        <p>
+        {{ post.excerpt }}
+        </p>
     	</div>
     </a>
   {% endfor %}

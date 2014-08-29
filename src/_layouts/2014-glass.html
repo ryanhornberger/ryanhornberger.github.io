@@ -14,13 +14,15 @@
 <body>
 
 <style>
-    body {
-        background-image: url('{{ page.bgimg }}');
-        background-repeat: no-repeat;
-        background-size: cover;
-        background-position: center top;
-        background-attachment: fixed;
-    }
+    {% if page.bgimg %}
+        body {
+            background-image: url('{{ page.bgimg }}');
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center top;
+            background-attachment: fixed;
+        }
+    {% endif %}
 </style>
 
 <div id="foot-wrap">

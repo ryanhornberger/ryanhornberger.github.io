@@ -70,5 +70,5 @@ Join us
 Our son Josh is giving up his birthday to raise funds for Charity:Water. He believes that he can make a difference and we believe that together we can make a huge difference. Be a part of our campaign.  
  
 <a class="butn spaced" href="https://my.charitywater.org/joshs-birthday-water-campaign" target="_blank">Give Today</a>
-<br/><br/>
+
 </div>
