@@ -37,7 +37,8 @@ namespace :app do
     Dir.mktmpdir do |tmp|
       system "mv dist/* #{tmp}"
       system 'git checkout master'
-      system 'rm -rf *'
+      system 'rm -rf ./*'
+      system 'rm -rf ./.sass-cache'
       system "mv #{tmp}/* ."
       message = "Site updated at #{Time.now.utc}"
       system 'git add .'
