@@ -8,7 +8,7 @@ permalink: /articles/2014/why-our-son-gave-his-birthday-to-charity-water
 excerpt: "This past November our family was in the car when our son Josh called to me from the back seat. Never knowing what to expect when my kids want my attention I braced myself for..."
 ---
 
-<div class="glass row" markdown="1">
+<div class="text_block" markdown="1">
 This past November our family was in the car when our son Josh called to me from the back seat. Never knowing what to expect when my kids want my attention I braced myself for the upcoming "I'm hungry", or "are we there yet" complaint. What I got was completely unexpected and it left my wife and I in tears:
 
 > "Dad, I want to give up my birthday so other kids can have clean water"
@@ -23,11 +23,9 @@ Young children, blessed by their youth, often times don't understand why they ca
 Thanks to the wonders of the world wide web we've been able to show our kids videos like this one:
 </div>
 
-<div class="glass row" markdown="1">
-<iframe src="//player.vimeo.com/video/81056976" width="100%" height="545" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-</div>
+<iframe class="video_block" src="//player.vimeo.com/video/81056976" width="100%" height="545" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-<div class="glass row" markdown="1">
+<div class="text_block" markdown="1">
 Josh started asking questions
 -----------------------------
 

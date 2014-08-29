@@ -16,8 +16,8 @@
 	
 // -- COLORS -- //
 	$white: rgb(255, 255, 255);
-	$lightGray: rgb(222, 222, 222);
-	$darkGray: rgb(34, 32, 32);
+	$light_gray: rgb(222, 222, 222);
+	$dark_gray: rgb(34, 32, 32);
 	$glass: rgba(255, 255, 255, 0.8);
 	$shadow: rgba(0, 0, 0, .5);
 
@@ -26,32 +26,10 @@
 
 // -- RESET -- //
 	* { margin: 0px; padding: 0px; }	
-
-// -- DEFAULTS -- //
 	body {
 		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-		font-size: 16px;
-		
-		background-color: $lightGray;
-	}
-
-	.page-max {
-		@include outer-container;
-	}
-
-	.gutters {
-		padding-left: 10px;
-		padding-right: 10px;
-	}
-
-	.row {
-		@include row();
-		margin-top: $push;
-	}
-
-	.glass {
-		background-color: $glass;
-		box-shadow: 0 2px 5px $shadow;
+		font-size: 16px;		
+		background-color: $light_gray;
 	}
 
 	h1 {
@@ -66,24 +44,87 @@
 		padding: 15px 10px 0px;
 	}
 
-	ul { 
-		list-style-position: inside;
-		padding: 10px 20px; 
-	}
-
 	p { padding: 10px; }
-	a { text-decoration: none; color: $darkGray; }
+	a { text-decoration: none; color: $dark_gray; }
 	a:hover { text-decoration: none; }
 	a.underline { text-decoration: underline; }
 	a.hover:hover { text-decoration: underline; }
 
-// -- CONTENT -- //
+// -- EXTENDS -- //
+
+	%gutters {
+		padding-left: 10px;
+		padding-right: 10px;			
+	}
+
+	%glass {
+		background-color: $glass;
+		box-shadow: 0 2px 5px $shadow;
+	}
+
+	%block_row {
+		@include row();
+		margin-top: $push;
+	}
+
+// -- SECTIONS -- //
 
 	header {
-		p {
-			color: $lightGray;
-			font-size: 1.5em;
-			background-color: $darkGray;
+		@extend %gutters;
+
+		.head_block {
+			@include outer-container;
+			@extend %glass;
+			@extend %block_row;
+
+			p {
+				color: $light_gray;
+				font-size: 1.5em;
+				background-color: $dark_gray;
+			}
+		}
+	}
+
+	section#content {
+		@extend %gutters;
+	}
+
+	footer {
+		@extend %gutters;
+
+		background-color: $dark_gray;
+		padding-top: $push;
+		padding-bottom: $push;
+
+		.foot_block {
+			@include outer-container;
+
+			color: $light_gray;
+			
+			h2 {
+				font-size: 1.3em;
+				padding: 0px;
+			}
+
+			ul {
+				list-style-type: none;
+
+				li {
+					margin-top: 10px;
+				}
+			}
+
+			.divided {
+				border-top: 1px solid $light_gray;
+				padding-top: 10px;
+				margin-top: 20px;
+			}
+
+			.darkGray {
+				color: $dark_gray;
+			}
+
+			a { text-decoration: none; color: $light_gray; }
 		}
 	}
 
@@ -91,55 +132,36 @@
 	#foot-wrap {
 		padding: 1px 0px 44px;
 	}
-	footer {
-		color: $lightGray;
-		background-color: $darkGray;
-		padding-top: $push;
-		padding-bottom: $push;
+	
+// -- CONTENT -- //
 
-		h2 {
-			font-size: 1.3em;
-			padding: 0px;
-		}
-
-		ul {
-			list-style-type: none;
-
-			li {
-				margin-top: 10px;
-			}
-		}
-
-		.divided {
-			border-top: 1px solid $lightGray;
-			padding-top: 10px;
-			margin-top: 20px;
-		}
-
-		.darkGray {
-			color: $darkGray;
-		}
-
-		a { text-decoration: none; color: $lightGray; }
-	}
-
-	a.butn {
-		color: $white;
-		background-color: rgb(11, 194, 189);
-		border-radius: 5px;
-		padding: 10px;
-		box-shadow: 0px;
-	}
-
-	.block-3-9 {
+	.title_block {
+		@include outer-container;
 		@include row();
+		@extend %glass;
+	}
 
-		@include media(max-width 480px) {
-			margin-top: 0px;
-		}
-		margin-top: $push;
+	.text_block {
+		@include outer-container;
+		@extend %block_row;
+		@extend %glass;
+	}
 
-		.b3 {
+	.video_block {
+		@include outer-container;
+		@extend %block_row;
+		@extend %glass;
+	}
+
+	.pic_txt_block {
+		@include outer-container;
+		@extend %block_row;
+
+		.pic {
+			@extend %glass;
+
+			padding: 5px;
+
 			@include media(max-width 700px) {
 				@include span-columns(12);
 				margin-top: $push;
@@ -148,7 +170,9 @@
 			@include span-columns(3);
 		}
 
-		.b9 {
+		.txt {
+			@extend %glass;
+
 			@include media(max-width 700px) {
 				@include span-columns(12);
 				margin-top: $push;
@@ -156,4 +180,19 @@
 
 			@include span-columns(9);
 		}
+	}
+
+	.metadata {
+		@include outer-container;
+		@extend %block_row;
+		@extend %glass;
+	}
+
+
+	a.butn {
+		color: $white;
+		background-color: rgb(11, 194, 189);
+		border-radius: 5px;
+		padding: 10px;
+		box-shadow: 0px;
 	}

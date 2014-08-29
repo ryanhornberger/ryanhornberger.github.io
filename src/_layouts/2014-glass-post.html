@@ -3,7 +3,10 @@ layout: 2014-glass
 ---
 
 <section class="post">
-	<div class="glass">
+	<!-- Permalink Location -->
+	<link rel="bookmark" href="{{ page.permalink }}" />
+	
+	<div class="title_block">
 		<h1 class="title"> {{ page.heading }} </h1>
 		{% if page.subtitle %}
 			<p class="subtitle" style="padding-top: 0px;"> {{ page.subtitle }} </p>
@@ -14,7 +17,7 @@ layout: 2014-glass
 		{{content}}
 	</div>
 
-	<div class="glass row">
+	<div class="metadata">
 		<p> 
 			{% if page.date %}
 				Date: {{ page.date | date: "%d %b %Y" }}
@@ -23,7 +26,6 @@ layout: 2014-glass
 			Author: Ryan Hornberger
 			<br/>
 			Permalink: <a href="{{ page.permalink }}">{{ page.permalink }}</a>
-		</p>
-		<link rel="bookmark" href="{{ page.permalink }}" />
+		</p>		
 	</div>
 </section>

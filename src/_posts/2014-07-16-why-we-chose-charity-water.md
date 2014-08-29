@@ -8,7 +8,7 @@ permalink: /articles/2014/why-we-chose-charity-water
 excerpt: "The number one reason why people say they won't donate when we talk to them about our campaign is that they can't trust that their money will be used in a trustworthy manner. That very concern is one of the reasons we love Charity:Water so much."
 ---
 
-<div class="glass row" markdown="1">
+<div class="text_block" markdown="1">
 The number one reason why people say they won't donate when we talk to them about our campaign is that they can't trust that their money will be used in a trustworthy manner. That very concern is one of the reasons we love Charity:Water so much. 100% of donations from people like you and me go straight to water projects and none of it is used to fund operational costs. We love Charity:Water because not only do they make that promise, but they also go out of their way to prove it. The work they do is changing the world, read on:
 
 Operation costs are privately funded
@@ -46,22 +46,18 @@ Charity:Water knows they are not capable of managing every project they build on
 When local organizations don't exist or have the resources Charity:Water needs, Charity:Water invests in making local organizations to do the work. Recently Charity:Water held a drive which resulted in placing two new Drilling Rigs in Ethiopia. The people that run those rigs will be locals and they are trained to get the job done right. <a href="http://www.charitywater.org/projects/partners/" target="_blank">Learn More...</a>
 </div>
 
-<div class="glass row" markdown="1">
-<iframe src="//player.vimeo.com/video/89373358" width="100%" height="545" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-</div>
+<iframe class="video_block" src="//player.vimeo.com/video/89373358" width="100%" height="545" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-<div class="glass row" markdown="1">
+<div class="text_block" markdown="1">
 Their heart is in the right place
 ---------------------------------
 
 Everything I've just shared explains why I find Charity:Water to be one of the most trusted charities on my very short list of favorites. However, what first drew me in was listening to their founder Scott Harris talk about why he started the company in the first place. His story is inspring and touching, you should check it out.
 </div>
 
-<div class="glass row" markdown="1">
-<iframe src="//player.vimeo.com/video/39301294" width="100%" height="545" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-</div>
+<iframe class="video_block" src="//player.vimeo.com/video/39301294" width="100%" height="545" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
-<div class="glass row" markdown="1">
+<div class="text_block" markdown="1">
 The work they do really matters
 -------------------------------
 
