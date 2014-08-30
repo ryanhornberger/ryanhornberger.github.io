@@ -31,5 +31,5 @@ sass:
 sitemap:
     filename: "/sitemap.xml"
     exclude:
-      - "/research"
-      - "/a"
+      - "/research/"
+      - "/a/"
