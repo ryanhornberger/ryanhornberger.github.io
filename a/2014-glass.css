@@ -1744,6 +1744,7 @@ footer {
       display: table;
       clear: both; }
     footer .foot_block h2 {
+      text-transform: uppercase;
       font-size: 1.3em;
       padding: 0px; }
     footer .foot_block ul {
