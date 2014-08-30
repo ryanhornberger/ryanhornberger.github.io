@@ -29,7 +29,10 @@
 	body {
 		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 		font-size: 16px;		
-		@include linear-gradient(to bottom, rgb(218, 185, 15), rgb(255,255,255), $fallback: $light_gray);		
+
+		background-repeat: no-repeat;
+        background-attachment: fixed;	
+		@include linear-gradient(to bottom, rgb(218, 185, 15), rgb(255,255,255), $fallback: rgb(218, 185, 15));		
 	}
 
 	h1 {
@@ -143,6 +146,10 @@
 		@include row();
 		@extend %glass;
 		padding: 16px;
+	
+		.top_nav {
+			float: right;
+		}
 	}
 
 	.text_block {
@@ -152,11 +159,15 @@
 		padding: 9px 16px;
 
 		p {
-			margin: 0.6em 0em;
+			margin: 1em 0em;
 		}
 
 		h2 {
-			margin: 1.2em 0em 0.1em;
+			margin: 1.2em 0em;
+		}
+
+		ul {
+			padding-left: 40px;
 		}
 	}
 
@@ -198,7 +209,7 @@
 			@extend %glass;
 			padding: 9px 16px;
 			p {
-				margin: 0.6em 0em;
+				margin: 1em 0em;
 			}
 
 			@include media(max-width 700px) {
