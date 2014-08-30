@@ -6,6 +6,7 @@ category: articles
 bgimg: /a/images/2014-06-11-charity-water-splash.jpg
 permalink: /articles/2014/why-we-chose-charity-water
 excerpt: "The number one reason why people say they won't donate when we talk to them about our campaign is that they can't trust that their money will be used in a trustworthy manner. That very concern is one of the reasons we love Charity:Water so much."
+description: "The number one reason why people say they won't donate when we talk to them about our campaign is that they can't trust that their money will be used in a trustworthy manner. That very concern is one of the reasons we love Charity:Water so much."
 ---
 
 <div class="text_block" markdown="1">

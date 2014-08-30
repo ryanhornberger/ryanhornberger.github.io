@@ -7,6 +7,7 @@ bgimg: /a/images/2014-08-19-rwanda2.jpg
 permalink: /articles/2014/we-raised-1895-for-charity-water
 category: articles
 excerpt: This year our son Josh inspired our entire family to give up our birthdays for Charity:Water. We asked for your help and you delivered in such a big way. We raised $1895!
+description: This year our son Josh inspired our entire family to give up our birthdays for Charity:Water. We asked for your help and you delivered in such a big way. We raised $1895!
 ---
 
 <style>

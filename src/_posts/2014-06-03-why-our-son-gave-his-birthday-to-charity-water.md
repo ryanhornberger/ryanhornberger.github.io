@@ -6,6 +6,7 @@ category: articles
 bgimg: /a/images/2014-05-30-josh-sister-rain.jpg
 permalink: /articles/2014/why-our-son-gave-his-birthday-to-charity-water
 excerpt: "This past November our family was in the car when our son Josh called to me from the back seat. Never knowing what to expect when my kids want my attention I braced myself for..."
+description: "This past November our family was in the car when our son Josh called to me from the back seat. Never knowing what to expect when my kids want my attention I braced myself for..."
 ---
 
 <div class="text_block" markdown="1">
