@@ -1672,7 +1672,9 @@
 body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 16px;
-  background-color: #dedede;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: #dab90f;
   background-image: -webkit-linear-gradient(top, #dab90f, white);
   background-image: linear-gradient(to bottom,#dab90f, white); }
 
@@ -1795,6 +1797,8 @@ html, body {
     content: "";
     display: table;
     clear: both; }
+  .title_block .top_nav {
+    float: right; }
 
 .text_block {
   max-width: 60.625em;
@@ -1806,9 +1810,11 @@ html, body {
     display: table;
     clear: both; }
   .text_block p {
-    margin: 0.6em 0em; }
+    margin: 1em 0em; }
   .text_block h2 {
-    margin: 1.2em 0em 0.1em; }
+    margin: 1.2em 0em; }
+  .text_block ul {
+    padding-left: 40px; }
 
 .article_block {
   max-width: 60.625em;
@@ -1863,7 +1869,7 @@ html, body {
     margin-right: 2.35765%;
     width: 74.41059%; }
     .pic_txt_block .txt p {
-      margin: 0.6em 0em; }
+      margin: 1em 0em; }
     @media screen and (max-width: 700px) {
       .pic_txt_block .txt {
         float: left;
