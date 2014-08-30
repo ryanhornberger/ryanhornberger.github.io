@@ -6,7 +6,7 @@
 
     <!-- TODO|Viewport Settings -->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="" />
+    <meta name="description" content="This year our son Josh inspired our entire family to give up our birthdays for Charity:Water. We asked for your help and you delivered in such a big way. We raised $1895!" />
     
     <link rel="stylesheet" href="/a/2014-glass.css">
     <script async="" src="//www.google-analytics.com/analytics.js"></script>
@@ -101,15 +101,17 @@
 
 <footer id="footer">
     <div class="foot_block">
-        <a href="/"><h2>Hi, I'm Ryan Hornberger</h2></a>
-        <img id="profile-pic" src="/a/images/profile.png" alt="Ryan Hornberger" style="width:150px; margin:15px 0px 5px;"/>
-        <p style="max-width:560px; padding-left: 0px;">
-            I'm currently working with
-                <a href="https://scan.me" class="white underline" target="_blank">Scan.me</a>
-            on
-                <a href="https://scan.me/scan-to-pay" class="white underline" target="_blank">Scan to Pay</a>.
-            Come check out how your customers can buy straight from your print ads.
-        </p>
+        <div itemscope itemtype="http://data-vocabulary.org/Person">
+            <a href="/"><h2>Hi, I'm <span itemprop="name">Ryan Hornberger</span></h2></a>
+            <img id="profile-pic" itemprop="photo" src="/a/images/profile.png" alt="Ryan Hornberger" style="width:150px; margin:15px 0px 5px;"/>
+            <p style="max-width:560px; padding-left: 0px;">
+                I'm currently working with
+                    <span itemprop="affiliation"><a href="https://scan.me" class="white underline" target="_blank">Scan.me</a></span>
+                as <span itemprop="title"> Vice President</span> of
+                    <a href="https://scan.me/scan-to-pay" class="white underline" target="_blank">Scan to Pay</a>.
+                Come check out how your customers can buy straight from your print ads.
+            </p>
+        </div>
 
         <div class="pushed divided">
             <h2> FOLLOW ME </h2>
@@ -136,13 +138,15 @@
         </div>
 
         <div class="pushed divided">
-            <ul>
-                <!--
-                <li><a href="/articles" class="white"> ARTICLES </a></li>
-                -->
-                <li><a href="/articles" class="white"> ARTICLES </a></li>     
-                <li><a href="https://scan.me/bx4sgr" target="_blank" class="white"> PAY ME </a></li>         
-            </ul>
+            <nav>
+                <ul>
+                    <!--
+                    <li><a href="/articles" class="white"> ARTICLES </a></li>
+                    -->
+                    <li><h2><a href="/articles" class="white"> ARTICLES </a></h2></li>     
+                    <li><h2><a href="https://scan.me/bx4sgr" target="_blank" class="white"> PAY ME </a></h2></li>         
+                </ul>
+            </nav>
         </div>
     </div>
 </footer>
