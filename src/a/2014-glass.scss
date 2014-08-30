@@ -98,7 +98,7 @@
 		@extend %gutters;
 
 		background-color: $dark_gray;
-		padding-top: $push;
+		padding-top: $push - 10;
 		padding-bottom: $push;
 
 		.foot_block {
@@ -110,14 +110,11 @@
 				text-transform: uppercase;
 				font-size: 1.3em;
 				padding: 0px;
+				margin: 10px 0px;
 			}
 
 			ul {
 				list-style-type: none;
-
-				li {
-					margin-top: 10px;
-				}
 			}
 
 			.divided {
@@ -146,8 +143,16 @@
 		@include row();
 		@extend %glass;
 		padding: 16px;
-	
-		.top_nav {
+	}
+
+	.top_nav {
+		@include outer-container;
+		@include row();
+		
+		.items {
+			@extend %glass;
+			padding: 10px;
+			margin-right: $push;
 			float: right;
 		}
 	}
