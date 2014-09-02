@@ -1672,11 +1672,7 @@
 body {
   font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 16px;
-  background-repeat: no-repeat;
-  background-attachment: fixed;
-  background-color: #dab90f;
-  background-image: -webkit-linear-gradient(top, #dab90f, white);
-  background-image: linear-gradient(to bottom,#dab90f, white); }
+  background-color: #dab90f; }
 
 h1 {
   font-size: 1.7em;
@@ -1717,6 +1713,20 @@ header .head_block, .text_block, .article_block, .video_block, .pic_txt_block, .
     content: "";
     display: table;
     clear: both; }
+
+#background-image {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  background-repeat: no-repeat;
+  background-position: 50% 0;
+  background-size: cover;
+  background-color: #dab90f;
+  background-image: -webkit-linear-gradient(top, #dab90f, white);
+  background-image: linear-gradient(to bottom,#dab90f, white); }
 
 header .head_block {
   max-width: 56.25em;
