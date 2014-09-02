@@ -20,7 +20,8 @@
 	$dark_gray: rgb(34, 32, 32);
 	$glass: rgba(255, 255, 255, 0.9);
 	$shadow: rgba(0, 0, 0, .5);
-
+	$gold: rgb(218, 185, 15);
+	
 // -- VARIABLES -- //
 	$push: 44px;
 
@@ -28,11 +29,8 @@
 	* { margin: 0px; padding: 0px; }	
 	body {
 		font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
-		font-size: 16px;		
-
-		background-repeat: no-repeat;
-        background-attachment: fixed;	
-		@include linear-gradient(to bottom, rgb(218, 185, 15), rgb(255,255,255), $fallback: rgb(218, 185, 15));		
+		font-size: 16px;	
+		background-color: $gold;		
 	}
 
 	h1 {
@@ -69,6 +67,22 @@
 	%block_row {
 		@include row();
 		margin-top: $push;
+	}
+
+// -- BACKGROUND --//
+
+	#background-image {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        z-index: -1;
+
+		background-repeat: no-repeat;
+		background-position: 50% 0;
+		background-size: cover;
+		@include linear-gradient(to bottom, $gold, $white, $fallback: $gold);	
 	}
 
 // -- SECTIONS -- //

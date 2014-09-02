@@ -4,8 +4,7 @@
     <meta charset="utf-8">
     <title>{{ page.title }}</title>
 
-    <!-- TODO|Viewport Settings -->
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
     <meta name="description" content="{{ page.description }}" />
     
     <link rel="stylesheet" href="/a/2014-glass.css">
@@ -15,14 +14,13 @@
 
 <style>
     {% if page.bgimg %}
-        body {
+        #background-image {
             background-image: url('{{ page.bgimg }}');
-            background-size: cover;
-            background-position: center top;
         }
     {% endif %}
 </style>
 
+<div id="background-image"></div>
 <div id="foot-wrap">
     <header>
         <div class="head_block">
