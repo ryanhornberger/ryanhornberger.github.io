@@ -43,4 +43,4 @@ We cannot wait to see where Charity:Water applies these funds. As soon as we sta
 If you missed our campaign you can still help save so many lives. Charity:Water is currently running their September Campaign. Check out the video!
 </div>
 
-<iframe class="video_block" id="cw-september-video" width="100%" height="545px" src="//player.vimeo.com/video/100465809?color=ffffff" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe class="video_block" id="cw-september-video" width="100%" height="506px" src="//player.vimeo.com/video/100465809?color=ffffff" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>

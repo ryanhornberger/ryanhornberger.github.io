@@ -24,7 +24,7 @@ Young children, blessed by their youth, often times don't understand why they ca
 Thanks to the wonders of the world wide web we've been able to show our kids videos like this one:
 </div>
 
-<iframe class="video_block" src="//player.vimeo.com/video/81056976" width="100%" height="545" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
+<iframe class="video_block" src="//player.vimeo.com/video/81056976" width="100%" height="506" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
 
 <div class="text_block" markdown="1">
 Josh started asking questions
