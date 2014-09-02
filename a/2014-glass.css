@@ -1719,7 +1719,7 @@ header .head_block, .text_block, .article_block, .video_block, .pic_txt_block, .
     clear: both; }
 
 header .head_block {
-  max-width: 60.625em;
+  max-width: 56.25em;
   margin-left: auto;
   margin-right: auto; }
   header .head_block:after {
@@ -1737,7 +1737,7 @@ footer {
   padding-top: 34px;
   padding-bottom: 44px; }
   footer .foot_block {
-    max-width: 60.625em;
+    max-width: 56.25em;
     margin-left: auto;
     margin-right: auto;
     color: #dedede; }
@@ -1783,7 +1783,7 @@ html, body {
   padding: 1px 0px 44px; }
 
 .title_block {
-  max-width: 60.625em;
+  max-width: 56.25em;
   margin-left: auto;
   margin-right: auto;
   display: block;
@@ -1798,7 +1798,7 @@ html, body {
     clear: both; }
 
 .top_nav {
-  max-width: 60.625em;
+  max-width: 56.25em;
   margin-left: auto;
   margin-right: auto;
   display: block; }
@@ -1816,7 +1816,7 @@ html, body {
     float: right; }
 
 .text_block {
-  max-width: 60.625em;
+  max-width: 56.25em;
   margin-left: auto;
   margin-right: auto;
   padding: 9px 16px; }
@@ -1832,7 +1832,7 @@ html, body {
     padding-left: 40px; }
 
 .article_block {
-  max-width: 60.625em;
+  max-width: 56.25em;
   margin-left: auto;
   margin-right: auto;
   padding: 20px; }
@@ -1844,7 +1844,7 @@ html, body {
     margin-top: 15px; }
 
 .video_block {
-  max-width: 60.625em;
+  max-width: 56.25em;
   margin-left: auto;
   margin-right: auto; }
   .video_block:after {
@@ -1853,7 +1853,7 @@ html, body {
     clear: both; }
 
 .pic_txt_block {
-  max-width: 60.625em;
+  max-width: 56.25em;
   margin-left: auto;
   margin-right: auto; }
   .pic_txt_block:after {
@@ -1898,7 +1898,7 @@ html, body {
       margin-right: 0; }
 
 .metadata {
-  max-width: 60.625em;
+  max-width: 56.25em;
   margin-left: auto;
   margin-right: auto;
   padding: 10px;
