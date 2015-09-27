@@ -1,0 +1,60 @@
+{% extends "templates/base.nunj" %}
+
+{% block head %}
+	<!-- Header content can go here -->
+	<link rel="stylesheet" href="./index.css" />
+{% endblock %}
+
+
+{% block body %}
+	
+	<div class="card">
+		<h1> Page not found </h1>
+		<a href="/"><p>go back to Home</p></a>
+	</div>
+
+	<div class="card">
+		<h2>This page is rendered on every file-not-found path</h2>
+		<p> 
+			The app.js file catches all unhandled requests and returns this file using the following code:
+		</p>
+
+		<code>
+			//App 404 handling
+			<br/>
+			this.router.use(function(req, res, next){
+			<br/>
+			&nbsp;&nbsp;&nbsp;&nbsp;res.status(404).send(fse.readFileSync(path.join(__dirname, '..', '_compiled', 'precompiled','404.html'), 'utf8'));
+			<br/> 
+			});	
+		</code>
+	</div>
+
+	<div class="card">
+		<h2>This is a precompiled Nunjucks html template</h2>
+		<p> 
+			This file is a precompiled Nunjucks html template. The template itself is located at:
+		</p>
+
+		<code>./app/precompiled/404.nunj</code>
+
+		<p> 
+			The compiled html is located at:
+		</p>
+
+		<code>./_compiled/precompiled/404.html</code>
+
+		<p> 
+			The template extends a base template. The extend command looks like this:
+		</p>
+
+		<code>extends "templates/base.nunj"</code>
+
+		<p> 
+			And the search path finds that file here:
+		</p>
+
+		<code>./app/source/templates/base.nunj</code>
+	</div>
+
+{% endblock %}

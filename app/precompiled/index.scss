@@ -1,0 +1,15 @@
+@import 'templates/base.scss';
+
+.card {
+	background-color: $epicenterWhite;
+	max-width: 900px;
+	margin: 20px auto;
+	padding: 20px;
+}
+
+.card code {
+	background-color: $epicenterBlueGrey;
+	padding: 10px;
+	margin: 20px 20px;
+	display: block;
+}

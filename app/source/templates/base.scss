@@ -1,0 +1,16 @@
+$epicenterBlack: #000000;
+$epicenterWhite: #ffffff;
+$epicenterGrey: #dddddd;
+$epicenterBlueGrey: #ddddff;
+
+* {
+	box-sizing: border-box;
+}
+
+body, .body {
+	box-sizing: border-box;
+	margin: 0px;
+	padding: 0px;
+	font-family: 'HelveticaNeue-Thin', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+	background-color: $epicenterGrey;
+}

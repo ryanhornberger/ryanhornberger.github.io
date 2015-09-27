@@ -1,0 +1,31 @@
+{
+  "engines": {
+    "node": "4.1"
+  },
+  "scripts": {
+    "webpack": "node --harmony ./node_modules/webpack/bin/webpack.js",
+    "start": "node --harmony ./_compiled/server.js",
+    "watch": "node --harmony ./webpack.watch.service.js"
+  },
+  "dependencies": {
+    "babel-core": "^5.6.17",
+    "babel-loader": "^5.3.1",
+    "epicenter": "^0.5.0",
+    "exports-loader": "^0.6.2",
+    "express": "^4.13.1",
+    "file": "^0.2.2",
+    "file-loader": "^0.8.4",
+    "fs-extra": "^0.22.1",
+    "loader-utils": "^0.2.10",
+    "node-sass": "^3.2.0",
+    "nunjucks": "^2.0.0",
+    "nunjucks-html-loader": "^1.0.0",
+    "nunjucks-loader": "^2.0.3",
+    "path": "^0.11.14",
+    "sass": "^0.5.0",
+    "sass-loader": "^2.0.0",
+    "source-map-support": "^0.3.2",
+    "webpack": "^1.10.1",
+    "webpack-server-watcher": "ryanhornberger/webpack-server-watcher#7134ba6aba29310325582e024c99f3d2e2ba9a7d"
+  }
+}

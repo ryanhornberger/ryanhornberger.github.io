@@ -1,0 +1,13 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Default Layout - Epicenter</title>
+		{% block head %}
+		{% endblock %}
+	</head>
+	<body>
+		{% block body %}
+		{% endblock %}
+	</body>
+</html>
