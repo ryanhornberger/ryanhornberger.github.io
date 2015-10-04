@@ -1,16 +1,18 @@
-$epicenterBlack: #000000;
-$epicenterWhite: #ffffff;
-$epicenterGrey: #dddddd;
-$epicenterBlueGrey: #ddddff;
 
-* {
-	box-sizing: border-box;
-}
+// Border Box
+	
+	/* apply a natural box layout model to all elements, but allowing components to change */
+	html {
+	  box-sizing: border-box;
+	}
+	*, *:before, *:after {
+	  box-sizing: inherit;
+	}
 
-body, .body {
-	box-sizing: border-box;
-	margin: 0px;
-	padding: 0px;
-	font-family: 'HelveticaNeue-Thin', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
-	background-color: $epicenterGrey;
-}
+// TODO Normalize
+
+	body {
+		margin: 0px;
+		padding: 0px;
+		font-family: 'HelveticaNeue-Thin', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', Helvetica, Arial, 'Lucida Grande', sans-serif;
+	}

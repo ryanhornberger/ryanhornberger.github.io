@@ -1,0 +1,57 @@
+@import 'templates/base.scss';
+
+// Hamburger Animation
+	@keyframes hamburgerin {
+	    from {background-color: red;}
+	    to {background-color: yellow;}
+	}
+
+	#colorcard .hamburger {
+		animation-name: hamburgerin;
+	    animation-duration: 2s;
+	    animation-delay: 1s;
+	    animation-iteration-count: 3;
+	    animation-direction: alternate;
+	    animation-timing-function: ease-out;
+	    animation-fill-mode: forwards;
+	}
+
+	#transitioncard .hamburger:hover {
+		transform: rotate(90deg);
+		transition: width 0.2s, height 0.2s, transform 0.2s;
+		
+		.patty {
+			background-color: red;
+			transition: background-color 0.2s;
+		}
+	}
+
+	#transitioncard .hamburger {
+		transition: width 0.1s, height 0.1s, transform 0.1s;
+
+		.patty {
+			transition: background-color 0.1s;
+		}
+	}
+
+// Note the performance hack here: http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css
+
+// Hamburger Defaults
+
+	.hamburger {
+		width: 200px;
+		height: 200px;
+		
+		margin: 20px;
+		overflow: hidden;
+		border-radius: 15%;
+		border: 10px solid #333333;
+
+		.patty {
+			width: 70%;
+			height: 8%;
+			margin: 19% auto;
+			border-radius: 10px;
+			background-color: #333333;
+		}
+	}

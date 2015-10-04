@@ -1,0 +1,39 @@
+{% extends "templates/base.nunj" %}
+
+{% block title %}
+	Animations - Ryan Hornberger
+{% endblock %}
+
+{% block preload %}	
+	<link rel="stylesheet" href="./index.css" />
+{% endblock %}
+
+{% block body %}
+	
+	<div id="colorcard" class="card">
+		<h1>Animations</h1>
+	</div>
+
+	<div id="colorcard" class="card">
+		<h2> Color Hamburger </h2>
+		<div class="hamburger">
+			<div class="patty"></div>
+			<div class="patty"></div>
+			<div class="patty"></div>
+		</div>
+	</div>
+
+	<div id="transitioncard" class="card">
+		<h2> Transition Hamburger </h2>
+		<div class="hamburger">
+			<div class="patty"></div>
+			<div class="patty"></div>
+			<div class="patty"></div>
+		</div>
+	</div>
+
+{% endblock %}
+
+{% block postload %}
+	<script type="text/javascript" src="./index.js"></script>
+{% endblock %}

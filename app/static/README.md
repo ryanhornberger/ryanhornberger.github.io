@@ -1,1 +1,0 @@
-Static files can be dropped here
