@@ -11,8 +11,10 @@ class Routes extends React.Component
 	
 	render()
 	{
+		var history = this.props ? this.props.history : null;
+
 		return (
-			<Router>
+			<Router history={history}>
                 
                 <Route path="/">
                     <IndexRoute component={HomePage} />
