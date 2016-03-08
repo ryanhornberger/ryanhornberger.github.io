@@ -14,8 +14,6 @@ var routes = new Routes().render();
 module.exports = function render(locals, callback) {
 	var url = locals.path;
 
-	console.log('working on a server side rendering:', url);
-
 	var result = null;
 
 	match({ routes, location: url }, function(error, redirectLocation, renderProps)
