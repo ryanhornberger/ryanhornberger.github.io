@@ -14,6 +14,27 @@ class App
         this.router.use(express.static(path.join('_compiled', 'public'),{
             redirect: false
         }));
+
+        /*
+        // this is where you can bind the react application for server side render
+        // it would look something like this:
+
+        import ServerRender from 'ServerRenderer'
+
+        // the the react application
+        this.router.use('*', function(req, res) 
+        {
+            ServerRenderer({
+                path: req.originalUrl
+            }, function(x, document) {
+                if (document) {
+                    res.status(200);
+                    res.type('html');
+                    res.send(document);
+                }
+            });
+        });
+        */
     }
 
 }
