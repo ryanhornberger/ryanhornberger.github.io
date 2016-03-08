@@ -11,36 +11,45 @@ import ServerHelmetWrapper from 'ServerHelmetWrapper';
 
 var routes = new Routes().render();
 
-module.exports = function render(locals, callback) {
-	var url = locals.path;
-
-	var result = null;
-
-	match({ routes, location: url }, function(error, redirectLocation, renderProps)
+class ServerRenderer
+{
+    constructor(trim)
     {
-    	if (renderProps) {
-    		var content = ReactDOMServer.renderToStaticMarkup(<RoutingContext 
-	            history={renderProps.history} 
-	            createElement={renderProps.createElement}
-	            location={renderProps.location}
-	            routes={renderProps.routes}
-	            params={renderProps.params}
-	            components={renderProps.components}
-	            />);
+        this.trim = trim;
+    }
 
-    		var head = Helmet.rewind();
+    render(url) 
+    {
+        var result = null;
 
-	        var pageHtml = ReactDOMServer.renderToStaticMarkup(new ServerHelmetWrapper({
-	            head: head,
-	            content: content
-	        }).render());
+        match({ routes, location: url.substring(this.trim) }, function(error, redirectLocation, renderProps)
+        {
+            if (renderProps) {
+                var content = ReactDOMServer.renderToStaticMarkup(<RoutingContext 
+                    history={renderProps.history} 
+                    createElement={renderProps.createElement}
+                    location={renderProps.location}
+                    routes={renderProps.routes}
+                    params={renderProps.params}
+                    components={renderProps.components}
+                    />);
 
-	        result = '<!DOCTYPE html>{{page}}'.replace('{{page}}', pageHtml);
-    	}
-    });
+                var head = Helmet.rewind();
 
-	callback(null, result);
+                var pageHtml = ReactDOMServer.renderToStaticMarkup(new ServerHelmetWrapper({
+                    head: head,
+                    content: content
+                }).render());
 
+                result = '<!DOCTYPE html>{{page}}'.replace('{{page}}', pageHtml);
+            }
+        });
+
+        return result;
+    }
+}
+
+module.exports = ServerRenderer;
 
 	/* this is how I did it before I tried precompiled
 
@@ -114,4 +123,3 @@ module.exports = function render(locals, callback) {
     res.type('html');
 	res.send(html);
     */
-};

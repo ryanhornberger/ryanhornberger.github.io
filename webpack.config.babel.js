@@ -36,7 +36,9 @@ var nodeModules = {};
 var compileTime = moment().utcOffset(0).format('YYYYMMDDThhmmssSSZZ');
 
 // Figure out which paths to precompile
-var paths = require('./source/PrecompilePaths.js');
+var paths = require('./source/PrecompilePaths.js').map(function(pathToFile){
+    return path.join('public', pathToFile); 
+});
 
 // Webpack Module
 module.exports = 
@@ -115,12 +117,12 @@ module.exports =
         
         entry: 
         {
-            'renderer': path.join(appPath, 'source', 'ServerRenderer')
+            'renderer': path.join(appPath, 'precompile.jsx')
         },
 
         output: 
         {
-            path: path.join(compiledPath, 'public'),
+            path: compiledPath,
             filename: '[name].js',
             libraryTarget: 'umd'
         },

@@ -24,9 +24,7 @@ class App
         // the the react application
         this.router.use('*', function(req, res) 
         {
-            ServerRenderer({
-                path: req.originalUrl
-            }, function(x, document) {
+            new ServerRenderer(0).render(req.originalUrl}, function(x, document) {
                 if (document) {
                     res.status(200);
                     res.type('html');
