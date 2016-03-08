@@ -7,7 +7,7 @@ import Helmet from 'react-helmet';
 import { match, RoutingContext } from 'react-router';
 import Routes from 'app/routes';
 
-import HelmetWrapper from 'app/helmet';
+import ServerHelmetWrapper from 'ServerHelmetWrapper';
 
 var routes = new Routes().render();
 
@@ -30,7 +30,7 @@ module.exports = function render(locals, callback) {
 
     		var head = Helmet.rewind();
 
-	        var pageHtml = ReactDOMServer.renderToStaticMarkup(new HelmetWrapper({
+	        var pageHtml = ReactDOMServer.renderToStaticMarkup(new ServerHelmetWrapper({
 	            head: head,
 	            content: content
 	        }).render());

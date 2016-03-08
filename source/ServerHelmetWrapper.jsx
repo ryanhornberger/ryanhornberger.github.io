@@ -8,7 +8,7 @@
 
 import React, { Component, PropTypes } from 'react';
 
-class ServerWrapper extends React.Component 
+class ServerHelmetWrapper extends React.Component 
 {
 	
 	render()
@@ -30,4 +30,4 @@ class ServerWrapper extends React.Component
 		
 }
 
-module.exports = ServerWrapper;
+module.exports = ServerHelmetWrapper;
