@@ -1,6 +1,6 @@
 @import 'templates/base.scss';
 
-// Hamburger Animation
+// Colorcard Animations
 	@keyframes hamburgerin {
 	    from {background-color: red;}
 	    to {background-color: yellow;}
@@ -16,6 +16,7 @@
 	    animation-fill-mode: forwards;
 	}
 
+// Transitioncard Animations
 	#transitioncard .hamburger:hover {
 		transform: rotate(90deg);
 		transition: width 0.2s, height 0.2s, transform 0.2s;
@@ -34,6 +35,13 @@
 		}
 	}
 
+// Svgcard Styles and Animations
+	#svgcard > svg {
+		width: 600px;
+		height: 600px;
+		background-color: black;
+	}
+
 // Note the performance hack here: http://blog.teamtreehouse.com/increase-your-sites-performance-with-hardware-accelerated-css
 
 // Hamburger Defaults
@@ -42,7 +50,7 @@
 		width: 200px;
 		height: 200px;
 		
-		margin: 20px;
+		margin: 20px 0px;
 		overflow: hidden;
 		border-radius: 15%;
 		border: 10px solid #333333;
@@ -54,4 +62,13 @@
 			border-radius: 10px;
 			background-color: #333333;
 		}
+	}
+
+// Page layout
+
+	.card {
+		max-width: 920px;
+		margin: 0px auto;
+		padding: 10px;
+		border-bottom: 1px solid #999999;
 	}

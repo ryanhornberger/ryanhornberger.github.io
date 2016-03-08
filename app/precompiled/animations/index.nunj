@@ -32,6 +32,197 @@
 		</div>
 	</div>
 
+	<div id="svgcard" class="card">
+		
+		<h2> SVG Strokes </h2>
+
+		<svg viewBox="0 0 614 614" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+			<!-- Shifting by 7 pixels for a 10 pixel stroke to keep it all in view -->
+
+			<!-- Circle is the best way to check the correctness of hexagon's proportions -->
+			<circle cx="307" cy="307" r="300" stroke-width="10" stroke="red"/>
+
+			<!-- The hexagon -->
+			<path stroke="orange" stroke-width="10" fill-opacity="0" d="
+				M 157 47 
+				L 457 47 
+				L 607 307 
+				L 457 567 
+				L 157 567
+				L 7 307
+				L 157 47
+				z
+			" />
+
+			<!-- Bars Test
+			<path fill-opacity="0" stroke="blue" stroke-width="5" d="
+				M 307 307
+				L 157 47
+				M 307 307
+				L 457 47
+				M 307 307
+				L 607 307
+				M 307 307
+				L 457 567
+				M 307 307
+				L 157 567
+				M 307 307
+				L 7 307
+				z
+			" />
+			-->
+
+			<!-- Triangle -->
+			<path fill-opacity="0" stroke="white" stroke-width="5" d="
+				M 307 304.5
+				L 161 49.5
+				L 453 49.5
+				z
+			" />
+			
+		</svg>
+
+		<h2> SVG Fill </h2>
+
+		<svg viewBox="0 0 614 614" xmlns="http://www.w3.org/2000/svg" version="1.1">
+
+			<!-- Circle is the best way to check the correctness of hexagon's proportions -->
+			<circle cx="307" cy="307" r="300" fill="red" />
+			
+			<!-- The hexagon -->
+			<path fill="white" d="
+				M 156 48 
+				L 458 48 
+				L 607 307 
+				L 458 566 
+				L 156 566
+				L 7 307
+				L 156 48
+				z
+			" />
+
+			<!-- Triangles -->
+			<path fill="blue" d="
+				M 307 307 
+				L 156 48 
+				L 458 48 
+				z
+			" />
+
+			<path fill="blue" d="
+				M 307 307 
+				L 458 566 
+				L 156 566 
+				z
+			" />
+
+			<path fill="orange" d="
+				M 307 307
+				L 607 307 
+				L 458 566  
+				z
+			" />
+
+			<path fill="orange" d="
+				M 307 307 
+				L 7 307 
+				L 156 48 
+				z
+			" />
+
+			<!-- Triangles L2 -->
+			<path fill="white" d="
+				M 156 48
+				L 307 48
+				L 231.5 177.5
+				z
+			" />
+
+			<path fill="orange" d="
+				M 307 48
+				L 458 48
+				L 382.5 177.5
+				z
+			" />
+
+			<path fill="red" d="
+				M 307 48
+				L 382.5 177.5
+				L 231.5 177.5
+				z
+			" />
+
+			<!-- Triangles L2 -->
+			<path fill="grey" d="
+				M 156 48
+				L 231.5 48
+				L 193.75 112.75
+				z
+			" />
+
+			<path fill="grey" d="
+				M 382.5 48
+				L 458 48
+				L 420.375 112.75
+				z
+			" />
+
+			<!-- Triangles LX -->
+			<path fill="grey" d="
+				M 212 80.375
+				L 400 80.375
+				L 307 232.75
+				z
+			" />
+
+		</svg>
+
+		<h2> SVG Drawn Hollow </h2>
+
+		<svg style="background-color:transparent;" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1000 1000">
+			<path fill="#0000FF" d="
+				M249.996,933.5
+				L-0.009,500
+				L249.996,66.5
+				h500.009
+				L1000.009,500
+				L750.005,933.5H249.996
+				z 
+
+				M715.319,874.5
+				l215.689-374
+				l-215.689-374
+				H283.938
+				l-215.69,374
+				l215.69,374
+				H715.319
+				z
+			"/>
+		</svg>
+
+		<h2> SVG Drawn Full </h2>
+
+		<svg style="background-color:transparent;" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" viewBox="0 0 1000 1000">
+			<path fill="#0000FF" d="
+				M249.996,933.5
+				L-0.009,500
+				L249.996,66.5
+				h500.009
+				L1000.009,500
+				L750.005,933.5H249.996
+				z
+			"/>
+		</svg>
+
+	</div>
+
+	<div id="svganimated" class="card">
+		
+		<h2> SVG Animated </h2>
+
+	</div>
+
 {% endblock %}
 
 {% block postload %}

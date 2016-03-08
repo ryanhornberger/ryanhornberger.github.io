@@ -1,112 +1,15 @@
 {% extends "templates/base.nunj" %}
 
-{% block head %}
-	
-	<!-- Header content can go here -->
-
-	<link rel="stylesheet" href="./index.css" />
-	<script src="./index.js"></script>
-
+{% block title %}
+	Ryan Hornberger
 {% endblock %}
 
+{% block preload %}	
+	<link rel="stylesheet" href="./index.css" />
+{% endblock %}
 
 {% block body %}
 	
-	<div class="card">
-		<h1> Epicenter default application </h1>
-	</div>
-
-	<div class="card">
-		<a href="/broken-link"><p>Try a 404</p></a>
-		<a href="/js-demo"><p>See how a client app would work</p></a>
-	</div>
-
-	<div class="card">
-		<h2>This is a precompiled Nunjucks html template</h2>
-		<p> 
-			This file is a precompiled Nunjucks html template. The template itself is located at:
-		</p>
-
-		<code>./app/precompiled/index.nunj</code>
-
-		<p> 
-			The compiled html is located at:
-		</p>
-
-		<code>./_compiled/precompiled/index.html</code>
-
-		<p> 
-			The template extends a base template. The extend command looks like this:
-		</p>
-
-		<code>extends "templates/base.nunj"</code>
-
-		<p> 
-			And the search path finds that file here:
-		</p>
-
-		<code>./app/source/templates/base.nunj</code>
-	</div>
-
-	<div class="card">
-		<h2>This page uses a precompiled SCSS style template</h2>
-		<p> 
-			The scss template is located at:
-		</p>
-
-		<code>./app/precompiled/index.scss</code>
-
-		<p> 
-			The compiled css is located at:
-		</p>
-
-		<code>./_compiled/precompiled/index.css</code>
-
-		<p> 
-			The template imports another css template. The import looks like this:
-		</p>
-
-		<code>@import 'templates/base.scss';</code>
-
-		<p> 
-			And the search path finds that file here:
-		</p>
-
-		<code>./app/source/templates/base.scss</code>
-	</div>
-
-	<div class="card">
-		<h2>This page uses a couple static resources</h2>
-		<p> 
-			TODO
-		</p>
-	</div>
-	
-	<div class="card">
-		<h2>This page is hosted by your own, fully customizable Express.js application</h2>
-		<p> 
-			The default app.js looks for all requests in the 
-		</p>
-
-		<code>./_compiled/precompiled/</code>
-
-		<p>
-			directory. Thus, a request for 
-		</p>
-
-		<code>http://localhost:8080/path/to/file.html</code>
-
-		<p>
-			will search for a file located at 
-		</p>
-			
-		<code>./_compiled/precompiled/path/to/file.html</code>
-
-		<p>
-			If it cannot find the file there, it will try 
-		</p>
-			
-		<code>./app/static/path/to/file.html</code>
-	</div>
+	<div></div>
 
 {% endblock %}
