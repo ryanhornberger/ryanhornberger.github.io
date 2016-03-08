@@ -6,6 +6,7 @@ var webpack = require('webpack');
 var nodeBourbon = require('node-bourbon');
 var nodeNeat = require('node-neat');
 var moment = require('moment');
+var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
 
 // Configurations
 var appPath = __dirname;
@@ -33,6 +34,11 @@ var nodeModules = {};
 
 // Track the compile time of the app
 var compileTime = moment().utcOffset(0).format('YYYYMMDDThhmmssSSZZ');
+
+var paths = [
+    '/',
+    '/asdf/'
+];
 
 // Webpack Module
 module.exports = 
@@ -83,6 +89,71 @@ module.exports =
             new webpack.DefinePlugin({
                 COMPILE_TIME: `"${compileTime}"`
             })
+        ],
+
+        resolve: 
+        {
+            modulesDirectories: 
+            [
+                'source',
+                'node_modules'
+            ],
+            extensions:
+            [
+                "", 
+                ".webpack.js", 
+                ".web.js", 
+                ".js",
+                ".jsx"
+            ]
+        }
+    },
+
+    {
+        name: 'Precompiled react router',
+        target: 'node',
+        devtool: 'inline-source-map',
+        externals: nodeModules,
+        
+        entry: 
+        {
+            'renderer': path.join(appPath, 'source', 'ServerRenderer')
+        },
+
+        output: 
+        {
+            path: path.join(compiledPath, 'public'),
+            filename: '[name].js',
+            libraryTarget: 'umd'
+        },
+
+        module: 
+        {
+            loaders: 
+            [
+                { 
+                    test: /\.jsx?$/, 
+                    exclude: /node_modules/, 
+                    loader: 'babel-loader'
+                },
+                { 
+                    test: /\.nunj$/, 
+                    loader: 'nunjucks-loader'
+                },
+                { 
+                    test: /\.html$/, 
+                    loader: 'nunjucks-loader'
+                }
+            ]
+        },
+
+        plugins: 
+        [
+            new StaticSiteGeneratorPlugin(
+                'renderer', 
+                paths, 
+                {}
+            )
         ],
 
         resolve: 
@@ -161,15 +232,15 @@ module.exports =
         },
 
         plugins: [
+            new webpack.DefinePlugin({
+                COMPILE_TIME: `"${compileTime}"`
+            }),
             new StaticFilesPlugin(
                 staticSourceDir,
                 appPath,
                 staticModuleName,
                 null
-            ),
-            new webpack.DefinePlugin({
-                COMPILE_TIME: `"${compileTime}"`
-            })
+            )
         ],
 
         resolve: 
