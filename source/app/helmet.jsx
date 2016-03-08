@@ -21,7 +21,7 @@ class ServerWrapper extends React.Component
                 	{this.props.head.link.toComponent()}
 				</head>
 				<body>
-					<div id="app" dangerouslySetInnerHTML={{__html: this.props.appHtml}} />
+					<div id="app" dangerouslySetInnerHTML={{__html: this.props.content}} />
 				</body>
 			</html>
 		);
