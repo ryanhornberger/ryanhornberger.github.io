@@ -6,4 +6,4 @@ echo '--------------'
 echo 'watching'
 echo '--------------'
 
-node --harmony $DIR/../node_modules/webpack/bin/webpack.js --watch --config $DIR/../webpack.config.js 
+node --harmony $DIR/../node_modules/webpack/bin/webpack.js --watch --config $DIR/../webpack.config.babel.js 

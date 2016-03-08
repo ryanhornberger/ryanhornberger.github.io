@@ -1,19 +1,19 @@
 'use strict';
 
-var path = require('path');
-var fse = require('fs-extra');
-var webpack = require('webpack');
-var nodeBourbon = require('node-bourbon');
-var nodeNeat = require('node-neat');
-var moment = require('moment');
-var StaticSiteGeneratorPlugin = require('static-site-generator-webpack-plugin');
+import path from 'path';
+import fse from 'fs-extra';
+import webpack from 'webpack';
+import nodeBourbon from 'node-bourbon';
+import nodeNeat from 'node-neat';
+import moment from 'moment';
+import StaticFilesPlugin from 'static-files-plugin';
+import StaticSiteGeneratorPlugin from 'static-site-generator-webpack-plugin';
 
 // Configurations
 var appPath = __dirname;
 var compiledPath = path.join(appPath, '_compiled');
 
 // Static Files Plugin
-var StaticFilesPlugin = require('static-files-plugin');
 var staticModuleName = '_public';
 var staticSourceDir = path.join(appPath, 'public');
 
@@ -35,10 +35,8 @@ var nodeModules = {};
 // Track the compile time of the app
 var compileTime = moment().utcOffset(0).format('YYYYMMDDThhmmssSSZZ');
 
-var paths = [
-    '/',
-    '/asdf/'
-];
+// Figure out which paths to precompile
+var paths = require('./source/PrecompilePaths.js');
 
 // Webpack Module
 module.exports = 
