@@ -2,6 +2,15 @@
 
 export default {
 
-	serveAsPrecompiledAssets: false
+	serveAsPrecompiledAssets: false,
+
+	precompile: 
+	{
+		paths: 
+		[
+			'/',
+		    '/asdf/'
+		]
+	}
 
 };

@@ -8,6 +8,7 @@ import nodeNeat from 'node-neat';
 import moment from 'moment';
 import StaticFilesPlugin from 'static-files-plugin';
 import StaticSiteGeneratorPlugin from 'static-site-generator-webpack-plugin';
+import config from './config.jsx';
 
 // Configurations
 var appPath = __dirname;
@@ -36,7 +37,7 @@ var nodeModules = {};
 var compileTime = moment().utcOffset(0).format('YYYYMMDDThhmmssSSZZ');
 
 // Figure out which paths to precompile
-var paths = require('./precompilePaths.js').map(function(pathToFile){
+var paths = config.precompile.paths.map(function(pathToFile){
     return path.join('public', pathToFile); 
 });
 
