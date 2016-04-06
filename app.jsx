@@ -54,6 +54,12 @@ class App
                     redirect: false
                 }));
 
+                this.router.use('*', function(req, res, next) 
+                {
+                    res.status(404);
+                    res.type('html');
+                    res.send('page not found');
+                }.bind(this));
             }
 
         // 
