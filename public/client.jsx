@@ -2,7 +2,7 @@
 
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Routes from 'app/routes';
+import Routes from 'com/ryanhornberger/routes';
 import { createHistory } from 'history';
 
 const history = createHistory();

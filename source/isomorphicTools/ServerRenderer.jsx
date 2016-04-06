@@ -5,7 +5,7 @@ import ReactDOMServer from 'react-dom/server';
 import Helmet from 'react-helmet';
 
 import { match, RoutingContext } from 'react-router';
-import Routes from 'app/routes';
+import Routes from 'com/ryanhornberger/routes';
 
 import ServerHelmetWrapper from 'isomorphicTools/ServerHelmetWrapper';
 
