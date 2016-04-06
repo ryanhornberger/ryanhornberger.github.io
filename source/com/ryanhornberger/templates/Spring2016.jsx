@@ -13,13 +13,20 @@ class Spring2016Template extends React.Component
 				<Helmet 
 					link={[
 						
+						// normalize.css
+						{
+							"rel": "stylesheet", 
+							"type": "text/css", 
+							"href": "/_assets/normalize.css"
+						},
+
 						// site.scss
 						{
 							"rel": "stylesheet", 
 							"type": "text/css", 
 							"href": "/site.css"
 						}
-						
+
 					]}
 				/>
 
