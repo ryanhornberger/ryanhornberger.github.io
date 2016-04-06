@@ -93,14 +93,6 @@ module.exports =
                     test: /\.jsx?$/, 
                     exclude: /node_modules/, 
                     loader: 'babel-loader'
-                },
-                { 
-                    test: /\.nunj$/, 
-                    loader: 'nunjucks-loader'
-                },
-                { 
-                    test: /\.html$/, 
-                    loader: 'nunjucks-loader'
                 }
             ]
         },
@@ -150,14 +142,6 @@ module.exports =
                     test: /\.jsx?$/, 
                     exclude: /node_modules/, 
                     loader: 'babel-loader'
-                },
-                { 
-                    test: /\.nunj$/, 
-                    loader: 'nunjucks-loader'
-                },
-                { 
-                    test: /\.html$/, 
-                    loader: 'nunjucks-loader'
                 }
             ]
         },
@@ -215,19 +199,9 @@ module.exports =
                                 ])
                         })
                 },
-                
-                { 
-                    test: /\.nunj$/, 
-                    loader: 'file?context=' + appPath + '&name=[path][name].html!nunjucks-html-loader?' +
-                        JSON.stringify({
-                            'searchPaths': [
-                                path.join(appPath, 'source/')
-                            ]
-                        })
-                },
 
                 {
-                    test: /\.(?=[^.]*$)(?!(jsx|scss|nunj)).*$/, //catch all remaining
+                    test: /\.(?=[^.]*$)(?!(jsx|scss)).*$/, //catch all remaining
                     exclude: /node_modules/,
                     loader: 'file?context=' + appPath + '&name=[path][name].[ext]'
                 }
