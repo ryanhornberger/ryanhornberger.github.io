@@ -10,11 +10,11 @@ import StaticFilesPlugin from 'static-files-plugin';
 import StaticSiteGeneratorPlugin from 'static-site-generator-webpack-plugin';
 import config from './config.jsx';
 
-// Configurations
+// Just some setup stuff
 var appPath = __dirname;
 var compiledPath = path.join(appPath, '_compiled');
 
-// Static Files Plugin
+// Static Files Plugin setup
 var staticModuleName = '_public';
 var staticSourceDir = path.join(appPath, 'public');
 
@@ -41,6 +41,7 @@ var paths = config.precompile.paths.map(function(pathToFile){
     return path.join('public', pathToFile); 
 });
 
+// This is the resolve command for all compile paths
 var resolve = {
     alias: {
         'config':'./config.jsx'
@@ -59,9 +60,14 @@ var resolve = {
         ".jsx"
     ]
 }
+
 // Webpack Module
 module.exports = 
 [
+    // -- Server 
+    // The server compiles just like the client and precomple so we know that everyone
+    // is running the same compiled version of the code
+
     {
         name: 'Server',
         target: 'node',
@@ -113,6 +119,11 @@ module.exports =
         resolve: resolve
     },
 
+    // -- Precompiled react files 
+    // The application supports precompiling all react router paths into static files
+    // this is awesome for situations where we want to serve this application on a static
+    // file service.
+
     {
         name: 'Precompiled react router',
         target: 'node',
@@ -163,6 +174,10 @@ module.exports =
         resolve: resolve
     },
 
+    // -- Precompiled static assets 
+    // The server compiles static assets (jsx, scss, nunj) into static files and copies everything
+    // else to the compiled directory. That way we can serve these files statically.
+    
     {
         name: 'Precompiled static assets',
         
