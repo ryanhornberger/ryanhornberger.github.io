@@ -41,7 +41,17 @@ class ServerRenderer
                     content: content
                 }).render());
 
-                result = '<!DOCTYPE html>{{page}}'.replace('{{page}}', pageHtml);
+                result = {
+                    error: error,
+                    redirect: redirectLocation,
+                    document: '<!DOCTYPE html>{{page}}'.replace('{{page}}', pageHtml)
+                };
+            } else {
+                result = {
+                    error: error,
+                    redirect: redirectLocation,
+                    document: null
+                };
             }
         });
 

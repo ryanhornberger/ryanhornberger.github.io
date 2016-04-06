@@ -38,11 +38,13 @@ class App
 
                 this.router.use('*', function(req, res, next) 
                 {
-                    var document = this.serverRenderer.render(req.originalUrl);
-                    if (document) {
+                    var results = this.serverRenderer.render(req.originalUrl);
+                    if (results.document) {
                         res.status(200);
                         res.type('html');
-                        res.send(document);
+                        res.send(results.document);
+                    } else if (results.redirect) {
+                        res.redirect(302, results.redirect.pathname);
                     } else {
                         next();
                     };
