@@ -22,7 +22,7 @@ class ServerHelmetWrapper extends React.Component
 				</head>
 				<body>
 					<div id="app" dangerouslySetInnerHTML={{__html: this.props.content}} />
-                	<script src="/app.js"></script>
+                	<script src="/client.js"></script>
 				</body>
 			</html>
 		);
