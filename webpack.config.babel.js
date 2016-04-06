@@ -124,7 +124,7 @@ module.exports =
         
         entry: 
         {
-            'renderer': path.join(appPath, 'precompile.jsx')
+            'renderer': path.join(appPath, 'source', 'precompileTools', 'webpackEntrypoint.jsx')
         },
 
         output: 
