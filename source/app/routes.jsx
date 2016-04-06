@@ -6,6 +6,19 @@ import { Router, Route, IndexRoute, Redirect, IndexRedirect } from 'react-router
 import HomePage from 'app/routes/index';
 import AsdfPage from 'app/routes/asdf/index'
 
+var routes = (
+	<Route path="/">
+	
+	    <IndexRoute component={HomePage} />
+
+	    <Route path="asdf/">
+	        <IndexRoute component={AsdfPage} />
+	    </Route>
+	    <Redirect from="asdf" to="asdf/" />
+
+	</Route>
+);
+
 class Routes extends React.Component 
 {
 	
@@ -16,15 +29,7 @@ class Routes extends React.Component
 		return (
 			<Router history={history}>
                 
-                <Route path="/">
-                    <IndexRoute component={HomePage} />
-
-                    <Route path="asdf/">
-                        <IndexRoute component={AsdfPage} />
-                    </Route>
-                    <Redirect from="asdf" to="asdf/" />
-                    
-                </Route>
+                {routes}
 
             </Router>
 		);
