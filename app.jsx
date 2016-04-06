@@ -3,7 +3,7 @@
 import express from 'express';
 import path from 'path';
 import config from 'config';
-import ServerRenderer from 'ServerRenderer';
+import ServerRenderer from 'isomorphicTools/ServerRenderer';
 
 console.log('Config: ', JSON.stringify(config, null, 4));
 

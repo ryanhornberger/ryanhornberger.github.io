@@ -7,7 +7,7 @@ import Helmet from 'react-helmet';
 import { match, RoutingContext } from 'react-router';
 import Routes from 'app/routes';
 
-import ServerHelmetWrapper from 'ServerHelmetWrapper';
+import ServerHelmetWrapper from 'isomorphicTools/ServerHelmetWrapper';
 
 var routes = new Routes().render();
 
