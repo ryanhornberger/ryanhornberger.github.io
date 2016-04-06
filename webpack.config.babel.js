@@ -36,10 +36,28 @@ var nodeModules = {};
 var compileTime = moment().utcOffset(0).format('YYYYMMDDThhmmssSSZZ');
 
 // Figure out which paths to precompile
-var paths = require('./source/PrecompilePaths.js').map(function(pathToFile){
+var paths = require('./precompilePaths.js').map(function(pathToFile){
     return path.join('public', pathToFile); 
 });
 
+var resolve = {
+    alias: {
+        'config':'./config.jsx'
+    },
+    modulesDirectories: 
+    [
+        'source',
+        'node_modules'
+    ],
+    extensions:
+    [
+        "", 
+        ".webpack.js", 
+        ".web.js", 
+        ".js",
+        ".jsx"
+    ]
+}
 // Webpack Module
 module.exports = 
 [
@@ -91,22 +109,7 @@ module.exports =
             })
         ],
 
-        resolve: 
-        {
-            modulesDirectories: 
-            [
-                'source',
-                'node_modules'
-            ],
-            extensions:
-            [
-                "", 
-                ".webpack.js", 
-                ".web.js", 
-                ".js",
-                ".jsx"
-            ]
-        }
+        resolve: resolve
     },
 
     {
@@ -156,22 +159,7 @@ module.exports =
             )
         ],
 
-        resolve: 
-        {
-            modulesDirectories: 
-            [
-                'source',
-                'node_modules'
-            ],
-            extensions:
-            [
-                "", 
-                ".webpack.js", 
-                ".web.js", 
-                ".js",
-                ".jsx"
-            ]
-        }
+        resolve: resolve
     },
 
     {
@@ -243,21 +231,6 @@ module.exports =
             )
         ],
 
-        resolve: 
-        {
-            modulesDirectories: 
-            [
-                'source',
-                'node_modules'
-            ],
-            extensions:
-            [
-                "", 
-                ".webpack.js", 
-                ".web.js", 
-                ".js",
-                ".jsx"
-            ]
-        }
+        resolve: resolve
     }
 ];
