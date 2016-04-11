@@ -2,6 +2,7 @@
 
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
+import Spring2016Footer from 'com/ryanhornberger/templates/Spring2016Footer';
 
 class Spring2016Template extends React.Component 
 {
@@ -10,6 +11,7 @@ class Spring2016Template extends React.Component
 	{
 		return (
 			<div>
+				
 				<Helmet 
 					link={[
 						
@@ -30,9 +32,19 @@ class Spring2016Template extends React.Component
 					]}
 				/>
 
-				<h1>Spring 2016 Template</h1>
+				<div id="foot-wrap">
+				    <header>
+				        <a id="title" href="/"> Ryan Hornberger </a> 
+				    </header>
 
-				{this.props.children}
+				    <section id="page">
+				        {this.props.children}
+				    </section>
+
+				    <div id="foot-push"></div>
+				</div>
+
+				<Spring2016Footer />
 
 			</div>
 		);
