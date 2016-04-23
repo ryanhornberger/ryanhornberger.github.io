@@ -1,0 +1,77 @@
+@import "bourbon";
+@import "neat";
+
+#splash {
+	
+	position: absolute;
+	top: 0;
+	left: 0;
+	bottom: 0;
+	right: 0;
+	background-image: url('/_assets/home/2016background.png');
+	background-size: cover;
+
+	#business-card {
+
+		@include outer-container(80%);
+		margin-top: 150px;
+		
+		#snapcode {
+
+			@include span-columns(6);
+			position: relative;
+			border: 1px solid rgba(0,0,0,0); //to hold the size of the box
+
+			#snapcode-background {
+				background: #ffffff;
+				display: inline-block;
+				position: absolute;
+				top: 160px;
+				right: 210px;
+				z-index: 0;
+			}
+
+			#snapcode-foreground {
+				display: inline-block;
+				position: absolute;
+				top: 0px;
+				right: 0px;
+				z-index: 1;
+			}
+
+		}
+
+		#card-content {
+
+			@include span-columns(6);
+			position: relative;
+			
+			h1 {
+				margin: 250px 0px 0px 0px;
+				font-style: italic;
+				font-size: 4em;
+			}
+
+			h2 {
+				margin: 20px 0px 40px 0px;
+			}
+
+			#social-links {
+				display: inline-block;
+				margin: 0px auto;
+
+				img {
+					height: 4em;
+					margin: 0px 0px 0px 44px;
+				}
+
+				img:first-of-type {
+					height: 4em;
+					margin: 0px 0px 0px 118px;
+				}
+			}
+		}
+
+	}
+
+}
