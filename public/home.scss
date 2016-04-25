@@ -5,6 +5,7 @@
 
 $breakpoints: (
 	small: rem-calc(0),
+
 	medium: rem-calc(985),
 	large: rem-calc(1200),
 	xlarge: rem-calc(1440),
@@ -35,9 +36,6 @@ $breakpoints: (
 			$width: 100%,
 			$align: center
 		);
-
-		// Mobile devices get a little padding
-		margin-top: 20px;
 
 		// Max width of the card is
 		width: 100%;
@@ -74,13 +72,18 @@ $breakpoints: (
 				// Image size configurations
 				img {
 					max-width: 300px;
-
+					
+					// Mobile devices get a little padding
+					padding-top: 20px;
+		
 					@include breakpoint(medium) {
 						max-width: 400px;
+						padding-top: 0px;
 					}
 
 					@include breakpoint(large) {
 						max-width: 600px;
+						padding-top: 0px;
 					}
 				}			
 			}
@@ -147,12 +150,8 @@ $breakpoints: (
 						margin: 0px auto;
 
 						img {
-							height: 3rem;
+							height: 4rem;
 							margin: 20px 20px 0px 0px;
-
-							@include breakpoint(medium) {
-								height: 4rem;
-							}
 
 							@include breakpoint(large) {
 								height: 5rem;
@@ -165,131 +164,3 @@ $breakpoints: (
 	}
 
 }
-
-/*
-.custom-container {
-@include grid-container(
-$width: 800px, // Can be any unit with a value
-$align: center // Can be left, right, or center
-);
-}
-*/
-
-
-/*
-//iphone 4
-//iphone 4s
-//iphone 5
-//iphone 5s
-//iphone 
-
-
-$screen-mobile-portrait: 760px;		//iphone 6s (and smaller)
-$screen-mobile-landscape: 1340px; 	//iphone 6s (and smaller)
-$screen-standard-portrait: 780px; 	//1024x768
-$screen-standard-landscape: 1030px;	//1024x768
-//screen-hd is anything larger (2048-by-1536 ipad pro, )
-
-$mediaMobile: new-breakpoint(max-width 760px);
-$mediaSmall: new-breakpoint(max-width 1340px);
-$mediaHD: new-breakpoint(min-width 1341px);
-
-
-#splash {
-	
-	position: absolute;
-	top: 0;
-	left: 0;
-	bottom: 0;
-	right: 0;
-	background-image: url('/_assets/home/2016background.png');
-	background-size: cover;
-
-	#business-card {
-
-		@include outer-container(80%);
-		position: relative;
-		background: #ff0000;
-		margin-top: 150px;
-		
-		@include media ($mediaSmall) {
-			@include outer-container(20%);
-		}
-
-		@include media ($mediaMobile) {
-			@include outer-container(50%);
-		}
-
-		#snapcode {
-
-			@include span-columns(6);
-			height: 100%;
-			background: #00ff00;
-		
-			position: relative;
-			border: 1px solid rgba(0,0,0,0); //to hold the size of the box
-
-			@include media ($mediaMobile) {
-				@include span-columns(12);
-			}
-
-			#snapcode-background {
-				background: #ffffff;
-				display: inline-block;
-				position: absolute;
-				top: 160px;
-				right: 210px;
-				z-index: 0;
-			}
-
-			#snapcode-foreground {
-				display: inline-block;
-				position: absolute;
-				top: 0px;
-				right: 0px;
-				z-index: 1;
-			}
-
-		}
-
-		#card-content {
-
-			@include span-columns(6);
-			position: relative;
-
-			background: #0000ff;
-			
-			@include media ($mediaMobile) {
-				@include span-columns(12);
-			}
-
-			h1 {
-				margin: 250px 0px 0px 0px;
-				font-style: italic;
-				font-size: 4em;
-			}
-
-			h2 {
-				margin: 20px 0px 40px 0px;
-			}
-
-			#social-links {
-				display: inline-block;
-				margin: 0px auto;
-
-				img {
-					height: 4em;
-					margin: 0px 0px 0px 44px;
-				}
-
-				img:first-of-type {
-					height: 4em;
-					margin: 0px 0px 0px 118px;
-				}
-			}
-		}
-
-	}
-
-}
-*/
