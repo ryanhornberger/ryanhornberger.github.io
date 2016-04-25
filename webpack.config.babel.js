@@ -9,6 +9,7 @@ import moment from 'moment';
 import StaticFilesPlugin from 'static-files-plugin';
 import StaticSiteGeneratorPlugin from 'static-site-generator-webpack-plugin';
 import config from './config.jsx';
+import autoprefixer from 'autoprefixer';
 
 // Just some setup stuff
 var appPath = __dirname;
@@ -188,14 +189,15 @@ module.exports =
 
                 { 
                     test: /\.scss$/, 
-                    loader: 'file?context=' + appPath + '&name=[path][name].css!sass?' + 
+                    loader: 'file?context=' + appPath + '&name=[path][name].css!postcss!sass?' + 
                         JSON.stringify({
                             'outputStyle':'expanded', //'expanded' is your alternative,
                             'includePaths': 
                                 nodeNeat.includePaths
                                 .concat([
                                     path.join(appPath, 'source'),
-                                    path.join(appPath, 'node_modules')
+                                    path.join(appPath, 'node_modules'),
+                                    path.join(appPath, 'node_modules', 'react-foundation-apps', 'bower_components', 'foundation-apps', 'scss')
                                 ])
                         })
                 },
@@ -209,6 +211,14 @@ module.exports =
             ]
         },
 
+        postcss: function () {
+            return [
+                autoprefixer({
+                    browsers: ['last 2 versions', 'ie 10']
+                })
+            ];
+        },
+        
         plugins: [
             new webpack.DefinePlugin({
                 COMPILE_TIME: `"${compileTime}"`
