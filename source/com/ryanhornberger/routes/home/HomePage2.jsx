@@ -26,28 +26,28 @@ class HomePage extends React.Component
 	                ]}
 				/>
 
-				<div id="app-ui">
-					<div className="grid-block vertical">
-					<div id="business-card-box">
-						<div id="business-card">
-							<div id="snapcode">
-								<zf-interchange>
-									<img media="large" src="/_assets/home/2016snapcode-transparent.png"/>
-								</zf-interchange>
-							</div>
-							<div id="message-box">
-								<div id="message">
-									<h1>Ryan Hornberger</h1>
-									<h2>On team Snapchat. Venice Beach, CA</h2>
-									<div id="social-links">
-										<img src="/_assets/home/sm-icon-1461385490_instagram_social_media_online.png" />
-										<img src="/_assets/home/sm-icon-1461385496_linked_in_social_media_online.png" />
-										<img src="/_assets/home/sm-icon-1461385508_github_social_media_online.png" />
+				<div className="grid-frame">
+					<div id="app-ui">
+						<div id="business-card-box">
+							<div id="business-card">
+								<div id="snapcode">
+									<zf-interchange>
+										<img media="large" src="/_assets/home/2016snapcode-transparent.png"/>
+									</zf-interchange>
+								</div>
+								<div id="message-box">
+									<div id="message">
+										<h1>Ryan Hornberger</h1>
+										<h2>On team Snapchat. Venice Beach, CA</h2>
+										<div id="social-links">
+											<img src="/_assets/home/sm-icon-1461385490_instagram_social_media_online.png" />
+											<img src="/_assets/home/sm-icon-1461385496_linked_in_social_media_online.png" />
+											<img src="/_assets/home/sm-icon-1461385508_github_social_media_online.png" />
+										</div>
 									</div>
 								</div>
 							</div>
 						</div>
-					</div>
 					</div>
 				</div>
 

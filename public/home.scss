@@ -18,17 +18,20 @@ $breakpoints: (
 	background-size: cover;
 
 	// Grid frame, vertical alignment here
-	@include grid-frame(
+	@include grid-block(
 		$orientation: vertical
 	);
 
-	// Vertical-top aligned on mobile phones
-	@include breakpoint(medium) {
-		// Vertical-center aligned on larger screens
-		align-items: center;
-		justify-content: center;
-	}
+	// Vertical-center everything
+	align-items: center;
+	justify-content: center;	
 
+	// unless the window height is ridiculously small, then vertical top
+	@media screen and (max-height: 500px) {
+		align-items: flex-start;
+		justify-content: flex-start;	
+	}	
+	
 	padding-bottom: 20px;
 
 	#business-card-box
