@@ -1,84 +1,167 @@
 @import "bourbon";
 @import "neat";
+
 @import "foundation";
+
+$breakpoints: (
+	small: rem-calc(0),
+	medium: rem-calc(985),
+	large: rem-calc(1200),
+	xlarge: rem-calc(1440),
+	xxlarge: rem-calc(1920),
+);
 
 #app-ui 
 {
 	background-image: url('/_assets/home/2016background.png');
 	background-size: cover;
 
-	@include breakpoint(small only) {
-		align-items: flex-start;
-		justify-content: flex-start;
+	// Grid frame, vertical alignment here
+	@include grid-frame(
+		$orientation: vertical
+	);
+
+	// Vertical-top aligned on mobile phones
+	@include breakpoint(medium) {
+		// Vertical-center aligned on larger screens
+		align-items: center;
+		justify-content: center;
 	}
 
-	#business-card 
+	#business-card-box
 	{
+		// Grid container, float to center if the space is bigger than the card
 		@include grid-container(
 			$width: 100%,
 			$align: center
 		);
 
+		// Mobile devices get a little padding
+		margin-top: 20px;
+
+		// Max width of the card is
 		width: 100%;
 		max-width: 1400px;
-
-		@include breakpoint(small only) {
-			margin-top: 20px;
-		}
-
-		#snapcode 
+		
+		#business-card
 		{
-		}
+			@include grid-block(
+				$wrap: true
+			);
 
-		#message 
-		{
-			h1 {
-				font-style: italic;
-				font-size: 4.4rem;
-				margin: 0px 0px 0px 0px;
-
-				@include breakpoint(medium only) {
-					font-size: 3.5rem;
-				}
-
-				@include breakpoint(small only) {
-					font-size: 2.5rem;
-				}
+			@include breakpoint(medium) {
+				@include grid-block(
+					$wrap: false
+				);
 			}
 
-			h2 {
-				font-size: 1.75rem;
-				margin: 0px 0px 40px 0px;
+			#snapcode 
+			{
+				// Take up the entire space on mobile, and center the image on screen
+				@include grid-block(
+					$size: 12
+				);
+				justify-content: center;
 
-				@include breakpoint(medium only) {
-					font-size: 1.5rem;
+				// Take up half of the screen on larger, and right-justify
+				@include breakpoint(medium) {
+					@include grid-block(
+						$size: 6
+					);
+					justify-content: flex-end;
 				}
 
-				@include breakpoint(small only) {
-					font-size: 1.1rem;
-				}
-			}
-
-			@include breakpoint(small only) {
-				text-align: center;
-			}
-
-			#social-links {
-				display: inline-block;
-				margin: 0px auto;
-
+				// Image size configurations
 				img {
-					height: 5em;
-					margin: 0px 0px 0px 44px;
+					max-width: 300px;
+
+					@include breakpoint(medium) {
+						max-width: 400px;
+					}
+
+					@include breakpoint(large) {
+						max-width: 600px;
+					}
+				}			
+			}
+
+			#message-box
+			{
+				// Take up the entire screen on mobile, vertical align content to top
+				@include grid-block(
+					$size: 12,
+					$orientation: vertical
+				);
+
+				// Take up half the screen on largr, vertical align content to center
+				@include breakpoint(medium) {
+					@include grid-block(
+						$size: 6,
+						$orientation: vertical
+					);
+
+					align-items: center;
+					justify-content: center;
 				}
 
-				img:first-of-type {
-					height: 5em;
-					margin: 0px 0px 0px 118px;
+				#message 
+				{
+					@include grid-content(
+						$size: shrink
+					);
+
+					h1 {
+						font-style: italic;
+						font-size: 2.5rem;
+						margin: 0px 0px 0px 0px;
+
+						@include breakpoint(medium) {
+							font-size: 3.5rem;
+						}
+
+						@include breakpoint(large) {
+							font-size: 4.4rem;
+						}
+					}
+
+					h2 {
+						font-size: 1.1rem;
+						line-height: normal;
+						margin: 0px;
+
+						@include breakpoint(medium) {
+							font-size: 1.5rem;
+						}
+
+						@include breakpoint(large) {
+							font-size: 1.75rem;
+						}
+					}
+
+					@include breakpoint(small only) {
+						text-align: center;
+					}
+
+					#social-links {
+						display: inline-block;
+						margin: 0px auto;
+
+						img {
+							height: 3rem;
+							margin: 20px 20px 0px 0px;
+
+							@include breakpoint(medium) {
+								height: 4rem;
+							}
+
+							@include breakpoint(large) {
+								height: 5rem;
+							}
+						}
+					}
 				}
 			}
 		}
-
 	}
 
 }

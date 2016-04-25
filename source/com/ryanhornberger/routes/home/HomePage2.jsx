@@ -23,25 +23,23 @@ class HomePage extends React.Component
 					]}
 				/>
 
-				<div id="app-ui" className="vertical align-center small-align-top grid-frame">
-					<div id="business-card">
-						<div className="grid-block small-up-1 medium-up-2">
-							<div id="snapcode" className="align-right medium-6 small-12 grid-block">
+				<div id="app-ui">
+					<div id="business-card-box">
+						<div id="business-card">
+							<div id="snapcode">
 								<zf-interchange>
 									<img media="large" src="/_assets/home/2016snapcode-transparent.png"/>
 								</zf-interchange>
 							</div>
-							<div className="vertical align-center  medium-6 small-12 grid-block">
-								<div id="message" className="shrink grid-content">
+							<div id="message-box">
+								<div id="message">
 									<h1>Ryan Hornberger</h1>
 									<h2>On team Snapchat. Venice Beach, CA</h2>
-									{/*}
 									<div id="social-links">
 										<img src="/_assets/home/sm-icon-1461385490_instagram_social_media_online.png" />
 										<img src="/_assets/home/sm-icon-1461385496_linked_in_social_media_online.png" />
 										<img src="/_assets/home/sm-icon-1461385508_github_social_media_online.png" />
 									</div>
-									{*/}
 								</div>
 							</div>
 						</div>
