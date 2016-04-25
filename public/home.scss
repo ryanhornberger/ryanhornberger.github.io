@@ -32,8 +32,6 @@ $breakpoints: (
 		justify-content: flex-start;	
 	}	
 	
-	padding-bottom: 20px;
-
 	#business-card-box
 	{
 		// Grid container, float to center if the space is bigger than the card
@@ -45,7 +43,11 @@ $breakpoints: (
 		// Max width of the card is
 		width: 100%;
 		max-width: 1400px;
-		
+
+		// If the screen height is too short, allow a scroll
+		overflow: scroll;
+		padding-bottom: 20px;
+
 		#business-card
 		{
 			@include grid-block(
