@@ -27,6 +27,7 @@ class HomePage extends React.Component
 				/>
 
 				<div id="app-ui">
+					<div className="grid-block vertical">
 					<div id="business-card-box">
 						<div id="business-card">
 							<div id="snapcode">
@@ -46,6 +47,7 @@ class HomePage extends React.Component
 								</div>
 							</div>
 						</div>
+					</div>
 					</div>
 				</div>
 
