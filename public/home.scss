@@ -76,23 +76,52 @@ $breakpoints: (
 					justify-content: flex-end;
 				}
 
-				// Image size configurations
-				img {
-					max-width: 300px;
-					
-					// Mobile devices get a little padding
-					padding-top: 20px;
-		
-					@include breakpoint(medium) {
-						max-width: 400px;
-						padding-top: 0px;
+				#foreground
+				{
+					position: relative;
+					z-index: 2;
+					// Image size configurations
+					img {
+						position: relative;
+						max-width: 300px;
+						z-index: 2;
+
+						// Mobile devices get a little padding
+						padding-top: 20px;
+			
+						@include breakpoint(medium) {
+							position: relative;
+							max-width: 400px;
+							padding-top: 0px;
+							z-index: 2;
+						}
+
+						@include breakpoint(large) {
+							position: relative;
+							max-width: 600px;
+							padding-top: 0px;
+							z-index: 2;
+						}
 					}
 
-					@include breakpoint(large) {
-						max-width: 600px;
-						padding-top: 0px;
-					}
-				}			
+					#background
+					{
+						position: absolute;
+						top: 25%;
+						right: 30%;
+						bottom: 25%;
+						left: 20%;
+						border: 1px solid red;
+						z-index: 1;
+
+						img {
+							position: relative;
+							width: 100%;
+							height: 100%;
+							z-index: 1;
+						}
+					}			
+				}
 			}
 
 			#message-box

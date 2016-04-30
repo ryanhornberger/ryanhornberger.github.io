@@ -31,8 +31,11 @@ class HomePage extends React.Component
 						<div id="business-card-box">
 							<div id="business-card">
 								<div id="snapcode">
-									<div>
+									<div id="foreground">
 										<img src="/_assets/home/2016snapcode-transparent.png"/>
+										<div id="background">
+											<img src="/_assets/home/2016snapcode-image.png"/>
+										</div>
 									</div>
 								</div>
 								<div id="message-box">
