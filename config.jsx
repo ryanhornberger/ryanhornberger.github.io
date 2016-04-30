@@ -11,7 +11,7 @@ export default {
 		paths: 
 		[
 			'/',
-//		    '/asdf/'
+		    '/404.html'
 		]
 	}
 
