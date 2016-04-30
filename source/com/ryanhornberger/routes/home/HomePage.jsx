@@ -2,7 +2,6 @@
 
 import React, { Component, PropTypes } from 'react';
 import Helmet from 'react-helmet';
-import Spring2016Template from 'com/ryanhornberger/templates/Spring2016';
 
 class HomePage extends React.Component 
 {
@@ -10,11 +9,17 @@ class HomePage extends React.Component
 	render()
 	{
 		return (
-			<Spring2016Template>
+			<div>
 				
 				<Helmet 
 					title="Ryan Hornberger - Venice Beach, CA" 
 					link={[
+						{
+							"rel": "stylesheet", 
+							"type": "text/css", 
+							"href": "/_assets/normalize.css"
+						},
+
 						{
 							"rel": "stylesheet", 
 							"type": "text/css", 
@@ -54,7 +59,7 @@ class HomePage extends React.Component
 					</div>
 				</div>
 
-			</Spring2016Template>
+			</div>
 		);
 	}
 		
