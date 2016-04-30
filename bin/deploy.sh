@@ -20,7 +20,7 @@ rm -rf $DIR/../../tmp/
 mkdir $DIR/../../tmp/
 mv $DIR/../_compiled/public/* $DIR/../../tmp/
 mv $DIR/../CNAME $DIR/../../tmp/
-mv $DIR/../node_modules $DIR/../../node_modules
+mv $DIR/../node_modules/ $DIR/../../node_modules/
 git checkout master
 rm -rf $DIR/../*
 mv $DIR/../../tmp/* .
