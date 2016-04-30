@@ -21,8 +21,7 @@ mkdir $DIR/../../tmp/
 mv $DIR/../_compiled/public/* $DIR/../../tmp/
 git checkout master
 rm -rf ./*
-rm -rf ./.sass-cache
-mv $DIR/../../tmp/* ./
+mv $DIR/../../tmp/* .
 
 #
 #      system "mv dist/* #{tmp}"
