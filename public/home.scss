@@ -1,0 +1,219 @@
+@import "bourbon";
+@import "neat";
+
+@import "foundation";
+
+$breakpoints: (
+	small: rem-calc(0),
+
+	medium: rem-calc(985),
+	large: rem-calc(1200),
+	xlarge: rem-calc(1440),
+	xxlarge: rem-calc(1920),
+);
+
+#app-ui 
+{
+	background-image: url('/_assets/home/2016background.png');
+	background-size: cover;
+
+	// Grid frame, vertical alignment here
+	@include grid-block(
+		$orientation: vertical
+	);
+
+	// Vertical-center everything
+	align-items: center;
+	justify-content: center;	
+
+	// unless the window height is ridiculously small, then vertical top
+	@media screen and (max-height: 500px) {
+		align-items: flex-start;
+		justify-content: flex-start;	
+	}	
+	
+	#business-card-box
+	{
+		// Grid container, float to center if the space is bigger than the card
+		@include grid-container(
+			$width: 100%,
+			$align: center
+		);
+
+		// Max width of the card is
+		width: 100%;
+		max-width: 1400px;
+
+		// If the screen height is too short, allow a scroll
+		overflow: scroll;
+		padding-bottom: 20px;
+
+		#business-card
+		{
+			@include grid-block(
+				$wrap: true
+			);
+
+			@include breakpoint(medium) {
+				@include grid-block(
+					$wrap: false
+				);
+			}
+
+			#snapcode 
+			{
+				// Take up the entire space on mobile, and center the image on screen
+				@include grid-block(
+					$size: 12
+				);
+				justify-content: center;
+
+				// Take up half of the screen on larger, and right-justify
+				@include breakpoint(medium) {
+					@include grid-block(
+						$size: 6
+					);
+					justify-content: flex-end;
+				}
+
+				#foreground
+				{
+					position: relative;
+					z-index: 2;
+					// Image size configurations
+					img {
+						position: relative;
+						max-width: 300px;
+						z-index: 2;
+
+						// Mobile devices get a little padding
+						padding-top: 20px;
+			
+						@include breakpoint(medium) {
+							position: relative;
+							max-width: 400px;
+							padding-top: 0px;
+							z-index: 2;
+						}
+
+						@include breakpoint(large) {
+							position: relative;
+							max-width: 600px;
+							padding-top: 0px;
+							z-index: 2;
+						}
+					}
+
+					#background
+					{
+						position: absolute;
+						top: 25%;
+						right: 30%;
+						bottom: 25%;
+						left: 20%;
+						z-index: 1;
+
+						img {
+							position: relative;
+							width: 100%;
+							height: 100%;
+							z-index: 1;
+						}
+					}			
+				}
+			}
+
+			#message-box
+			{
+				// Take up the entire screen on mobile, vertical align content to top
+				@include grid-block(
+					$size: 12,
+					$orientation: vertical
+				);
+
+				// Take up half the screen on largr, vertical align content to center
+				@include breakpoint(medium) {
+					@include grid-block(
+						$size: 6,
+						$orientation: vertical
+					);
+
+					align-items: center;
+					justify-content: center;
+				}
+
+				#message 
+				{
+					@include grid-content(
+						$size: shrink
+					);
+
+					h1 {
+						font-style: italic;
+						font-size: 2.5rem;
+						margin: 0px 0px 0px 0px;
+
+						@include breakpoint(medium) {
+							font-size: 3.5rem;
+						}
+
+						@include breakpoint(large) {
+							font-size: 4.4rem;
+						}
+					}
+
+					h2 {
+						font-size: 1.1rem;
+						line-height: normal;
+						margin: 0px;
+
+						@include breakpoint(medium) {
+							font-size: 1.5rem;
+						}
+
+						@include breakpoint(large) {
+							font-size: 1.75rem;
+						}
+					}
+
+					@include breakpoint(small only) {
+						text-align: center;
+					}
+
+					#social-links {
+						display: inline-block;
+						margin: 0px auto;
+						padding-bottom: 10px;
+						
+						img {
+							height: 4rem;
+							margin: 20px 20px 0px 0px;
+							
+							transform: translateZ(0); //css animation fix
+							transition: background-color 0.5s;
+							border-radius: 8px;
+
+							@include breakpoint(large) {
+								height: 5rem;
+							}
+						}
+
+						img:hover {
+							animation: jiggle 0.2s infinite;
+							background-color: rgba(255,252,0, 0.5);
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+@keyframes jiggle {
+	25% {
+		transform: rotate(-2deg);
+	}
+	75% {
+		transform: rotate(2deg);
+	}
+}
