@@ -31,9 +31,9 @@ class HomePage extends React.Component
 						<div id="business-card-box">
 							<div id="business-card">
 								<div id="snapcode">
-									<zf-interchange>
-										<img media="large" src="/_assets/home/2016snapcode-transparent.png"/>
-									</zf-interchange>
+									<div>
+										<img src="/_assets/home/2016snapcode-transparent.png"/>
+									</div>
 								</div>
 								<div id="message-box">
 									<div id="message">
