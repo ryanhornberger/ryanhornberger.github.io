@@ -111,7 +111,6 @@ $breakpoints: (
 						right: 30%;
 						bottom: 25%;
 						left: 20%;
-						border: 1px solid red;
 						z-index: 1;
 
 						img {
@@ -184,19 +183,37 @@ $breakpoints: (
 					#social-links {
 						display: inline-block;
 						margin: 0px auto;
-
+						padding-bottom: 10px;
+						
 						img {
 							height: 4rem;
 							margin: 20px 20px 0px 0px;
+							
+							transform: translateZ(0); //css animation fix
+							transition: background-color 0.5s;
+							border-radius: 8px;
 
 							@include breakpoint(large) {
 								height: 5rem;
 							}
+						}
+
+						img:hover {
+							animation: jiggle 0.2s infinite;
+							background-color: #FFFC00;
 						}
 					}
 				}
 			}
 		}
 	}
+}
 
+@keyframes jiggle {
+	25% {
+		transform: rotate(-2deg);
+	}
+	75% {
+		transform: rotate(2deg);
+	}
 }

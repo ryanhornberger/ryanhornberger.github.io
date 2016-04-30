@@ -3,7 +3,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Router, Route, IndexRoute, Redirect, IndexRedirect } from 'react-router';
-import HomePage from 'com/ryanhornberger/routes/home/HomePage2';
+import HomePage from 'com/ryanhornberger/routes/home/HomePage';
 
 var routes = (
 	<Route path="/">
