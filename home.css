@@ -8337,7 +8337,7 @@ blockquote p {
 }
 
 #app-ui {
-  background-image: url("/_assets/home/2016background.png");
+  background-image: url("/assets/home/2016background.png");
   background-size: cover;
   display: -webkit-flex;
   display: -ms-flexbox;
