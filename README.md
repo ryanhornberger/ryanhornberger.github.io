@@ -4,7 +4,7 @@ This site is build using an isomorphic react application.
 
 ## Prerequisits
 
-This site expects node v4.1.0. Ensure that is installed before proceeding.
+This site expects node v4.2.2. Ensure that is installed before proceeding.
 
 Development happens on the 'development' branch and deploys go to the 'master' branch
 
