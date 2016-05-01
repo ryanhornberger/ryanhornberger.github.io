@@ -1,6 +1,6 @@
 # www.ryanhornberger.com
 
-This site is build using an isomorphic react application.
+This site is built using an isomorphic react application.
 
 ## Prerequisits
 
