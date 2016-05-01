@@ -18,7 +18,7 @@ class Spring2016Template extends React.Component
 						{
 							"rel": "stylesheet", 
 							"type": "text/css", 
-							"href": "/_assets/normalize.css"
+							"href": "/assets/normalize.css"
 						},
 
 						// site.scss
