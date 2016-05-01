@@ -6,34 +6,38 @@ echo '--------------'
 echo 'deploying to github'
 echo '--------------'
 
+REV=`git rev-parse HEAD`
+REVSUB=${REV:0:8}
+
 echo ''
-echo 'building'
+echo "building revision $REVSUB"
 echo '--------------'
 
 node --harmony $DIR/../node_modules/webpack/bin/webpack.js --config $DIR/../webpack.config.babel.js 
 
 echo ''
+echo 'preparing _deployed submodule'
+echo '--------------'
+
+cd $DIR/../
+git submodule init
+git submodule update
+cd $DIR/../_deployed/
+git pull
+
+rm -fr $DIR/../_deployed/*
+cp -r $DIR/../_compiled/public/* $DIR/../_deployed/
+cp $DIR/../CNAME $DIR/../_deployed/CNAME
+git add .
+git commit -m "Site updated to revision $REVSUB"
+
+echo ''
 echo 'deploying'
 echo '--------------'
 
-rm -rf $DIR/../../tmp/
-mkdir $DIR/../../tmp/
-mv $DIR/../_compiled/public/* $DIR/../../tmp/
-mv $DIR/../CNAME $DIR/../../tmp/
-mv $DIR/../node_modules/ $DIR/../../node_modules/
-git checkout master
-rm -rf $DIR/../*
-mv $DIR/../../tmp/* .
+git push origin master
 
-#
-#      system "mv dist/* #{tmp}"
-#      system 'git checkout master'
-#      system 'rm -rf ./*'
-#      system 'rm -rf ./.sass-cache'
-#      system "mv #{tmp}/* ."
-#      message = "Site updated at #{Time.now.utc}"
-#      system 'git add .'
-#      system "git commit -am #{message.shellescape}"
-#      system 'git push origin master'
-#      system 'git checkout development'
-#      system "echo 'Deployed to GitHub'"#
+cd $DIR/../
+git add .
+git commit -m "Site updated to revision $REVSUB"
+git push origin development
