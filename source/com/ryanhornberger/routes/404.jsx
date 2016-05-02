@@ -16,7 +16,7 @@ class FourOhFour extends React.Component
 					title="Page not found - Ryan Hornberger" 
 					meta={[
 	                    {"name": "viewport", "content": "width=device-width, initial-scale=1, user-scalable=no"},
-	                    {"http-equiv": "refresh", "content": "5;URL=/"}
+	                    //{"http-equiv": "refresh", "content": "5;URL=/"}
 	                ]}
 				/>
 
