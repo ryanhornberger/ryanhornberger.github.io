@@ -19,6 +19,7 @@ class ServerHelmetWrapper extends React.Component
 					{this.props.head.title.toComponent()}
                 	{this.props.head.meta.toComponent()}
                 	{this.props.head.link.toComponent()}
+                	{this.props.head.script.toComponent()}
 				</head>
 				<body>
 					<div id="app" dangerouslySetInnerHTML={{__html: this.props.content}} />

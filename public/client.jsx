@@ -5,11 +5,15 @@ import ReactDOM from 'react-dom';
 import Routes from 'com/ryanhornberger/routes';
 import { createHistory } from 'history';
 
+window.$ = window.jquery = require('jquery');
+
 const history = createHistory();
 
-ReactDOM.render(
-	<Routes history={history} />,
-	document.getElementById('app')
-);
+$(function(){
+	ReactDOM.render(
+		<Routes history={history} />,
+		document.getElementById('app')
+	);
 
-console.log("initialized");
+	console.log("initialized");
+});
