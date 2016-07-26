@@ -8395,7 +8395,7 @@ blockquote p {
   margin: 0 auto;
   width: 100%;
   max-width: 1400px;
-  overflow: scroll;
+  overflow: auto;
   padding-bottom: 20px;
 }
 
@@ -8468,6 +8468,7 @@ blockquote p {
 }
 
 #app-ui #business-card-box #business-card #snapcode {
+  overflow: hidden;
   display: -webkit-flex;
   display: -ms-flexbox;
   display: flex;
@@ -8544,6 +8545,7 @@ blockquote p {
 }
 
 #app-ui #business-card-box #business-card #snapcode #foreground {
+  overflow: hidden;
   position: relative;
   z-index: 2;
 }
