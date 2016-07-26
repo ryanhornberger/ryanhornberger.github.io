@@ -45,7 +45,7 @@ $breakpoints: (
 		max-width: 1400px;
 
 		// If the screen height is too short, allow a scroll
-		overflow: scroll;
+		overflow: auto;
 		padding-bottom: 20px;
 
 		#business-card
@@ -62,6 +62,8 @@ $breakpoints: (
 
 			#snapcode 
 			{
+				overflow: hidden;
+
 				// Take up the entire space on mobile, and center the image on screen
 				@include grid-block(
 					$size: 12
@@ -78,6 +80,7 @@ $breakpoints: (
 
 				#foreground
 				{
+					overflow: hidden;
 					position: relative;
 					z-index: 2;
 					// Image size configurations
