@@ -1,10 +1,12 @@
 'use strict';
 
+require('babel-polyfill');
+
 import React, { Component, PropTypes } from 'react';
 import ReactDOMServer from 'react-dom/server';
 import Helmet from 'react-helmet';
 
-import { match, RoutingContext } from 'react-router';
+import { match, RouterContext } from 'react-router';
 import Routes from 'com/ryanhornberger/routes';
 
 import ServerHelmetWrapper from 'isomorphicTools/ServerHelmetWrapper';
@@ -25,7 +27,8 @@ class ServerRenderer
         match({ routes, location: url.substring(this.trim) }, function(error, redirectLocation, renderProps)
         {
             if (renderProps) {
-                var content = ReactDOMServer.renderToStaticMarkup(<RoutingContext 
+                var content = ReactDOMServer.renderToStaticMarkup(<RouterContext 
+                    router={renderProps.router}
                     history={renderProps.history} 
                     createElement={renderProps.createElement}
                     location={renderProps.location}

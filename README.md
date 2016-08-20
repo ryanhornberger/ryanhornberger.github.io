@@ -37,3 +37,10 @@ any of the html pages.
 
 The config.jsx can be configured to output precompiled assets for any url the server can handle. I use these precompiled
 assets to publish on github pages so I don't need a node server running to host the site.
+
+## Updating NPM dependencies
+
+I am using a node module named npm-check-updates to do a package.json dependency update from time to time. The command in console is "ncu". It can be installed on any computer by running:
+
+    npm install -g npm-check-updates
+

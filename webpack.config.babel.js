@@ -93,7 +93,7 @@ module.exports =
                 { 
                     test: /\.jsx?$/, 
                     exclude: /node_modules/, 
-                    loader: 'babel-loader'
+                    loader: 'babel'
                 }
             ]
         },
@@ -142,7 +142,7 @@ module.exports =
                 { 
                     test: /\.jsx?$/, 
                     exclude: /node_modules/, 
-                    loader: 'babel-loader'
+                    loader: 'babel'
                 }
             ]
         },
