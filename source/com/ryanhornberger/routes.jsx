@@ -6,11 +6,16 @@ import { Router, Route, IndexRoute, Redirect, IndexRedirect } from 'react-router
 import HomePage from 'com/ryanhornberger/routes/home/HomePage';
 import FourOhFour from 'com/ryanhornberger/routes/404';
 
+import PortfolioOne from 'com/ryanhornberger/routes/portfolio/1/PortfolioOnePage';
+
+
 var routes = (
 	<Route path="/">
 
 	    <IndexRoute component={HomePage} />
 
+	    <Route path="/portfolio/one" component={PortfolioOne} />
+		
 	    <Route path="404.html" component={FourOhFour} />
 
 	</Route>

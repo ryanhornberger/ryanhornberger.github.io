@@ -11,7 +11,8 @@ export default {
 		paths: 
 		[
 			'/',
-		    '/404.html'
+		    '/404.html',
+		    '/portfolio/one'
 		]
 	}
 
