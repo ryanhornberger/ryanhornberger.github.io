@@ -122,9 +122,9 @@ class PortfolioOnePage extends React.Component
 							<text x="102" y="193.75" style={clockHoursStyle} >12A</text>
 							
 							{/*Dot indicators*/}
-							<circle cx="100" cy="24.5" r={indicatorSelecteRadius} fill={clockCircleDayColor} transform="rotate(0 100 100)" />
+							<circle cx="100" cy="22" r={indicatorRadius} fill={clockCircleDayColor} transform="rotate(0 100 100)" />
 							<circle cx="100" cy="22" r={indicatorRadius} fill={clockCircleDayColor} transform="rotate(15 100 100)" />
-							<circle cx="100" cy="22" r={indicatorRadius} fill={clockCircleDayColor} transform="rotate(30 100 100)" />
+							<circle cx="100" cy="24.5" r={indicatorSelecteRadius} fill={clockCircleDayColor} transform="rotate(30 100 100)" />
 							<circle cx="100" cy="22" r={indicatorRadius} fill={clockCircleDayColor} transform="rotate(45 100 100)" />
 							<circle cx="100" cy="22" r={indicatorRadius} fill={clockCircleDayColor} transform="rotate(60 100 100)" />
 							<circle cx="100" cy="22" r={indicatorRadius} fill={clockCircleDayColor} transform="rotate(75 100 100)" />
