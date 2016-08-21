@@ -112,6 +112,35 @@ class PortfolioOnePage extends React.Component
 							<text x="147.5" y="179.5" style={clockHoursStyle} >10P</text>
 							<text x="102" y="193.75" style={clockHoursStyle} >12A</text>
 							
+							{/*Dot indicators*/}
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(0 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(15 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(30 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(45 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(60 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(75 100 100)" />
+
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(90 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(105 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(120 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(135 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(150 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(165 100 100)" />
+									
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(180 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(195 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(210 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(225 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(240 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(255 100 100)" />
+							
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(270 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(285 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(300 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(315 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(330 100 100)" />
+							<circle cx="100" cy="22" r="3.5" fill={clockCircleDayColor} transform="rotate(345 100 100)" />
+							
 						</svg>
 					</div>
 
