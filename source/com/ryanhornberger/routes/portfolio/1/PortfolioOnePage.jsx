@@ -8,11 +8,18 @@ import Helmet from 'react-helmet';
 var canvasHW = 200;
 
 var clockCircleRadius = 93;
-var clockCircleDayColor = "#eeeeee";
-var clockCircleNightColor = "#aaaaaa";
+var clockCircleDayColor = '#eeeeee';
+var clockCircleNightColor = '#aaaaaa';
 
 var callableHoursRadius = 87;
-var callableHoursColor = "#eeeeee";
+var callableHoursColor = '#eeeeee';
+
+var clockHoursStyle = {
+	fontFamily: "'Helvetica Neue' Helvetica",
+	fontSize: '3',
+    fill: '#333333'
+};
+
 
 // Calculations
 var halfwayHW = canvasHW / 2;
@@ -45,6 +52,7 @@ var nonCallableHoursStrokeDasharray = function() {
 }();
 
 
+// The component
 class PortfolioOnePage extends React.Component 
 {
 	render()
@@ -93,6 +101,16 @@ class PortfolioOnePage extends React.Component
 							
 							{/*Non-callable hours*/}
 							<circle cx={halfwayHW} cy={halfwayHW} r={callableHoursRadius} stroke={clockCircleNightColor} strokeWidth="2" strokeDasharray={nonCallableHoursStrokeDasharray} fill="transparent" />
+							
+							{/*Hour markers*/}
+							<text x="5" y="104" style={clockHoursStyle} >6A</text>
+							<text x="15.75" y="57.5" style={clockHoursStyle} >8A</text>
+							<text x="30" y="37.5" style={clockHoursStyle} >9A</text>
+							<text x="93" y="8" style={clockHoursStyle} >12P</text>
+							<text x="187" y="74" style={clockHoursStyle} >5P</text>
+							<text x="191" y="98" style={clockHoursStyle} >6P</text>
+							<text x="147.5" y="179.5" style={clockHoursStyle} >10P</text>
+							<text x="102" y="193.75" style={clockHoursStyle} >12A</text>
 							
 						</svg>
 					</div>
