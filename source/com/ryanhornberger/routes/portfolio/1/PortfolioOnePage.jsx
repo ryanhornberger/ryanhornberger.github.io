@@ -5,15 +5,32 @@ import Helmet from 'react-helmet';
 
 
 // Configurations
-var dashCircleRadius = 93;
+var canvasHW = 200;
+var clockCircleRadius = 93;
+var clockCircleDayColor = "#eeeeee";
+var clockCircleNightColor = "#aaaaaa";
 
 // Calculations
-var dashCircleStrokeDasharray = function(){
-	var c = Math.PI*(dashCircleRadius*2);
-	var strokeSize = c / 24; // (24 hours per day)
-	return "" + (strokeSize - 1) + ",1"; //We are going to give 1 to the space in between
+var halfwayHW = canvasHW / 2;
+
+var viewBox = function(){
+	return `0 0 ${canvasHW} ${canvasHW}`;
 }();
 
+var clockCircleArcStartPosition = function(){
+	return `${halfwayHW - clockCircleRadius} ${halfwayHW}`;
+}();
+
+var clockCircleArcEndPosition = function(){
+	return `${halfwayHW + clockCircleRadius} ${halfwayHW}`;
+}();
+
+var clockCircleCircumference = Math.PI*(clockCircleRadius*2);
+
+var clockCircleStrokeDasharray = function(){
+	var strokeSize = clockCircleCircumference / 24; // (24 hours per day)
+	return "" + (strokeSize - 1) + ",1"; //We are going to give 1 to the space in between
+}();
 
 class PortfolioOnePage extends React.Component 
 {
@@ -44,9 +61,23 @@ class PortfolioOnePage extends React.Component
 				<div id="page">
 
 					<div id="clock">
-						<svg width="100%" viewBox="0 0 200 200">
-							<circle cx="100" cy="100" r="99" stroke="#eeeeee" strokeWidth="2" fill="#333333" />
-							<circle cx="100" cy="100" r={dashCircleRadius} stroke="#eeeeee" strokeWidth="6" strokeDasharray={dashCircleStrokeDasharray} fill="#333333" />
+						<svg width="100%" viewBox={viewBox}>
+							
+							{/*Clock top - day hours - lighter*/}
+							<path fill="transparent" stroke={clockCircleDayColor} strokeWidth="6" strokeDasharray={clockCircleStrokeDasharray} strokeDashoffset="0" d={`
+								M ${clockCircleArcStartPosition}
+								A ${clockCircleRadius} ${clockCircleRadius} 0 0 1 ${clockCircleArcEndPosition}
+							`} />
+
+							{/*Clock bottom - night hours - darker*/}
+							<path fill="transparent" stroke={clockCircleNightColor} strokeWidth="6" strokeDasharray={clockCircleStrokeDasharray} strokeDashoffset="-1" d={`
+								M ${clockCircleArcStartPosition}
+								A ${clockCircleRadius} ${clockCircleRadius} 0 0 0 ${clockCircleArcEndPosition}
+							`} />
+
+							{/*Next step*/}
+							<circle cx={halfwayHW} cy={halfwayHW} r="99" fill="transparent" stroke="#eeeeee" strokeWidth="2" strokeDashoffset="300" strokeDashoffset="300" />
+							
 						</svg>
 					</div>
 
