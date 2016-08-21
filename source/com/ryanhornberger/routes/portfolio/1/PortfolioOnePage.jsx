@@ -21,6 +21,13 @@ var clockHoursStyle = {
 };
 
 var indicatorRadius = 3.25;
+var indicatorSelecteRadius = 6.5;
+
+var indicatorSelectedTextStyle = {
+	fontFamily: "'Helvetica Neue' Helvetica",
+	fontSize: '16',
+    fill: '#eeeeee'
+};
 
 
 // Calculations
@@ -115,7 +122,7 @@ class PortfolioOnePage extends React.Component
 							<text x="102" y="193.75" style={clockHoursStyle} >12A</text>
 							
 							{/*Dot indicators*/}
-							<circle cx="100" cy="22" r={indicatorRadius} fill={clockCircleDayColor} transform="rotate(0 100 100)" />
+							<circle cx="100" cy="24.5" r={indicatorSelecteRadius} fill={clockCircleDayColor} transform="rotate(0 100 100)" />
 							<circle cx="100" cy="22" r={indicatorRadius} fill={clockCircleDayColor} transform="rotate(15 100 100)" />
 							<circle cx="100" cy="22" r={indicatorRadius} fill={clockCircleDayColor} transform="rotate(30 100 100)" />
 							<circle cx="100" cy="22" r={indicatorRadius} fill={clockCircleDayColor} transform="rotate(45 100 100)" />
@@ -143,6 +150,9 @@ class PortfolioOnePage extends React.Component
 							<circle cx="100" cy="22" r={indicatorRadius} fill={clockCircleDayColor} transform="rotate(330 100 100)" />
 							<circle cx="100" cy="22" r={indicatorRadius} fill={clockCircleDayColor} transform="rotate(345 100 100)" />
 							
+							{/*Selected text*/}
+							<text x="100" y="104" textAnchor="middle" style={indicatorSelectedTextStyle}>Los Angeles</text>
+
 						</svg>
 					</div>
 
